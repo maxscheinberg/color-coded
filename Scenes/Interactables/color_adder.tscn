@@ -1,0 +1,61 @@
+[gd_scene format=4 uid="uid://hs443laxkp8b"]
+
+[ext_resource type="Script" uid="uid://coltlupsy22vw" path="res://Scripts/Interactables/color_adder.gd" id="1_qysv1"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_qysv1"]
+_data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAABwAAAAUklGRmgAAABXRUJQVlA4TFwAAAAvH8AHEBcw//M///MfgAc3jSRJUmrMhrJ8dvAMifHbXCXN7n3uEET0fwL4UpvUKKrAKgOyBFzlANsyt7K6cZddpPM89385t8bqxh0d2MJVDsgSsMoACkBqFJQvAQ==")
+size_override = Vector2(32, 32)
+
+[sub_resource type="Animation" id="Animation_qysv1"]
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jfgro"]
+_data = {
+&"default": SubResource("Animation_qysv1")
+}
+
+[node name="ColorAdder" type="Node2D" unique_id=558619985]
+script = ExtResource("1_qysv1")
+col = Color(0, 0, 1, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=364863942]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_qysv1")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "Sprite2D/AnimationPlayer",
+"scale": "1.0",
+"slice": "",
+"source": "res://Assets/Interactables/color adder.aseprite",
+"source_uid": 2625923280340790881
+}
+metadata/_aseprite_wizard_source_file_hash_ = "8e69e4679f0e5f3aec6d4ff7f2359b51"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=801472363]
+libraries/ = SubResource("AnimationLibrary_jfgro")

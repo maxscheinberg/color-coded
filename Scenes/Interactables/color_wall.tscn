@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bd8fbishdjwak"]
+
+[ext_resource type="Script" uid="uid://d4m5fi1cyr8pu" path="res://Scripts/Interactables/color_wall.gd" id="1_8pxhk"]
+
+[node name="ColorWall" type="Node2D" unique_id=1696651386]
+script = ExtResource("1_8pxhk")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=142511795]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0

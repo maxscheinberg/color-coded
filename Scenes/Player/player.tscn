@@ -1,0 +1,117 @@
+[gd_scene format=4 uid="uid://n5rh35de5qmn"]
+
+[ext_resource type="Script" uid="uid://b5y32j32frnss" path="res://Scripts/player.gd" id="1_a3d8c"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_uvnfx"]
+_data = PackedByteArray("AAADAAUAAAABAAAAYAAAAGAAAAB4AAAAUklGRnAAAABXRUJQVlA4TGMAAAAvX8AXEBcw//M///MfgAdXkSQp1pnEkTB+9hzQpM/H/L4i+q+2bRuG3lL/8D4TsF5jKLKdPrjs9gdXlP+YycKCFcGCLGJFTzYMpUes93dD+XdOdzFvyIq4RjYMdX93LAM/rA4A")
+size_override = Vector2(96, 96)
+
+[sub_resource type="Animation" id="Animation_xpcdj"]
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 2, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_mtuoh"]
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_htcer"]
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_dd0ac"]
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0u5uq"]
+_data = {
+&"Blink": SubResource("Animation_xpcdj"),
+&"Default": SubResource("Animation_mtuoh"),
+&"Look Left": SubResource("Animation_htcer"),
+&"Look Right": SubResource("Animation_dd0ac")
+}
+
+[node name="Player" type="CharacterBody2D" unique_id=1803487026]
+collision_mask = 255
+script = ExtResource("1_a3d8c")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=805589787]
+texture_filter = 1
+position = Vector2(-8.940697e-07, 1.1920929e-06)
+scale = Vector2(1, 0.99999994)
+texture = SubResource("PortableCompressedTexture2D_uvnfx")
+hframes = 3
+vframes = 3
+metadata/_aseprite_wizard_interface_config_ = {
+"output_section": true,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "Sprite2D/AnimationPlayer",
+"scale": "1.0",
+"slice": "",
+"source": "res://Assets/Player/little dude.aseprite",
+"source_uid": 3856863049591205159
+}
+metadata/_aseprite_wizard_source_file_hash_ = "10cea2ebf10986b693f9128c11b67979"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=605109378]
+libraries/ = SubResource("AnimationLibrary_0u5uq")

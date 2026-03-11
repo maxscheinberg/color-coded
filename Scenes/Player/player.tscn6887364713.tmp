@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://n5rh35de5qmn"]
+
+[ext_resource type="Script" uid="uid://b5y32j32frnss" path="res://Scripts/player.gd" id="1_a3d8c"]
+[ext_resource type="SpriteFrames" uid="uid://bu7j8anrofqpb" path="res://Assets/Player/little dude.aseprite" id="1_uvnfx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a3d8c"]
+size = Vector2(30.000006, 30.000006)
+
+[node name="Player" type="CharacterBody2D" unique_id=1803487026]
+script = ExtResource("1_a3d8c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1703596267]
+position = Vector2(3.3527607e-07, 3.3527607e-07)
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("RectangleShape2D_a3d8c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1167054892]
+texture_filter = 1
+position = Vector2(8.000001, 8.000001)
+sprite_frames = ExtResource("1_uvnfx")
+animation = &"Default"
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "res://Assets/Player/little dude.aseprite",
+"source_uid": 3856863049591205159
+}
+metadata/_aseprite_wizard_source_file_hash_ = "2cb788cfa2ef7953f1d61175d04ea5cb"
