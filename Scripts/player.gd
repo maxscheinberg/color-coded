@@ -13,6 +13,12 @@ func _ready():
 	anim.get_animation("Look Left").loop_mode = Animation.LOOP_NONE
 	anim.get_animation("Look Right").loop_mode = Animation.LOOP_NONE
 	
+func get_color() -> Color:
+	return col
+
+func set_color(col: Color) -> void:
+	sprite.self_modulate = col
+
 #func _physics_process(delta):
 	#input_dir = Vector2.ZERO
 	#if Input.is_action_just_pressed("ui_down"):

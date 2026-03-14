@@ -12,6 +12,9 @@ enum { LEFT, RIGHT, UP, DOWN}
 var player_pos: Vector2i
 
 func _ready() -> void:
+	#Find all the objects in the level and place them in the object locations
+	#array based on their position. Object locations array is used to check if
+	#the player can move to a tile.
 	for object in objects.get_children():
 		var grid_pos = background.local_to_map(object.position)
 		object_locations[grid_pos] = object
@@ -44,8 +47,10 @@ func _move_player(dir: int) -> void:
 
 	var target_cell: Vector2i = player_pos + offset
 	var occupying_object = object_locations.get(target_cell)
-
+	
+	#All interactables must have a can_move_here method
 	if occupying_object == null or occupying_object.can_move_here(player):
+		#All interactables must have an interact method
 		if occupying_object:
 			if occupying_object.has_method("interact"):
 				occupying_object.interact(player)
@@ -64,6 +69,7 @@ func _stop_move(new_pos: Vector2i) -> void:
 	player_pos = new_pos
 	player.anim.play("Default")
 	player.moving = false
+	#Just mock code to get prototype working. To be replaced
 	if player_pos == Vector2i(9, 3):
 		get_tree().change_scene_to_file("res://Scenes/Levels/level_02.tscn")
 	if player_pos == Vector2i(5, 7):

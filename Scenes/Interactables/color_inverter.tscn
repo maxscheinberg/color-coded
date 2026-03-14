@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://d0yledfq1j721"]
+
+[ext_resource type="Script" uid="uid://c8frx7m1ovvy1" path="res://Scripts/Interactables/color_inverter.gd" id="1_jsqqu"]
+
+[node name="ColorInverter" type="Node2D" unique_id=1114736178]
+script = ExtResource("1_jsqqu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1594648359]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=349844760]

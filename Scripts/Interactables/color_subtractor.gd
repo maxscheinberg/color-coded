@@ -12,4 +12,22 @@ func can_move_here(player):
 	return true
 
 func interact(player):
-	player.get_child(0).self_modulate = Color.BLUE
+	match col:
+		Color.RED:
+			match player.get_color():
+				Color.PURPLE:
+					player.set_color(Color.BLUE)
+				Color.ORANGE:
+					player.set_color(Color.YELLOW)
+		Color.BLUE:
+			match player.get_color():
+				Color.PURPLE:
+					player.set_color(Color.RED)
+				Color.GREEN:
+					player.set_color(Color.YELLOW)
+		Color.YELLOW:
+			match player.get_color():
+				Color.ORANGE:
+					player.set_color(Color.RED)
+				Color.GREEN:
+					player.set_color(Color.BLUE)
