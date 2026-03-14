@@ -17,11 +17,15 @@ config/icon="res://icon.svg"
 
 [display]
 
-window/stretch/scale=1.94
+window/stretch/scale=1.77
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
+
+[global_group]
+
+uwpc="UpdateWithPlayerColor: a group for nodes that need to be updated when the player color changes"
 
 [physics]
 

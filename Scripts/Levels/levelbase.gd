@@ -18,6 +18,8 @@ func _ready() -> void:
 	for object in objects.get_children():
 		var grid_pos = background.local_to_map(object.position)
 		object_locations[grid_pos] = object
+		if object.has_method("on_level_start"):
+			object.on_level_start(player)
 	player_pos = background.local_to_map(player.position)
 	
 func _process(delta: float) -> void:

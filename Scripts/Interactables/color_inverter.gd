@@ -1,13 +1,28 @@
 extends Node2D
 
-@export var col: Color
-@onready var sprite:Sprite2D = $Sprite2D
+@onready var bodySprite: Sprite2D = $Body
+@onready var arrowSprite: Sprite2D = $Arrow
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	sprite.self_modulate = col
-	pass # Replace with function body.
-
+func on_level_start(player):
+	update_with_player(player)
+			
+func update_with_player(player):
+	var col = player.get_color()
+	set_arrow_color(col)
+	match col:
+		Color.RED:
+			set_body_color(Color.GREEN)
+		Color.GREEN:
+			set_body_color(Color.RED)
+		Color.BLUE:
+			set_body_color(Color.ORANGE)
+		Color.ORANGE:
+			set_body_color(Color.BLUE)
+		Color.YELLOW:
+			set_body_color(Color.PURPLE)
+		Color.PURPLE:
+			set_body_color(Color.YELLOW)
+	
 func can_move_here(player):
 	return true
 
@@ -25,3 +40,10 @@ func interact(player):
 			player.set_color(Color.PURPLE)
 		Color.PURPLE:
 			player.set_color(Color.YELLOW)
+	update_with_player(player)
+
+func set_body_color(col: Color) -> void:
+	bodySprite.self_modulate = col
+	
+func set_arrow_color(col: Color) -> void:
+	arrowSprite.self_modulate = col

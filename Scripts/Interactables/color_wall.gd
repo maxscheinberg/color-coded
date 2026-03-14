@@ -11,4 +11,4 @@ func _process(delta: float) -> void:
 	pass
 
 func can_move_here(player) -> bool:
-	return player.get_child(0).get_self_modulate() == col
+	return player.get_color() == col

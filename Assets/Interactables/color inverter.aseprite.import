@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://0ldnj53dm5aj"
+path="res://.godot/imported/color inverter.aseprite-6c503c68815447091dc721befeaa53e4.res"
+
+[deps]
+
+source_file="res://Assets/Interactables/color inverter.aseprite"
+dest_files=["res://.godot/imported/color inverter.aseprite-6c503c68815447091dc721befeaa53e4.res"]
+
+[params]
+

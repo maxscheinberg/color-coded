@@ -1,10 +1,120 @@
-[gd_scene format=3 uid="uid://d0yledfq1j721"]
+[gd_scene format=4 uid="uid://d0yledfq1j721"]
 
 [ext_resource type="Script" uid="uid://c8frx7m1ovvy1" path="res://Scripts/Interactables/color_inverter.gd" id="1_jsqqu"]
 
-[node name="ColorInverter" type="Node2D" unique_id=1114736178]
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_jsqqu"]
+_data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAACOAAAAUklGRoYAAABXRUJQVlA4THoAAAAvH8AHEBcw//M///MfgAdXsW07zZ70PAlPAipAQmQEFc9C6ndv2+alSYjo/wQwpXbcNAVVoIQZ3EKCX6jAzgGla1a0vejsprnWdNPV8t/R5FfHoe1od12ZfUdb5w4Pq7+p6KfRWVGvOsNOBvxCBbeQoIQZEABumgLKlA==")
+size_override = Vector2(32, 32)
+
+[sub_resource type="Animation" id="Animation_wnclb"]
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1m8qu"]
+_data = {
+&"default": SubResource("Animation_wnclb")
+}
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_wnclb"]
+_data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAABMAAAAUklGRkQAAABXRUJQVlA4TDcAAAAvH8AHEA8w//M///Mf8FAT2U70qnAfZcpIQwISkIYsBFBFQUT/JwD/J8CtsBRs/t6ErWAVEHwDAA==")
+size_override = Vector2(32, 32)
+
+[sub_resource type="Animation" id="Animation_1m8qu"]
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dx1bm"]
+_data = {
+&"default": SubResource("Animation_1m8qu")
+}
+
+[node name="ColorInverter" type="Node2D" unique_id=1114736178 groups=["uwpc"]]
 script = ExtResource("1_jsqqu")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1594648359]
+[node name="Body" type="Sprite2D" parent="." unique_id=1594648359]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_jsqqu")
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"output_section": false,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": ["Outside"],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "Outside/AnimationPlayer",
+"scale": "1.0",
+"slice": "",
+"source": "res://Assets/Interactables/color inverter.aseprite",
+"source_uid": 1777635132875521169
+}
+metadata/_aseprite_wizard_source_file_hash_ = "ddca2d5ca468ed17838337f2998300d9"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=349844760]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Body" unique_id=349844760]
+libraries/ = SubResource("AnimationLibrary_1m8qu")
+
+[node name="Arrow" type="Sprite2D" parent="." unique_id=1876882221]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_wnclb")
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": false,
+"layer_section": true,
+"output_section": false,
+"pending_changes": {},
+"slice_section": false
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": ["Arrow"],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "Arrow/AnimationPlayer",
+"scale": "1.0",
+"slice": "",
+"source": "res://Assets/Interactables/color inverter.aseprite",
+"source_uid": 1777635132875521169
+}
+metadata/_aseprite_wizard_source_file_hash_ = "ddca2d5ca468ed17838337f2998300d9"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Arrow" unique_id=2095501450]
+libraries/ = SubResource("AnimationLibrary_dx1bm")
