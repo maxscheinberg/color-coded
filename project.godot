@@ -15,10 +15,6 @@ run/main_scene="uid://cdq63sm5m7kjj"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
-[display]
-
-window/stretch/scale=1.77
-
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")

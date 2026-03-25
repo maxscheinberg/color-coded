@@ -52,8 +52,13 @@ func _move_player(dir: int) -> void:
 	
 	#All interactables must have a can_move_here method
 	if occupying_object == null or occupying_object.can_move_here(player):
-		#All interactables must have an interact method
 		if occupying_object:
+			if occupying_object.has_method("teleport"):
+				player.moving = true
+				await occupying_object.teleport(player)
+				var temp = background.local_to_map(player.position)
+				_stop_move(temp)
+				return
 			if occupying_object.has_method("interact"):
 				occupying_object.interact(player)
 		player.moving = true
@@ -63,7 +68,7 @@ func _move_player(dir: int) -> void:
 			player.anim.play("Look Right", -1, 2.0)
 		var new_pos: Vector2i = target_cell
 		var tween := create_tween()
-		tween.tween_property(player, "position", background.map_to_local(new_pos), 0.25)
+		tween.tween_property(player, "position", background.map_to_local(new_pos), 0.15)
 		tween.tween_callback(Callable(self, "_stop_move").bind(new_pos))
 
 
@@ -72,9 +77,9 @@ func _stop_move(new_pos: Vector2i) -> void:
 	player.anim.play("Default")
 	player.moving = false
 	#Just mock code to get prototype working. To be replaced
-	if player_pos == Vector2i(9, 3):
+	if player_pos == Vector2i(11, 4) and get_tree().current_scene.name == "Level 01":
 		get_tree().change_scene_to_file("res://Scenes/Levels/level_02.tscn")
-	if player_pos == Vector2i(5, 7):
+	if player_pos == Vector2i(1, 9) and get_tree().current_scene.name == "Level 02":
 		get_tree().change_scene_to_file("res://Scenes/Levels/level_03.tscn")
-	if player_pos == Vector2i(4, 7):
-		get_tree().change_scene_to_file("res://Scenes/Levels/level_04.tscn")
+	#if player_pos == Vector2i(12, 12) and get_tree().current_scene.name == "Level 03":
+	#	get_tree().change_scene_to_file("res://Scenes/Levels/level_04.tscn")

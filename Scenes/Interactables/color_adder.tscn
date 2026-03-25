@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://coltlupsy22vw" path="res://Scripts/Interactables/color_adder.gd" id="1_qysv1"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_qysv1"]
-_data = PackedByteArray("AAADAAUAAAABAAAAIAAAACAAAABwAAAAUklGRmgAAABXRUJQVlA4TFwAAAAvH8AHEBcw//M///MfgAc3jSRJUmrMhrJ8dvAMifHbXCXN7n3uEET0fwL4UpvUKKrAKgOyBFzlANsyt7K6cZddpPM89385t8bqxh0d2MJVDsgSsMoACkBqFJQvAQ==")
-size_override = Vector2(32, 32)
+_data = PackedByteArray("AAADAAUAAAABAAAAQAAAAEAAAAB8AAAAUklGRnQAAABXRUJQVlA4TGcAAAAvP8APEBcw//M///MfgAfHbSM5Ur07v7XReVdp7nShZs+8I/o/AfiSJFmFxQpMbVMWLoqmSQkPZd/YNLtt0uITqNE0NsX9fyPHptn5dExafAI02HLPpIQHCkxTFi5ksKGECnigyicDAA==")
+size_override = Vector2(64, 64)
 
 [sub_resource type="Animation" id="Animation_qysv1"]
 length = 0.1
@@ -55,7 +55,7 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://Assets/Interactables/color adder.aseprite",
 "source_uid": 2625923280340790881
 }
-metadata/_aseprite_wizard_source_file_hash_ = "8e69e4679f0e5f3aec6d4ff7f2359b51"
+metadata/_aseprite_wizard_source_file_hash_ = "a385e88f3f51eb0ef3ed95c34a9c739f"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=801472363]
 libraries/ = SubResource("AnimationLibrary_jfgro")

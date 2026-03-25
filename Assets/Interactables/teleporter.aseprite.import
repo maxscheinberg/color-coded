@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://6chmm1481dg2"
+path="res://.godot/imported/teleporter.aseprite-341c025f777187b2f859f3aada79fad9.res"
+
+[deps]
+
+source_file="res://Assets/Interactables/teleporter.aseprite"
+dest_files=["res://.godot/imported/teleporter.aseprite-341c025f777187b2f859f3aada79fad9.res"]
+
+[params]
+

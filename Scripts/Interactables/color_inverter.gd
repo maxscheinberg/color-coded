@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var bodySprite: Sprite2D = $Body
-@onready var arrowSprite: Sprite2D = $Arrow
+@onready var arrowSprite: Sprite2D = $Arrows
 
 func on_level_start(player):
 	update_with_player(player)
