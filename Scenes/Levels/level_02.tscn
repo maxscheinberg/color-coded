@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d0yledfq1j721" path="res://Scenes/Interactables/color_inverter.tscn" id="4_f8isr"]
 [ext_resource type="PackedScene" uid="uid://n5rh35de5qmn" path="res://Scenes/Player/player.tscn" id="4_x41uu"]
 [ext_resource type="PackedScene" uid="uid://wc2dwbrkpa2p" path="res://Scenes/Interactables/color_subtractor.tscn" id="5_x41uu"]
+[ext_resource type="PackedScene" uid="uid://d4c52oroxymk" path="res://Scenes/color_wheel.tscn" id="6_x41uu"]
 
 [node name="Level 02" unique_id=2120704257 instance=ExtResource("1_mnnsc")]
 
@@ -32,6 +33,10 @@ position = Vector2(224, 352)
 [node name="ColorSubtractor" parent="Objects" index="3" unique_id=1076673664 instance=ExtResource("5_x41uu")]
 position = Vector2(608, 480)
 col = Color(0, 0, 1, 1)
+
+[node name="Color Wheel" parent="Objects" index="4" unique_id=820220426 instance=ExtResource("6_x41uu")]
+position = Vector2(1088, 64)
+scale = Vector2(0.5, 0.5)
 
 [node name="Player" parent="." index="3" unique_id=1803487026 instance=ExtResource("4_x41uu")]
 position = Vector2(96, 480)

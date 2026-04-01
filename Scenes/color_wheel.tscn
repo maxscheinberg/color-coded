@@ -1,0 +1,57 @@
+[gd_scene format=4 uid="uid://d4c52oroxymk"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_sseom"]
+_data = PackedByteArray("AAADAAUAAAABAAAAAAEAAAABAAB4AQAAUklGRnABAABXRUJQVlA4TGMBAAAv/8A/EDdAIAiR3fbY6YZAIMnfYtIJsm06f9kbfP4D+IsJhjaAHNt22+YxrqkOJFag0IDzWgl7R/TfghL+/wAc8Jwi+u/IbSNHom6emc3hD+BsV3faWo67uotQSyuP/tjDXcRaGnn0F52LG//kskgS1Ja/9OfmMJS/VItFkhsnK+99dvbOdTTx6H1+3EXlL9aSnb0L1pGTj1MPbVf6hUkQKtKpTldHC4+Rvm8xh70zxD/xFyRo7ZyjkR6pWhOQqY6MbEva+AMZtKYg/cBEk3BPgb+cXFrTwzDRVv37j8fmq/N28kJEhvJYtDUEEI6CMv3xXx3iqRyH+coQADIABgKylWqhsdl4Xh35XIsGIADloF3C5bKUPluyUVdtPJfJZmPsljEAIAdgCC7ZaQACiDaMaVraF/aJW34AkAUwTcJy6wTwbgbt941+3tWp8vedAN7dID3f8vce7wVnMdA7vZcaoAsAAA==")
+size_override = Vector2(256, 256)
+
+[sub_resource type="Animation" id="Animation_x8jbv"]
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6p0dj"]
+_data = {
+&"default": SubResource("Animation_x8jbv")
+}
+
+[node name="Color Wheel" type="Node2D" unique_id=820220426]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=381094762]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_sseom")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "Sprite2D/AnimationPlayer",
+"scale": "1.0",
+"slice": "",
+"source": "res://Assets/color wheel.aseprite",
+"source_uid": 5194492194234384127
+}
+metadata/_aseprite_wizard_source_file_hash_ = "f1224ed7a9661508aa9437dfe6d923ac"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=663529274]
+libraries/ = SubResource("AnimationLibrary_6p0dj")
