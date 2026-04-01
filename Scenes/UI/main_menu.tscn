@@ -1,0 +1,143 @@
+[gd_scene format=3 uid="uid://bllyurs7x2qag"]
+
+[ext_resource type="Script" uid="uid://b4ssgfaal86t3" path="res://Scripts/main_menu.gd" id="1_5wsvm"]
+[ext_resource type="FontFile" uid="uid://7nx8w2d5mm0s" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_i2xx2"]
+
+[node name="MainMenu" type="Control" unique_id=1794457277]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_5wsvm")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1223733882]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.051, 0.051, 0.078, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1867042041]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer" unique_id=485097483]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="DotsRow" type="HBoxContainer" parent="CenterContainer/VBox" unique_id=208508081]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="DotRed" type="ColorRect" parent="CenterContainer/VBox/DotsRow" unique_id=1217602554]
+custom_minimum_size = Vector2(14, 14)
+layout_mode = 2
+color = Color(0.91, 0.267, 0.267, 1)
+
+[node name="DotYellow" type="ColorRect" parent="CenterContainer/VBox/DotsRow" unique_id=102577931]
+custom_minimum_size = Vector2(14, 14)
+layout_mode = 2
+color = Color(0.961, 0.784, 0.259, 1)
+
+[node name="DotBlue" type="ColorRect" parent="CenterContainer/VBox/DotsRow" unique_id=980637864]
+custom_minimum_size = Vector2(14, 14)
+layout_mode = 2
+color = Color(0.267, 0.533, 0.933, 1)
+
+[node name="Title" type="Label" parent="CenterContainer/VBox" unique_id=211109225]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_i2xx2")
+theme_override_font_sizes/font_size = 28
+text = "COLOR CODED"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="CenterContainer/VBox" unique_id=1774825350]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.35)
+theme_override_fonts/font = ExtResource("2_i2xx2")
+theme_override_font_sizes/font_size = 7
+text = "A PUZZLE GAME"
+horizontal_alignment = 1
+
+[node name="ColorBar" type="HBoxContainer" parent="CenterContainer/VBox" unique_id=1331642943]
+custom_minimum_size = Vector2(240, 4)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="BarRed" type="ColorRect" parent="CenterContainer/VBox/ColorBar" unique_id=1899303845]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.91, 0.267, 0.267, 1)
+
+[node name="BarOrange" type="ColorRect" parent="CenterContainer/VBox/ColorBar" unique_id=1805731774]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.91, 0.416, 0.267, 1)
+
+[node name="BarYellow" type="ColorRect" parent="CenterContainer/VBox/ColorBar" unique_id=1987726475]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.961, 0.784, 0.259, 1)
+
+[node name="BarGreen" type="ColorRect" parent="CenterContainer/VBox/ColorBar" unique_id=414981021]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.4, 0.733, 0.267, 1)
+
+[node name="BarBlue" type="ColorRect" parent="CenterContainer/VBox/ColorBar" unique_id=1964412667]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.267, 0.533, 0.933, 1)
+
+[node name="BarPurple" type="ColorRect" parent="CenterContainer/VBox/ColorBar" unique_id=1056436938]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.467, 0.333, 0.867, 1)
+
+[node name="Spacer" type="Control" parent="CenterContainer/VBox" unique_id=1043286422]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="BtnPlay" type="Button" parent="CenterContainer/VBox" unique_id=1243075952]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_i2xx2")
+theme_override_font_sizes/font_size = 10
+text = "PLAY"
+
+[node name="BtnLevelSelect" type="Button" parent="CenterContainer/VBox" unique_id=300924859]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_i2xx2")
+theme_override_font_sizes/font_size = 10
+text = "LEVEL SELECT"
+
+[node name="BtnSettings" type="Button" parent="CenterContainer/VBox" unique_id=2056180896]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_i2xx2")
+theme_override_font_sizes/font_size = 10
+text = "SETTINGS"
+
+[node name="BtnQuit" type="Button" parent="CenterContainer/VBox" unique_id=2102184207]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_i2xx2")
+theme_override_font_sizes/font_size = 10
+text = "QUIT"
+
+[node name="VersionLabel" type="Label" parent="." unique_id=1907525472]
+layout_mode = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = -24.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.2)
+theme_override_fonts/font = ExtResource("2_i2xx2")
+theme_override_font_sizes/font_size = 7
+text = "v0.1"
+
+[connection signal="pressed" from="CenterContainer/VBox/BtnPlay" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CenterContainer/VBox/BtnLevelSelect" to="." method="_on_level_select_pressed"]
+[connection signal="pressed" from="CenterContainer/VBox/BtnSettings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="CenterContainer/VBox/BtnQuit" to="." method="_on_quit_pressed"]
