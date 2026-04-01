@@ -48,6 +48,9 @@ func _move_player(dir: int) -> void:
 			offset = Vector2i(-1, 0)
 
 	var target_cell: Vector2i = player_pos + offset
+	#borders collision, if there is any tile placed in the walls layer at that cell → block movement
+	if tilemap_walls.get_cell_source_id(target_cell) != -1:
+		return
 	var occupying_object = object_locations.get(target_cell)
 	
 	#All interactables must have a can_move_here method
