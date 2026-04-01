@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cgair62oi3klb"
+path="res://.godot/imported/color wheel.aseprite-f55978a129b5a9999296a1dc1ff67715.res"
+
+[deps]
+
+source_file="res://Assets/color wheel.aseprite"
+dest_files=["res://.godot/imported/color wheel.aseprite-f55978a129b5a9999296a1dc1ff67715.res"]
+
+[params]
+
