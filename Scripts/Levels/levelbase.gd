@@ -1,14 +1,13 @@
 # LevelBase.gd
 extends Node2D
-
 @export var background: TileMapLayer
 @export var tilemap_walls: TileMapLayer
 @export var objects: Node2D
 @onready var object_locations: Dictionary[Vector2i, Node]
 @onready var wall_locations: Array = []
 @onready var player = $Player
+@onready var camera: Camera2D = $Camera2D
 enum { LEFT, RIGHT, UP, DOWN}
-
 var player_pos: Vector2i
 
 func _ready() -> void:
@@ -35,7 +34,6 @@ func _process(delta: float) -> void:
 func _move_player(dir: int) -> void:
 	if player.moving:
 		return
-
 	var offset := Vector2i.ZERO
 	match dir:
 		DOWN:
@@ -46,7 +44,6 @@ func _move_player(dir: int) -> void:
 			offset = Vector2i(1, 0)
 		LEFT:
 			offset = Vector2i(-1, 0)
-
 	var target_cell: Vector2i = player_pos + offset
 	#borders collision, if there is any tile placed in the walls layer at that cell → block movement
 	if tilemap_walls.get_cell_source_id(target_cell) != -1:
@@ -74,11 +71,12 @@ func _move_player(dir: int) -> void:
 		tween.tween_property(player, "position", background.map_to_local(new_pos), 0.15)
 		tween.tween_callback(Callable(self, "_stop_move").bind(new_pos))
 
-
 func _stop_move(new_pos: Vector2i) -> void:
 	player_pos = new_pos
 	player.anim.play("Default")
 	player.moving = false
+	
+
 	#Just mock code to get prototype working. To be replaced
 	if player_pos == Vector2i(11, 4) and get_tree().current_scene.name == "Level 01":
 		get_tree().change_scene_to_file("res://Scenes/Levels/level_02.tscn")

@@ -50,7 +50,7 @@ position = Vector2(800, 288)
 col = Color(1, 0, 0, 1)
 
 [node name="Color Wheel" parent="Objects" index="8" unique_id=820220426 instance=ExtResource("6_y6snv")]
-position = Vector2(1088, 64)
+position = Vector2(1118, 37)
 scale = Vector2(0.5, 0.5)
 
 [node name="Player" parent="." index="3" unique_id=1803487026 instance=ExtResource("4_y6snv")]
@@ -66,3 +66,6 @@ text = "Level 4
 (in progress)"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Camera2D" parent="." index="5" unique_id=973442512]
+position = Vector2(579, 310)

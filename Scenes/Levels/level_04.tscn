@@ -80,3 +80,6 @@ text = "Level 4
 (in progress)"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Camera2D" parent="." index="5" unique_id=973442512]
+position = Vector2(516, 310)
