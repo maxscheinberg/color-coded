@@ -1,0 +1,103 @@
+[gd_scene format=4 uid="uid://cngglqq8c5ty3"]
+
+[ext_resource type="PackedScene" uid="uid://b8oiih760r158" path="res://Scenes/Levels/levelbase.tscn" id="1_lvl"]
+[ext_resource type="Texture2D" uid="uid://b25hkahsq0bqu" path="res://Assets/spritesheet grey.png" id="2_spr"]
+[ext_resource type="PackedScene" uid="uid://n5rh35de5qmn" path="res://Scenes/Player/player.tscn" id="3_plyr"]
+[ext_resource type="Script" uid="uid://byogu4jdxk0bl" path="res://Scripts/Interactables/rail_h.gd" id="4_railh"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bg"]
+texture = ExtResource("2_spr")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_bg"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_bg")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wall"]
+texture = ExtResource("2_spr")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_wall"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_wall")
+
+[node name="rail_hard" unique_id=100648415 instance=ExtResource("1_lvl")]
+
+[node name="Background" parent="." index="0" unique_id=1233328414]
+tile_set = SubResource("TileSet_bg")
+
+[node name="Walls" parent="." index="1" unique_id=1740214358]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAABwAAAAEAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAIAAAAAAAAAAIAAAAIAAAAAAAAAAMAAAAAAAAAAAAAAAUAAAAIAAAAAAA=")
+tile_set = SubResource("TileSet_wall")
+
+[node name="RailH_1_3" type="Node2D" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="0" unique_id=1009422631]
+position = Vector2(96, 224)
+script = ExtResource("4_railh")
+
+[node name="Body" type="ColorRect" parent="Objects/RailH_1_3" index="0" unique_id=1734258431]
+offset_left = -28.0
+offset_top = -5.0
+offset_right = 28.0
+offset_bottom = 5.0
+color = Color(0.62, 0.18, 0.31, 1)
+
+[node name="RailH_2_3" type="Node2D" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="1" unique_id=575814325]
+position = Vector2(160, 224)
+script = ExtResource("4_railh")
+
+[node name="Body" type="ColorRect" parent="Objects/RailH_2_3" index="0" unique_id=1910291705]
+offset_left = -28.0
+offset_top = -5.0
+offset_right = 28.0
+offset_bottom = 5.0
+color = Color(0.62, 0.18, 0.31, 1)
+
+[node name="RailH_1_5" type="Node2D" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="2" unique_id=580665400]
+position = Vector2(96, 352)
+script = ExtResource("4_railh")
+
+[node name="Body" type="ColorRect" parent="Objects/RailH_1_5" index="0" unique_id=296262609]
+offset_left = -28.0
+offset_top = -5.0
+offset_right = 28.0
+offset_bottom = 5.0
+color = Color(0.62, 0.18, 0.31, 1)
+
+[node name="RailH_2_5" type="Node2D" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="3" unique_id=2091117508]
+position = Vector2(160, 352)
+script = ExtResource("4_railh")
+
+[node name="Body" type="ColorRect" parent="Objects/RailH_2_5" index="0" unique_id=1270265677]
+offset_left = -28.0
+offset_top = -5.0
+offset_right = 28.0
+offset_bottom = 5.0
+color = Color(0.62, 0.18, 0.31, 1)
+
+[node name="Goal" type="Node2D" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="4" unique_id=1732909063]
+position = Vector2(480, 416)
+
+[node name="Body" type="ColorRect" parent="Objects/Goal" index="0" unique_id=1375545189]
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+color = Color(0.94, 0.88, 0.21, 0.6)
+
+[node name="Star" type="Label" parent="Objects/Goal" index="1" unique_id=326890044]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+text = "★"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Camera2D" parent="." index="3" unique_id=973442512]
+position = Vector2(288, 288)
+
+[node name="Player" parent="." index="4" unique_id=1853393655 instance=ExtResource("3_plyr")]
+position = Vector2(96, 96)
+col = Color(1, 1, 1, 1)
