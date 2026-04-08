@@ -660,7 +660,7 @@ offset_left = 648.0
 offset_top = 584.0
 offset_right = 702.0
 offset_bottom = 607.0
-text = "Level 2"
+text = "Level 5"
 
 [node name="Player" parent="." index="4" unique_id=1803487026 instance=ExtResource("3_plyr")]
 position = Vector2(96, 95)

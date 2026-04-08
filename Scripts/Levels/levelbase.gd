@@ -14,6 +14,10 @@ var move_history: Array = []
 
 func _ready() -> void:
 	for object in objects.get_children():
+		if object.has_method("is_floor_object") and object.is_floor_object():
+			if object.has_method("on_level_start"):
+				object.on_level_start(player)
+			continue
 		var grid_pos = background.local_to_map(object.position)
 		object_locations[grid_pos] = object
 		if object.has_method("on_level_start"):
@@ -137,6 +141,18 @@ func _move_player(dir: int) -> void:
 		await occupying_object.teleport(player)
 		_stop_move(background.local_to_map(player.position))
 		return
+		
+# Interact with whatever is at the target cell after rails are resolved
+	var dest_object = object_locations.get(target_cell)
+	if dest_object != null and not dest_object.has_method("get_rail_axis"):
+		if dest_object.has_method("interact"):
+			if dest_object.has_method("get_color"):
+				snapshot["interactions"].append({
+					"object": dest_object,
+					"old_color": dest_object.get_color()
+				})
+			dest_object.interact(player)
+
 
 	move_history.append(snapshot)
 
@@ -194,11 +210,21 @@ func _stop_move(new_pos: Vector2i) -> void:
 	player_pos = new_pos
 	player.anim.play("Default")
 	player.moving = false
+	for obj in objects.get_children():
+		if obj.has_method("is_floor_object") and obj.is_floor_object():
+			if background.local_to_map(obj.position) == player_pos:
+				if obj.has_method("interact"):
+					obj.interact(player)
 	if player_pos == Vector2i(11, 4) and get_tree().current_scene.name == "Level 01":
 		get_tree().change_scene_to_file("res://Scenes/Levels/level_02.tscn")
+		
 	if player_pos == Vector2i(1, 9) and get_tree().current_scene.name == "Level 02":
 		get_tree().change_scene_to_file("res://Scenes/Levels/level_03.tscn")
-
+		
+	if player_pos == Vector2i(1, 8) and get_tree().current_scene.name == "Level 03":
+		get_tree().change_scene_to_file("res://Scenes/Levels/rail_tutorial.tscn")
+		
+		
 func _undo_move() -> void:
 	if player.moving or move_history.is_empty():
 		return

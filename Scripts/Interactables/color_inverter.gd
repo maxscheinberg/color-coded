@@ -3,6 +3,9 @@ extends Node2D
 @onready var bodySprite: Sprite2D = $Body
 @onready var arrowSprite: Sprite2D = $Arrows
 
+func is_floor_object() -> bool:
+	return true
+
 func on_level_start(player):
 	update_with_player(player)
 			
