@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://hs443laxkp8b" path="res://Scenes/Interactables/color_adder.tscn" id="5_rbng5"]
 [ext_resource type="PackedScene" uid="uid://c00elo5oq5jit" path="res://Scenes/Interactables/teleporter.tscn" id="6_3juvj"]
 [ext_resource type="PackedScene" uid="uid://b46mq8hh6cw5k" path="res://Scenes/Player/player_duplicate.tscn" id="7_oabfo"]
+[ext_resource type="PackedScene" uid="uid://bmvvus0pnvp8a" path="res://Scenes/Interactables/rail_h.tscn" id="8_duqtl"]
 
 [node name="Level 04" unique_id=2120704257 instance=ExtResource("1_g54kh")]
 
@@ -66,6 +67,8 @@ player_duplicate = NodePath("../PlayerDuplicate")
 
 [node name="PlayerDuplicate" parent="Objects" index="11" unique_id=80732309 instance=ExtResource("7_oabfo")]
 position = Vector2(-91, 188)
+
+[node name="RailH" parent="Objects" index="12" unique_id=668034966 instance=ExtResource("8_duqtl")]
 
 [node name="Player" parent="." index="3" unique_id=1803487026 instance=ExtResource("4_3juvj")]
 position = Vector2(48, 176)

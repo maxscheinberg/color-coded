@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://detn4lesdbf8n"]
+
+[ext_resource type="Script" uid="uid://b66dqtq660th3" path="res://Scripts/Interactables/rail_v.gd" id="1_mxss0"]
+
+[node name="RailV" type="Node2D" unique_id=668034966]
+script = ExtResource("1_mxss0")
+
+[node name="Body" type="ColorRect" parent="." unique_id=785347246]
+offset_left = -5.0
+offset_top = -28.0
+offset_right = 5.0
+offset_bottom = 28.0
+color = Color(0.62, 0.18, 0.31, 1)

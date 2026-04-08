@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cwp1es22utrvv"]
+
+[ext_resource type="Script" uid="uid://60c0ea4kupgc" path="res://Scripts/Interactables/core_v.gd" id="1_7dgno"]
+
+[node name="CoreV" type="Node2D" unique_id=2051649751]
+script = ExtResource("1_7dgno")
+
+[node name="Body" type="ColorRect" parent="." unique_id=1144051068]
+offset_left = -10.0
+offset_top = -28.0
+offset_right = 10.0
+offset_bottom = 28.0
+color = Color(0, 0.75, 1, 1)
