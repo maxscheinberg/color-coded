@@ -1,5 +1,7 @@
 [gd_scene format=4 uid="uid://d4c52oroxymk"]
 
+[ext_resource type="Script" uid="uid://tbsjyv3hq7lj" path="res://Scripts/color_wheel.gd" id="1_x8jbv"]
+
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_sseom"]
 _data = PackedByteArray("AAADAAUAAAABAAAAAAEAAAABAAB4AQAAUklGRnABAABXRUJQVlA4TGMBAAAv/8A/EDdAIAiR3fbY6YZAIMnfYtIJsm06f9kbfP4D+IsJhjaAHNt22+YxrqkOJFag0IDzWgl7R/TfghL+/wAc8Jwi+u/IbSNHom6emc3hD+BsV3faWo67uotQSyuP/tjDXcRaGnn0F52LG//kskgS1Ja/9OfmMJS/VItFkhsnK+99dvbOdTTx6H1+3EXlL9aSnb0L1pGTj1MPbVf6hUkQKtKpTldHC4+Rvm8xh70zxD/xFyRo7ZyjkR6pWhOQqY6MbEva+AMZtKYg/cBEk3BPgb+cXFrTwzDRVv37j8fmq/N28kJEhvJYtDUEEI6CMv3xXx3iqRyH+coQADIABgKylWqhsdl4Xh35XIsGIADloF3C5bKUPluyUVdtPJfJZmPsljEAIAdgCC7ZaQACiDaMaVraF/aJW34AkAUwTcJy6wTwbgbt941+3tWp8vedAN7dID3f8vce7wVnMdA7vZcaoAsAAA==")
 size_override = Vector2(256, 256)
@@ -25,7 +27,8 @@ _data = {
 &"default": SubResource("Animation_x8jbv")
 }
 
-[node name="Color Wheel" type="Node2D" unique_id=820220426]
+[node name="Color Wheel" type="Node2D" unique_id=820220426 groups=["uwpc"]]
+script = ExtResource("1_x8jbv")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=381094762]
 texture_filter = 1
