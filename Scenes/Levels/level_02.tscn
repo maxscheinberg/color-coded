@@ -36,8 +36,14 @@ position = Vector2(608, 480)
 col = Color(0, 0, 1, 1)
 
 [node name="Color Wheel" parent="Objects" index="4" unique_id=820220426 instance=ExtResource("6_x41uu")]
-position = Vector2(931, 22)
+custom_minimum_size = Vector2(258, 258)
+offset_left = 758.0
+offset_top = -4.0
+offset_right = 1066.0
+offset_bottom = 304.0
 scale = Vector2(0.5, 0.5)
+show_secondary = true
+wheel_radius = 125.0
 
 [node name="Player" parent="." index="3" unique_id=1803487026 instance=ExtResource("4_x41uu")]
 position = Vector2(96, 480)

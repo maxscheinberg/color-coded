@@ -634,7 +634,10 @@ position = Vector2(288, 480)
 col = Color(1, 0, 0, 1)
 
 [node name="Color Wheel" parent="Objects" index="3" unique_id=820220426 instance=ExtResource("6_mb1if")]
-position = Vector2(931, 22)
+offset_left = 762.0
+offset_top = -2.0
+offset_right = 970.0
+offset_bottom = 206.0
 scale = Vector2(0.5, 0.5)
 
 [node name="Label" type="Label" parent="." index="3" unique_id=1550899310]
