@@ -142,16 +142,7 @@ func _move_player(dir: int) -> void:
 		_stop_move(background.local_to_map(player.position))
 		return
 		
-# Interact with whatever is at the target cell after rails are resolved
-	var dest_object = object_locations.get(target_cell)
-	if dest_object != null and not dest_object.has_method("get_rail_axis"):
-		if dest_object.has_method("interact"):
-			if dest_object.has_method("get_color"):
-				snapshot["interactions"].append({
-					"object": dest_object,
-					"old_color": dest_object.get_color()
-				})
-			dest_object.interact(player)
+
 
 
 	move_history.append(snapshot)
@@ -235,9 +226,9 @@ func _stop_move(new_pos: Vector2i) -> void:
 		get_tree().change_scene_to_file("res://Scenes/Levels/level_03.tscn")
 		return
 
-	elif player_pos == Vector2i(1, 8) and scene_name == "Level 03":
-		get_tree().change_scene_to_file("res://Scenes/Levels/rail_tutorial.tscn")
-		return	
+	elif player_pos == Vector2i(1, 8) and scene_name == "Tutorial Level 3":
+		get_tree().change_scene_to_file("res://Scenes/Levels/level_4.tscn")
+		return
 			
 func _undo_move() -> void:
 	if player.moving or move_history.is_empty():

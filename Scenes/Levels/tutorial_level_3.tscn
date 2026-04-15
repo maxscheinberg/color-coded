@@ -60,8 +60,16 @@ col = Color(0.91, 0.102, 0.102, 1)
 position = Vector2(288, 287)
 col = Color(1, 0.843, 0, 1)
 
+[node name="ColorAdder" parent="Objects" index="9" unique_id=1967495928 instance=ExtResource("5_if2u1")]
+position = Vector2(296, 399)
+col = Color(1, 0.843, 0, 1)
+
+[node name="ColorSubtractor" parent="Objects" index="10" unique_id=356274901 instance=ExtResource("3_sfmc3")]
+position = Vector2(160, 399)
+col = Color(0.137, 0.42, 0.78, 1)
+
 [node name="Player" parent="." index="3" unique_id=1803487026 instance=ExtResource("7_lnxa0")]
-position = Vector2(224, 424)
+position = Vector2(160, 480)
 col = Color(0.12, 0.65, 0.2, 1)
 
 [node name="Label" type="Label" parent="." index="4" unique_id=1717581782]

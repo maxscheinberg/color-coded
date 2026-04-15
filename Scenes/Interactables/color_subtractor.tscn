@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://wc2dwbrkpa2p"]
 
 [ext_resource type="Script" uid="uid://cjpqb7f437wjf" path="res://Scripts/Interactables/color_subtractor.gd" id="1_loyyr"]
+[ext_resource type="AudioStream" uid="uid://dtyfh8ngi3cix" path="res://Assets/Interactables/soft_error.wav" id="2_rtk4q"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_loyyr"]
 _data = PackedByteArray("AAADAAUAAAABAAAAQAAAAEAAAAByAAAAUklGRmoAAABXRUJQVlA4TF0AAAAvP8APEBcw//M///MfgAe3Adi2DWb+53pdb3jTEgzZTuaI/k8APpIkizBZgFnbkAsXRdOghIfyKwYt3sCbpr5Krv+b7Bi0eAM0vGJQwgMFpiEXLuRgQwoFcEGRNwMA")
@@ -58,3 +59,8 @@ metadata/_aseprite_wizard_source_file_hash_ = "3ba1552149031d59f1e38982ef7bebe1"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=93337735]
 libraries/ = SubResource("AnimationLibrary_rtk4q")
+
+[node name="InvalidSfx" type="AudioStreamPlayer2D" parent="." unique_id=60103344]
+stream = ExtResource("2_rtk4q")
+
+[node name="ValidSfx" type="AudioStreamPlayer2D" parent="." unique_id=629317480]
