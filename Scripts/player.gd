@@ -16,7 +16,12 @@ func _ready():
 	
 func get_color() -> Color:
 	return sprite.get_self_modulate()
+	
+func is_white() -> bool:
+	return get_color() == GameColors.WHITE
+	
+
 
 func set_color(col: Color) -> void:
-	sprite.self_modulate = col
+	sprite.self_modulate = GameColors.canonical(col)
 	get_tree().call_group("uwpc", "update_with_player", self)

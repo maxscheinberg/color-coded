@@ -1,33 +1,53 @@
 extends Node2D
 
 @export var col: Color
-@onready var sprite:Sprite2D = $Sprite2D
+@onready var sprite: Sprite2D = $Sprite2D
 
-# Called when the node enters the scene tree for the first time.
+var disabled: bool = false
+
 func _ready() -> void:
+	col = GameColors.canonical(col)
 	sprite.self_modulate = col
-	pass # Replace with function body.
 
-func can_move_here(player):
+func can_move_here(player) -> bool:
 	return true
 
 func interact(player):
-	match col:
-		Color.RED:
-			match player.get_color():
-				Color.PURPLE:
-					player.set_color(Color.BLUE)
-				Color.ORANGE:
-					player.set_color(Color.YELLOW)
-		Color.BLUE:
-			match player.get_color():
-				Color.PURPLE:
-					player.set_color(Color.RED)
-				Color.GREEN:
-					player.set_color(Color.YELLOW)
-		Color.YELLOW:
-			match player.get_color():
-				Color.ORANGE:
-					player.set_color(Color.RED)
-				Color.GREEN:
-					player.set_color(Color.BLUE)
+	if disabled:
+		return
+		
+	var p: Color = GameColors.canonical(player.get_color())
+	var b: Color = GameColors.canonical(col)
+
+	# primary - same = white
+	if GameColors.match(p, GameColors.RED) and GameColors.match(b, GameColors.RED):
+		player.set_color(GameColors.WHITE)
+	elif GameColors.match(p, GameColors.YELLOW) and GameColors.match(b, GameColors.YELLOW):
+		player.set_color(GameColors.WHITE)
+	elif GameColors.match(p, GameColors.BLUE) and GameColors.match(b, GameColors.BLUE):
+		player.set_color(GameColors.WHITE)
+
+	# orange = red + yellow
+	elif GameColors.match(p, GameColors.ORANGE) and GameColors.match(b, GameColors.RED):
+		player.set_color(GameColors.YELLOW)
+	elif GameColors.match(p, GameColors.ORANGE) and GameColors.match(b, GameColors.YELLOW):
+		player.set_color(GameColors.RED)
+
+	# green = blue + yellow
+	elif GameColors.match(p, GameColors.GREEN) and GameColors.match(b, GameColors.BLUE):
+		player.set_color(GameColors.YELLOW)
+	elif GameColors.match(p, GameColors.GREEN) and GameColors.match(b, GameColors.YELLOW):
+		player.set_color(GameColors.BLUE)
+
+	# purple = red + blue
+	elif GameColors.match(p, GameColors.PURPLE) and GameColors.match(b, GameColors.RED):
+		player.set_color(GameColors.BLUE)
+	elif GameColors.match(p, GameColors.PURPLE) and GameColors.match(b, GameColors.BLUE):
+		player.set_color(GameColors.RED)
+
+func set_grayed(grayed: bool) -> void:
+	disabled = grayed
+	if grayed:
+		sprite.self_modulate = Color(0.4, 0.4, 0.4, 1.0)
+	else:
+		sprite.self_modulate = col

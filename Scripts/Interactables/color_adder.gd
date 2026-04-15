@@ -1,27 +1,49 @@
 extends Node2D
-
 @export var col: Color
-@onready var sprite:Sprite2D = $Sprite2D
+@onready var sprite: Sprite2D = $Sprite2D
 
-#dictionary instead of a nested function
-const COLOR_MIXES: Dictionary = {
-	[Color.RED, Color.BLUE]: Color.PURPLE,
-	[Color.BLUE, Color.RED]: Color.PURPLE,
-	[Color.RED, Color.YELLOW]: Color.ORANGE,
-	[Color.YELLOW, Color.RED]: Color.ORANGE,
-	[Color.BLUE, Color.YELLOW]: Color.GREEN,
-	[Color.YELLOW, Color.BLUE]: Color.GREEN,
-}
+var disabled: bool = false
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	col = GameColors.canonical(col)
 	sprite.self_modulate = col
-	pass # Replace with function body.
 
-func can_move_here(player):
+func can_move_here(player) -> bool:
 	return true
 
 func interact(player):
-	var result = COLOR_MIXES.get([col, player.get_color()])
-	if result:
-		player.set_color(result)
+	if disabled:
+		return
+	var p: Color = GameColors.canonical(player.get_color())
+	var b: Color = GameColors.canonical(col)
+
+	# white claims a primary
+	if GameColors.match(p, GameColors.WHITE):
+		player.set_color(b)
+		return
+
+	# primary + primary = secondary
+	if GameColors.match(p, GameColors.RED) and GameColors.match(b, GameColors.BLUE):
+		player.set_color(GameColors.PURPLE)
+	elif GameColors.match(p, GameColors.BLUE) and GameColors.match(b, GameColors.RED):
+		player.set_color(GameColors.PURPLE)
+
+	elif GameColors.match(p, GameColors.RED) and GameColors.match(b, GameColors.YELLOW):
+		player.set_color(GameColors.ORANGE)
+	elif GameColors.match(p, GameColors.YELLOW) and GameColors.match(b, GameColors.RED):
+		player.set_color(GameColors.ORANGE)
+
+	elif GameColors.match(p, GameColors.BLUE) and GameColors.match(b, GameColors.YELLOW):
+		player.set_color(GameColors.GREEN)
+	elif GameColors.match(p, GameColors.YELLOW) and GameColors.match(b, GameColors.BLUE):
+		player.set_color(GameColors.GREEN)
+
+
+
+		
+func set_grayed(grayed: bool) -> void:
+	disabled = grayed
+	if grayed:
+		sprite.self_modulate = Color(0.4, 0.4, 0.4, 1.0)
+	else:
+		sprite.self_modulate = col

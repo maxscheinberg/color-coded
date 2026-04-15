@@ -66,7 +66,7 @@ const SECONDARY_COLORS: PackedColorArray = [
 # Tertiary — 6 slices, the in-between colors
 const TERTIARY_COLORS: PackedColorArray = [
 	Color(0.920, 0.290, 0.100),  # Red-Orange      slot 1
-	Color(0.980, 0.680, 0.100),  # Yellow-Orange   slot 3
+	Color(0.98, 0.68, 0.1, 1.0),  # Yellow-Orange   slot 3
 	Color(0.600, 0.780, 0.100),  # Yellow-Green    slot 5
 	Color(0.000, 0.620, 0.500),  # Blue-Green      slot 7
 	Color(0.200, 0.200, 0.650),  # Blue-Violet     slot 9
