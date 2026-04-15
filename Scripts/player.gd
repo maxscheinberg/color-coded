@@ -13,6 +13,7 @@ func _ready():
 	anim.get_animation("Look Left").loop_mode = Animation.LOOP_NONE
 	anim.get_animation("Look Right").loop_mode = Animation.LOOP_NONE
 	anim.get_animation("Blink").loop_mode = Animation.LOOP_NONE
+	anim.get_animation("Teleport").loop_mode = Animation.LOOP_NONE
 	
 func get_color() -> Color:
 	return sprite.get_self_modulate()

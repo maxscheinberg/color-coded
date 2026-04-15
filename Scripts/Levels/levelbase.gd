@@ -33,7 +33,7 @@ func _process(_delta: float) -> void:
 		_move_player(RIGHT)
 	if Input.is_action_just_pressed("ui_left"):
 		_move_player(LEFT)
-	if Input.is_action_just_pressed("ui_undo"):
+	if Input.is_action_just_pressed("undo"):
 		_undo_move()
 	if Input.is_action_just_pressed("ui_restart"):
 		get_tree().reload_current_scene()
@@ -138,6 +138,23 @@ func _move_player(dir: int) -> void:
 	if occupying_object != null and occupying_object.has_method("teleport"):
 		player.moving = true
 		move_history.append(snapshot)
+		var tween := create_tween()
+		tween.set_parallel(true)
+		player.moving = true
+
+		if dir == LEFT:
+			player.anim.play("Look Left", -1, 2.0)
+		elif dir == RIGHT:
+			player.anim.play("Look Right", -1, 2.0)
+
+		tween.tween_property(player, "position", background.map_to_local(target_cell), 0.15)
+
+		for gp in rails_to_move.keys():
+			var new_gp: Vector2i = gp + offset
+			object_locations[new_gp] = rails_to_move[gp]
+			tween.tween_property(rails_to_move[gp], "position", background.map_to_local(new_gp), 0.15)
+
+		tween.set_parallel(false)
 		await occupying_object.teleport(player)
 		_stop_move(background.local_to_map(player.position))
 		return
