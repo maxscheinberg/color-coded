@@ -252,6 +252,10 @@ func _stop_move(new_pos: Vector2i) -> void:
 	elif player_pos == Vector2i(1, 8) and scene_name == "Tutorial Level 3":
 		get_tree().change_scene_to_file("res://Scenes/Levels/level_4.tscn")
 		return
+	elif player_pos == Vector2i(7, 8) and scene_name == "Level 4":
+		get_tree().change_scene_to_file("res://Scenes/Levels/level_5.tscn")
+		return
+
 
 
 func _undo_move() -> void:
@@ -359,11 +363,10 @@ func player_is_on_goal() -> bool:
 		return true
 	elif scene_name == "Tutorial Level 2" and player_pos == Vector2i(11, 4):
 		return true
-	elif scene_name == "Level 01" and player_pos == Vector2i(11, 4):
-		return true
-	elif scene_name == "Level 02" and player_pos == Vector2i(1, 9):
-		return true
 	elif scene_name == "Tutorial Level 3" and player_pos == Vector2i(1, 8):
 		return true
+	elif scene_name == "Level 4" and player_pos == Vector2i(7, 8):
+		return true
+		
 
 	return false

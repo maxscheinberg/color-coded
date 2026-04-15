@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d4c52oroxymk" path="res://Scenes/color_wheel.tscn" id="6_slbhm"]
 [ext_resource type="PackedScene" uid="uid://n5rh35de5qmn" path="res://Scenes/Player/player.tscn" id="7_i5g5g"]
 
-[node name="level4" unique_id=2120704257 instance=ExtResource("1_i4hbv")]
+[node name="Level 4" unique_id=2120704257 instance=ExtResource("1_i4hbv")]
 move_limit = 14
 
 [node name="Background" parent="." index="0" unique_id=1233328414]
@@ -53,5 +53,7 @@ position = Vector2(579, 310)
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="5" unique_id=865528419]
 
 [node name="MovesLabel" type="Label" parent="CanvasLayer" index="0" unique_id=357594140]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 10.0
+offset_right = 50.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 32

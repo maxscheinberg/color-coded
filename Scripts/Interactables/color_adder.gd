@@ -21,48 +21,124 @@ func interact(player):
 	var p: Color = GameColors.canonical(player.get_color())
 	var b: Color = GameColors.canonical(col)
 
-	# white claims a primary
+	# white claims a color
 	if GameColors.match(p, GameColors.WHITE):
+		play_valid_feedback()
 		player.set_color(b)
+		player.play_valid_feedback()
 		return
 
 	# primary + primary = secondary
 	elif GameColors.match(p, GameColors.RED) and GameColors.match(b, GameColors.BLUE):
 		play_valid_feedback()
 		player.set_color(GameColors.PURPLE)
-		player.play_valid_feedback() 
+		player.play_valid_feedback()
 		return
 	elif GameColors.match(p, GameColors.BLUE) and GameColors.match(b, GameColors.RED):
 		play_valid_feedback()
 		player.set_color(GameColors.PURPLE)
-		player.play_valid_feedback() 
+		player.play_valid_feedback()
 		return
 
 	elif GameColors.match(p, GameColors.RED) and GameColors.match(b, GameColors.YELLOW):
 		play_valid_feedback()
 		player.set_color(GameColors.ORANGE)
-		player.play_valid_feedback() 
+		player.play_valid_feedback()
 		return
 	elif GameColors.match(p, GameColors.YELLOW) and GameColors.match(b, GameColors.RED):
 		play_valid_feedback()
 		player.set_color(GameColors.ORANGE)
-		player.play_valid_feedback() 
+		player.play_valid_feedback()
 		return
 
 	elif GameColors.match(p, GameColors.BLUE) and GameColors.match(b, GameColors.YELLOW):
 		play_valid_feedback()
 		player.set_color(GameColors.GREEN)
-		player.play_valid_feedback() 
+		player.play_valid_feedback()
 		return
 	elif GameColors.match(p, GameColors.YELLOW) and GameColors.match(b, GameColors.BLUE):
 		play_valid_feedback()
 		player.set_color(GameColors.GREEN)
-		player.play_valid_feedback() 
+		player.play_valid_feedback()
+		return
+
+	# secondary + neighboring primary = tertiary
+
+	# orange + red = red-orange
+	elif GameColors.match(p, GameColors.ORANGE) and GameColors.match(b, GameColors.RED):
+		play_valid_feedback()
+		player.set_color(GameColors.RED_ORANGE)
+		player.play_valid_feedback()
+		return
+	elif GameColors.match(p, GameColors.RED) and GameColors.match(b, GameColors.ORANGE):
+		play_valid_feedback()
+		player.set_color(GameColors.RED_ORANGE)
+		player.play_valid_feedback()
+		return
+
+	# orange + yellow = yellow-orange
+	elif GameColors.match(p, GameColors.ORANGE) and GameColors.match(b, GameColors.YELLOW):
+		play_valid_feedback()
+		player.set_color(GameColors.YELLOW_ORANGE)
+		player.play_valid_feedback()
+		return
+	elif GameColors.match(p, GameColors.YELLOW) and GameColors.match(b, GameColors.ORANGE):
+		play_valid_feedback()
+		player.set_color(GameColors.YELLOW_ORANGE)
+		player.play_valid_feedback()
+		return
+
+	# green + yellow = yellow-green
+	elif GameColors.match(p, GameColors.GREEN) and GameColors.match(b, GameColors.YELLOW):
+		play_valid_feedback()
+		player.set_color(GameColors.YELLOW_GREEN)
+		player.play_valid_feedback()
+		return
+	elif GameColors.match(p, GameColors.YELLOW) and GameColors.match(b, GameColors.GREEN):
+		play_valid_feedback()
+		player.set_color(GameColors.YELLOW_GREEN)
+		player.play_valid_feedback()
+		return
+
+	# green + blue = blue-green
+	elif GameColors.match(p, GameColors.GREEN) and GameColors.match(b, GameColors.BLUE):
+		play_valid_feedback()
+		player.set_color(GameColors.BLUE_GREEN)
+		player.play_valid_feedback()
+		return
+	elif GameColors.match(p, GameColors.BLUE) and GameColors.match(b, GameColors.GREEN):
+		play_valid_feedback()
+		player.set_color(GameColors.BLUE_GREEN)
+		player.play_valid_feedback()
+		return
+
+	# purple + blue = blue-violet
+	elif GameColors.match(p, GameColors.PURPLE) and GameColors.match(b, GameColors.BLUE):
+		play_valid_feedback()
+		player.set_color(GameColors.BLUE_VIOLET)
+		player.play_valid_feedback()
+		return
+	elif GameColors.match(p, GameColors.BLUE) and GameColors.match(b, GameColors.PURPLE):
+		play_valid_feedback()
+		player.set_color(GameColors.BLUE_VIOLET)
+		player.play_valid_feedback()
+		return
+
+	# purple + red = red-violet
+	elif GameColors.match(p, GameColors.PURPLE) and GameColors.match(b, GameColors.RED):
+		play_valid_feedback()
+		player.set_color(GameColors.RED_VIOLET)
+		player.play_valid_feedback()
+		return
+	elif GameColors.match(p, GameColors.RED) and GameColors.match(b, GameColors.PURPLE):
+		play_valid_feedback()
+		player.set_color(GameColors.RED_VIOLET)
+		player.play_valid_feedback()
 		return
 
 	else:
 		play_invalid_feedback(player)
-
+		
 func set_grayed(grayed: bool) -> void:
 	disabled = grayed
 	if grayed:

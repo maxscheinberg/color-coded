@@ -25,54 +25,127 @@ func interact(player):
 	if GameColors.match(p, GameColors.RED) and GameColors.match(b, GameColors.RED):
 		play_valid_feedback()
 		player.set_color(GameColors.WHITE)
-		player.play_valid_feedback() 
+		player.play_valid_feedback()
 		return
 	elif GameColors.match(p, GameColors.YELLOW) and GameColors.match(b, GameColors.YELLOW):
 		play_valid_feedback()
 		player.set_color(GameColors.WHITE)
-		player.play_valid_feedback() 
+		player.play_valid_feedback()
 		return
 	elif GameColors.match(p, GameColors.BLUE) and GameColors.match(b, GameColors.BLUE):
 		play_valid_feedback()
 		player.set_color(GameColors.WHITE)
-		player.play_valid_feedback() 
+		player.play_valid_feedback()
 		return
 
 	# orange = red + yellow
 	elif GameColors.match(p, GameColors.ORANGE) and GameColors.match(b, GameColors.RED):
 		play_valid_feedback()
 		player.set_color(GameColors.YELLOW)
-		player.play_valid_feedback() 
+		player.play_valid_feedback()
 		return
 	elif GameColors.match(p, GameColors.ORANGE) and GameColors.match(b, GameColors.YELLOW):
 		play_valid_feedback()
 		player.set_color(GameColors.RED)
-		player.play_valid_feedback() 
+		player.play_valid_feedback()
 		return
 
 	# green = blue + yellow
 	elif GameColors.match(p, GameColors.GREEN) and GameColors.match(b, GameColors.BLUE):
 		play_valid_feedback()
 		player.set_color(GameColors.YELLOW)
-		player.play_valid_feedback() 
+		player.play_valid_feedback()
 		return
 	elif GameColors.match(p, GameColors.GREEN) and GameColors.match(b, GameColors.YELLOW):
 		play_valid_feedback()
 		player.set_color(GameColors.BLUE)
-		player.play_valid_feedback() 
+		player.play_valid_feedback()
 		return
 
 	# purple = red + blue
 	elif GameColors.match(p, GameColors.PURPLE) and GameColors.match(b, GameColors.RED):
 		play_valid_feedback()
 		player.set_color(GameColors.BLUE)
-		player.play_valid_feedback() 
+		player.play_valid_feedback()
 		return
 	elif GameColors.match(p, GameColors.PURPLE) and GameColors.match(b, GameColors.BLUE):
 		play_valid_feedback()
 		player.set_color(GameColors.RED)
-		player.play_valid_feedback() 
+		player.play_valid_feedback()
 		return
+
+	# red-orange = red + orange
+	elif GameColors.match(p, GameColors.RED_ORANGE) and GameColors.match(b, GameColors.RED):
+		play_valid_feedback()
+		player.set_color(GameColors.ORANGE)
+		player.play_valid_feedback()
+		return
+	elif GameColors.match(p, GameColors.RED_ORANGE) and GameColors.match(b, GameColors.ORANGE):
+		play_valid_feedback()
+		player.set_color(GameColors.RED)
+		player.play_valid_feedback()
+		return
+
+	# yellow-orange = yellow + orange
+	elif GameColors.match(p, GameColors.YELLOW_ORANGE) and GameColors.match(b, GameColors.YELLOW):
+		play_valid_feedback()
+		player.set_color(GameColors.ORANGE)
+		player.play_valid_feedback()
+		return
+	elif GameColors.match(p, GameColors.YELLOW_ORANGE) and GameColors.match(b, GameColors.ORANGE):
+		play_valid_feedback()
+		player.set_color(GameColors.YELLOW)
+		player.play_valid_feedback()
+		return
+
+	# yellow-green = yellow + green
+	elif GameColors.match(p, GameColors.YELLOW_GREEN) and GameColors.match(b, GameColors.YELLOW):
+		play_valid_feedback()
+		player.set_color(GameColors.GREEN)
+		player.play_valid_feedback()
+		return
+	elif GameColors.match(p, GameColors.YELLOW_GREEN) and GameColors.match(b, GameColors.GREEN):
+		play_valid_feedback()
+		player.set_color(GameColors.YELLOW)
+		player.play_valid_feedback()
+		return
+
+	# blue-green = blue + green
+	elif GameColors.match(p, GameColors.BLUE_GREEN) and GameColors.match(b, GameColors.BLUE):
+		play_valid_feedback()
+		player.set_color(GameColors.GREEN)
+		player.play_valid_feedback()
+		return
+	elif GameColors.match(p, GameColors.BLUE_GREEN) and GameColors.match(b, GameColors.GREEN):
+		play_valid_feedback()
+		player.set_color(GameColors.BLUE)
+		player.play_valid_feedback()
+		return
+
+	# blue-violet = blue + purple
+	elif GameColors.match(p, GameColors.BLUE_VIOLET) and GameColors.match(b, GameColors.BLUE):
+		play_valid_feedback()
+		player.set_color(GameColors.PURPLE)
+		player.play_valid_feedback()
+		return
+	elif GameColors.match(p, GameColors.BLUE_VIOLET) and GameColors.match(b, GameColors.PURPLE):
+		play_valid_feedback()
+		player.set_color(GameColors.BLUE)
+		player.play_valid_feedback()
+		return
+
+	# red-violet = red + purple
+	elif GameColors.match(p, GameColors.RED_VIOLET) and GameColors.match(b, GameColors.RED):
+		play_valid_feedback()
+		player.set_color(GameColors.PURPLE)
+		player.play_valid_feedback()
+		return
+	elif GameColors.match(p, GameColors.RED_VIOLET) and GameColors.match(b, GameColors.PURPLE):
+		play_valid_feedback()
+		player.set_color(GameColors.RED)
+		player.play_valid_feedback()
+		return
+
 	else:
 		play_invalid_feedback(player)
 		return
