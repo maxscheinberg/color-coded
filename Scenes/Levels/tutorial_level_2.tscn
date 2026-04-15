@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bd8fbishdjwak" path="res://Scenes/Interactables/color_wall.tscn" id="4_23l2s"]
 [ext_resource type="PackedScene" uid="uid://hs443laxkp8b" path="res://Scenes/Interactables/color_adder.tscn" id="5_5ek03"]
 [ext_resource type="PackedScene" uid="uid://wc2dwbrkpa2p" path="res://Scenes/Interactables/color_subtractor.tscn" id="6_3nw8v"]
+[ext_resource type="PackedScene" uid="uid://d4c52oroxymk" path="res://Scenes/color_wheel.tscn" id="7_sbiev"]
 [ext_resource type="PackedScene" uid="uid://n5rh35de5qmn" path="res://Scenes/Player/player.tscn" id="8_6n0l4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dbq10"]
@@ -646,12 +647,20 @@ col = Color(1, 0.843, 0, 1)
 [node name="AddBlue" parent="Objects" index="4" unique_id=544196502 instance=ExtResource("5_5ek03")]
 position = Vector2(288, 414)
 
+[node name="Color Wheel" parent="Objects" index="5" unique_id=665712450 instance=ExtResource("7_sbiev")]
+offset_left = 762.0
+offset_top = -2.0
+offset_right = 1020.0
+offset_bottom = 256.0
+scale = Vector2(0.5, 0.5)
+show_secondary = true
+
 [node name="Label" type="Label" parent="." index="3" unique_id=1550899310]
 offset_left = 714.0
 offset_top = 275.0
 offset_right = 768.0
 offset_bottom = 298.0
-text = "Level 2"
+text = "Level 3"
 
 [node name="Player" parent="." index="4" unique_id=1803487026 instance=ExtResource("8_6n0l4")]
 position = Vector2(544, 288)

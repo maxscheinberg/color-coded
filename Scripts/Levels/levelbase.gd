@@ -210,21 +210,35 @@ func _stop_move(new_pos: Vector2i) -> void:
 	player_pos = new_pos
 	player.anim.play("Default")
 	player.moving = false
+
 	for obj in objects.get_children():
 		if obj.has_method("is_floor_object") and obj.is_floor_object():
 			if background.local_to_map(obj.position) == player_pos:
 				if obj.has_method("interact"):
 					obj.interact(player)
-	if player_pos == Vector2i(11, 4) and get_tree().current_scene.name == "Level 01":
+
+	var scene_name: String = get_tree().current_scene.name
+
+	if player_pos == Vector2i(11, 4) and scene_name == "Tutorial Level 1":
+		get_tree().change_scene_to_file("res://Scenes/Levels/tutorial_level_2.tscn")
+		return
+
+	elif player_pos == Vector2i(11, 4) and scene_name == "Tutorial Level 2":
+		get_tree().change_scene_to_file("res://Scenes/Levels/tutorial_level_3.tscn")
+		return
+
+	elif player_pos == Vector2i(11, 4) and scene_name == "Level 01":
 		get_tree().change_scene_to_file("res://Scenes/Levels/level_02.tscn")
-		
-	if player_pos == Vector2i(1, 9) and get_tree().current_scene.name == "Level 02":
+		return
+
+	elif player_pos == Vector2i(1, 9) and scene_name == "Level 02":
 		get_tree().change_scene_to_file("res://Scenes/Levels/level_03.tscn")
-		
-	if player_pos == Vector2i(1, 8) and get_tree().current_scene.name == "Level 03":
+		return
+
+	elif player_pos == Vector2i(1, 8) and scene_name == "Level 03":
 		get_tree().change_scene_to_file("res://Scenes/Levels/rail_tutorial.tscn")
-		
-		
+		return	
+			
 func _undo_move() -> void:
 	if player.moving or move_history.is_empty():
 		return
