@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://hs443laxkp8b"]
 
 [ext_resource type="Script" uid="uid://coltlupsy22vw" path="res://Scripts/Interactables/color_adder.gd" id="1_qysv1"]
+[ext_resource type="AudioStream" uid="uid://dtyfh8ngi3cix" path="res://Assets/Interactables/soft_error.wav" id="2_jfgro"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_qysv1"]
 _data = PackedByteArray("AAADAAUAAAABAAAAQAAAAEAAAAB8AAAAUklGRnQAAABXRUJQVlA4TGcAAAAvP8APEBcw//M///MfgAfHbSM5Ur07v7XReVdp7nShZs+8I/o/AfiSJFmFxQpMbVMWLoqmSQkPZd/YNLtt0uITqNE0NsX9fyPHptn5dExafAI02HLPpIQHCkxTFi5ksKGECnigyicDAA==")
@@ -59,3 +60,8 @@ metadata/_aseprite_wizard_source_file_hash_ = "a385e88f3f51eb0ef3ed95c34a9c739f"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=801472363]
 libraries/ = SubResource("AnimationLibrary_jfgro")
+
+[node name="InvalidSfx" type="AudioStreamPlayer2D" parent="." unique_id=1082376122]
+stream = ExtResource("2_jfgro")
+
+[node name="ValidSfx" type="AudioStreamPlayer2D" parent="." unique_id=2114489345]

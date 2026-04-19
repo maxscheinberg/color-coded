@@ -14,35 +14,38 @@ func _ready() -> void:
 	super._ready()
 	_apply_stage()
 
-
 func _process(delta: float) -> void:
 	super._process(delta)
 	_apply_stage()
 
-	var col: Color = player.get_color()
+	var col: Color = GameColors.canonical(player.get_color())
+
 	match stage:
 		Stage.START:
-			if col == Color.WHITE:
+			if GameColors.match(col, GameColors.WHITE):
 				stage = Stage.WHITE
 				_apply_stage()
+
 		Stage.WHITE:
-			if col == Color.RED or col == Color.YELLOW or col == Color.BLUE:
+			if GameColors.match(col, GameColors.RED) \
+			or GameColors.match(col, GameColors.YELLOW) \
+			or GameColors.match(col, GameColors.BLUE):
 				stage = Stage.CHOSEN
 				_apply_stage()
+
 		Stage.CHOSEN:
-			if col == Color.WHITE:
+			if GameColors.match(col, GameColors.WHITE):
 				stage = Stage.WHITE
 				_apply_stage()
-			
 
 func _apply_stage() -> void:
-	var chosen: Color = player.get_color()
-	var is_white: bool = (chosen == Color.WHITE)
+	var chosen: Color = GameColors.canonical(player.get_color())
+	var is_white: bool = GameColors.match(chosen, GameColors.WHITE)
 
 	add_red.set_grayed(not is_white)
 	add_yellow.set_grayed(not is_white)
 	add_blue.set_grayed(not is_white)
 
-	sub_red.set_grayed(not (chosen.r > 0.5 and chosen.g < 0.5 and chosen.b < 0.5))
-	sub_yellow.set_grayed(not (chosen.r > 0.5 and chosen.g > 0.5 and chosen.b < 0.5))
-	sub_blue.set_grayed(not (chosen.r < 0.5 and chosen.g < 0.5 and chosen.b > 0.5))
+	sub_red.set_grayed(not GameColors.match(chosen, GameColors.RED))
+	sub_yellow.set_grayed(not GameColors.match(chosen, GameColors.YELLOW))
+	sub_blue.set_grayed(not GameColors.match(chosen, GameColors.BLUE))

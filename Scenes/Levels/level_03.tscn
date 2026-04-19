@@ -50,12 +50,19 @@ position = Vector2(800, 288)
 col = Color(1, 0, 0, 1)
 
 [node name="Color Wheel" parent="Objects" index="8" unique_id=820220426 instance=ExtResource("6_y6snv")]
-position = Vector2(1118, 37)
+offset_left = 1118.0
+offset_top = 37.0
+offset_right = 1376.0
+offset_bottom = 295.0
 scale = Vector2(0.5, 0.5)
+
+[node name="ColorAdder2" parent="Objects" index="9" unique_id=722977200 instance=ExtResource("5_y6snv")]
+position = Vector2(288, 415)
+col = Color(1, 0.843, 0, 1)
 
 [node name="Player" parent="." index="3" unique_id=1803487026 instance=ExtResource("4_y6snv")]
 position = Vector2(160, 480)
-col = Color(1, 0, 0, 1)
+col = Color(0.12, 0.65, 0.2, 1)
 
 [node name="Label" type="Label" parent="." index="4" unique_id=1717581782]
 offset_left = 51.0

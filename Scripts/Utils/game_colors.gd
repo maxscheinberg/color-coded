@@ -42,4 +42,16 @@ static func canonical(color: Color) -> Color:
 		return GREEN
 	elif match(color, PURPLE):
 		return PURPLE
+	elif match(color, RED_ORANGE):
+		return RED_ORANGE
+	elif match(color, YELLOW_ORANGE):
+		return YELLOW_ORANGE
+	elif match(color, YELLOW_GREEN):
+		return YELLOW_GREEN
+	elif match(color, BLUE_GREEN):
+		return BLUE_GREEN
+	elif match(color, BLUE_VIOLET):
+		return BLUE_VIOLET
+	elif match(color, RED_VIOLET):
+		return RED_VIOLET
 	return color
