@@ -63,6 +63,10 @@ func _move_player(dir: int) -> void:
 
 	var offset := _dir_offset(dir)
 	var target_cell := player_pos + offset
+	
+	print("trying to move: ", dir, " target: ", target_cell)
+	print("wall at target: ", tilemap_walls.get_cell_source_id(target_cell))
+	print("object at target: ", object_locations.get(target_cell))
 
 	# Wall check
 	if tilemap_walls.get_cell_source_id(target_cell) != -1:
