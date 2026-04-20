@@ -619,5 +619,5 @@ tile_set = SubResource("TileSet_fwfso")
 [node name="Objects" type="Node2D" parent="." unique_id=1527763059]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=973442512]
-position = Vector2(400, 287)
-zoom = Vector2(0.9, 0.9)
+position = Vector2(544, 288)
+zoom = Vector2(0.78, 0.78)

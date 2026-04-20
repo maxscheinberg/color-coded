@@ -641,11 +641,12 @@ position = Vector2(146, 155)
 col = Color(0.91, 0.102, 0.102, 1)
 
 [node name="Color Wheel" parent="Objects" index="3" unique_id=820220426 instance=ExtResource("6_j5sts")]
-offset_left = 762.0
-offset_top = -2.0
-offset_right = 970.0
-offset_bottom = 206.0
+offset_left = 1120.0
+offset_top = -113.0
+offset_right = 1378.0
+offset_bottom = 145.0
 scale = Vector2(0.5, 0.5)
+mouse_force_pass_scroll_events = false
 
 [node name="AddBlue" parent="Objects" index="4" unique_id=81472416 instance=ExtResource("4_st3a2")]
 position = Vector2(552, 155)

@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://ciejfia1oedg0"]
+[gd_scene format=4 uid="uid://dftdxl08ypj4m"]
 
 [ext_resource type="PackedScene" uid="uid://b8oiih760r158" path="res://Scenes/Levels/levelbase.tscn" id="1_i4hbv"]
 [ext_resource type="PackedScene" uid="uid://bd8fbishdjwak" path="res://Scenes/Interactables/color_wall.tscn" id="3_keyqw"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://wc2dwbrkpa2p" path="res://Scenes/Interactables/color_subtractor.tscn" id="5_3asqb"]
 [ext_resource type="PackedScene" uid="uid://d4c52oroxymk" path="res://Scenes/color_wheel.tscn" id="6_slbhm"]
 [ext_resource type="PackedScene" uid="uid://n5rh35de5qmn" path="res://Scenes/Player/player.tscn" id="7_i5g5g"]
+[ext_resource type="FontFile" uid="uid://7nx8w2d5mm0s" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="7_wakwf"]
 
 [node name="Level 5" unique_id=2120704257 instance=ExtResource("1_i4hbv")]
 move_limit = 50
@@ -36,10 +37,10 @@ position = Vector2(608, 223)
 col = Color(1, 0.843, 0, 1)
 
 [node name="Color Wheel" parent="Objects" index="4" unique_id=820220426 instance=ExtResource("6_slbhm")]
-offset_left = 1056.0
-offset_top = -33.0
-offset_right = 1314.0
-offset_bottom = 225.0
+offset_left = 1120.0
+offset_top = -113.0
+offset_right = 1378.0
+offset_bottom = 145.0
 scale = Vector2(0.5, 0.5)
 show_secondary = true
 show_tertiary = true
@@ -56,13 +57,29 @@ col = Color(1, 0.843, 0, 1)
 position = Vector2(864, 160)
 col = Color(1, 1, 1, 1)
 
-[node name="Camera2D" parent="." index="4" unique_id=973442512]
-position = Vector2(579, 310)
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="5" unique_id=264285830]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="5" unique_id=1410372064]
+[node name="MovesContainer" type="Control" parent="CanvasLayer" index="0" unique_id=1791454613]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 56.0
+offset_bottom = 56.0
+metadata/_edit_use_anchors_ = true
 
-[node name="MovesLabel" type="Label" parent="CanvasLayer" index="0" unique_id=1521265032]
-offset_left = 10.0
-offset_right = 50.0
-offset_bottom = 45.0
-theme_override_font_sizes/font_size = 32
+[node name="MovesLabel" type="Label" parent="CanvasLayer/MovesContainer" index="0" unique_id=441632125]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("7_wakwf")
+text = "MOVES: "
+metadata/_edit_use_anchors_ = true
+
+[node name="MovesCount" type="Label" parent="CanvasLayer/MovesContainer" index="1" unique_id=1486806822]
+layout_mode = 0
+offset_left = 94.0
+offset_top = -1.0
+offset_right = 134.0
+offset_bottom = 22.0
+theme_override_fonts/font = ExtResource("7_wakwf")

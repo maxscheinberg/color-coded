@@ -1,5 +1,6 @@
 extends Node2D
 
+
 @export var background: TileMapLayer
 @export var tilemap_walls: TileMapLayer
 @export var objects: Node2D
@@ -311,16 +312,18 @@ func _dir_offset(dir: int) -> Vector2i:
 
 
 func update_moves_ui() -> void:
-	# only levels with this label will show move count
-	if not has_node("CanvasLayer/MovesLabel"):
+	print("has node: ", has_node("CanvasLayer/MovesContainer/MovesLabel"))
+	print("move_limit: ", move_limit)
+	
+	if not has_node("CanvasLayer/MovesContainer/MovesLabel"):
 		return
 
-	var moves_label = $CanvasLayer/MovesLabel
+	var moves_count = $CanvasLayer/MovesContainer/MovesCount
 
 	if move_limit == -1:
-		moves_label.text = ""
+		moves_count.text = ""
 	else:
-		moves_label.text = "Moves: " + str(move_limit - moves_used)
+		moves_count.text = str(move_limit - moves_used)
 
 
 func reset_moves() -> void:
