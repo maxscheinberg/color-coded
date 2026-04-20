@@ -6,13 +6,12 @@ func _on_play_pressed() -> void:
  
  
 func _on_level_select_pressed() -> void:
-	# Hook this up later when you have a level select screen
+	get_tree().change_scene_to_file("res://Scenes/UI/level_select.tscn")
 	pass
  
  
 func _on_settings_pressed() -> void:
-	# Hook this up later when you have a settings screen
-	pass
+	get_tree().change_scene_to_file("res://Scenes/UI/settings.tscn")
  
  
 func _on_quit_pressed() -> void:

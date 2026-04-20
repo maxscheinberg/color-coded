@@ -1,0 +1,185 @@
+[gd_scene format=3 uid="uid://1mv0l21xl7yt"]
+
+[ext_resource type="Script" uid="uid://s2nx1laotw3n" path="res://Scripts/Utils/level_select.gd" id="1_xqnso"]
+[ext_resource type="FontFile" uid="uid://7nx8w2d5mm0s" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_font"]
+
+[node name="LevelSelect" type="Control" unique_id=269884422]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xqnso")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1997208475]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.051, 0.051, 0.078, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=981217114]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer" unique_id=1388617881]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="DotsRow" type="HBoxContainer" parent="CenterContainer/VBox" unique_id=846016096]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="DotRed" type="ColorRect" parent="CenterContainer/VBox/DotsRow" unique_id=71102309]
+custom_minimum_size = Vector2(14, 14)
+layout_mode = 2
+color = Color(0.91, 0.267, 0.267, 1)
+
+[node name="DotYellow" type="ColorRect" parent="CenterContainer/VBox/DotsRow" unique_id=1024389693]
+custom_minimum_size = Vector2(14, 14)
+layout_mode = 2
+color = Color(0.961, 0.784, 0.259, 1)
+
+[node name="DotBlue" type="ColorRect" parent="CenterContainer/VBox/DotsRow" unique_id=303832621]
+custom_minimum_size = Vector2(14, 14)
+layout_mode = 2
+color = Color(0.267, 0.533, 0.933, 1)
+
+[node name="Title" type="Label" parent="CenterContainer/VBox" unique_id=1931418456]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "LEVEL SELECT"
+horizontal_alignment = 1
+
+[node name="ColorBar" type="HBoxContainer" parent="CenterContainer/VBox" unique_id=448923769]
+custom_minimum_size = Vector2(240, 4)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="BarRed" type="ColorRect" parent="CenterContainer/VBox/ColorBar" unique_id=478845901]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.91, 0.267, 0.267, 1)
+
+[node name="BarOrange" type="ColorRect" parent="CenterContainer/VBox/ColorBar" unique_id=696756294]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.91, 0.416, 0.267, 1)
+
+[node name="BarYellow" type="ColorRect" parent="CenterContainer/VBox/ColorBar" unique_id=1097918717]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.961, 0.784, 0.259, 1)
+
+[node name="BarGreen" type="ColorRect" parent="CenterContainer/VBox/ColorBar" unique_id=2042040896]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.4, 0.733, 0.267, 1)
+
+[node name="BarBlue" type="ColorRect" parent="CenterContainer/VBox/ColorBar" unique_id=1485357511]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.267, 0.533, 0.933, 1)
+
+[node name="BarPurple" type="ColorRect" parent="CenterContainer/VBox/ColorBar" unique_id=1463659885]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.467, 0.333, 0.867, 1)
+
+[node name="Spacer" type="Control" parent="CenterContainer/VBox" unique_id=279051759]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="SectionTutorials" type="Label" parent="CenterContainer/VBox" unique_id=1284267123]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.35)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 7
+text = "— TUTORIALS —"
+horizontal_alignment = 1
+
+[node name="BtnTutorial1" type="Button" parent="CenterContainer/VBox" unique_id=863923407]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 10
+text = "LEVEL 1"
+
+[node name="BtnTutorial2" type="Button" parent="CenterContainer/VBox" unique_id=501383446]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 10
+text = "LEVEL 2"
+
+[node name="BtnTutorial3" type="Button" parent="CenterContainer/VBox" unique_id=1126316926]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 10
+text = "LEVEL 3"
+
+[node name="SpacerMid" type="Control" parent="CenterContainer/VBox" unique_id=287228286]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="SectionLevels" type="Label" parent="CenterContainer/VBox" unique_id=156042390]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.35)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 7
+text = "— LEVELS —"
+horizontal_alignment = 1
+
+[node name="BtnLevel3" type="Button" parent="CenterContainer/VBox" unique_id=199893566]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 10
+text = "LEVEL 3"
+
+[node name="BtnLevel4" type="Button" parent="CenterContainer/VBox" unique_id=63164349]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 10
+text = "LEVEL 4"
+
+[node name="BtnLevel5" type="Button" parent="CenterContainer/VBox" unique_id=453721182]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 10
+text = "LEVEL 5"
+
+[node name="SpacerBottom" type="Control" parent="CenterContainer/VBox" unique_id=1662274556]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="BtnBack" type="Button" parent="CenterContainer/VBox" unique_id=992068760]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.5)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 8
+text = "BACK"
+
+[node name="VersionLabel" type="Label" parent="." unique_id=948907383]
+layout_mode = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = -24.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.2)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 7
+text = "v0.1"
+
+[connection signal="pressed" from="CenterContainer/VBox/BtnTutorial1" to="." method="_on_tutorial_1_pressed"]
+[connection signal="pressed" from="CenterContainer/VBox/BtnTutorial2" to="." method="_on_tutorial_2_pressed"]
+[connection signal="pressed" from="CenterContainer/VBox/BtnTutorial3" to="." method="_on_tutorial_3_pressed"]
+[connection signal="pressed" from="CenterContainer/VBox/BtnLevel3" to="." method="_on_level_3_pressed"]
+[connection signal="pressed" from="CenterContainer/VBox/BtnLevel4" to="." method="_on_level_4_pressed"]
+[connection signal="pressed" from="CenterContainer/VBox/BtnLevel5" to="." method="_on_level_5_pressed"]
+[connection signal="pressed" from="CenterContainer/VBox/BtnBack" to="." method="_on_back_pressed"]

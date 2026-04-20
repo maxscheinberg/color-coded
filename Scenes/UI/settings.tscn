@@ -1,0 +1,177 @@
+[gd_scene format=3 uid="uid://igvavsptp1wx"]
+
+[ext_resource type="Script" uid="uid://b8nfbnr173ka" path="res://Scripts/Utils/settings.gd" id="1_ma1v7"]
+[ext_resource type="FontFile" uid="uid://7nx8w2d5mm0s" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_font"]
+
+[node name="Settings" type="Control" unique_id=1038547872]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ma1v7")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1620697027]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.051, 0.051, 0.078, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=401078852]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer" unique_id=1188374318]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="DotsRow" type="HBoxContainer" parent="CenterContainer/VBox" unique_id=250933406]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="DotRed" type="ColorRect" parent="CenterContainer/VBox/DotsRow" unique_id=1337480636]
+custom_minimum_size = Vector2(14, 14)
+layout_mode = 2
+color = Color(0.91, 0.267, 0.267, 1)
+
+[node name="DotYellow" type="ColorRect" parent="CenterContainer/VBox/DotsRow" unique_id=1139046748]
+custom_minimum_size = Vector2(14, 14)
+layout_mode = 2
+color = Color(0.961, 0.784, 0.259, 1)
+
+[node name="DotBlue" type="ColorRect" parent="CenterContainer/VBox/DotsRow" unique_id=2010016307]
+custom_minimum_size = Vector2(14, 14)
+layout_mode = 2
+color = Color(0.267, 0.533, 0.933, 1)
+
+[node name="Title" type="Label" parent="CenterContainer/VBox" unique_id=104753027]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 16
+text = "SETTINGS"
+horizontal_alignment = 1
+
+[node name="ColorBar" type="HBoxContainer" parent="CenterContainer/VBox" unique_id=1794530179]
+custom_minimum_size = Vector2(240, 4)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="BarRed" type="ColorRect" parent="CenterContainer/VBox/ColorBar" unique_id=1010515757]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.91, 0.267, 0.267, 1)
+
+[node name="BarOrange" type="ColorRect" parent="CenterContainer/VBox/ColorBar" unique_id=82614344]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.91, 0.416, 0.267, 1)
+
+[node name="BarYellow" type="ColorRect" parent="CenterContainer/VBox/ColorBar" unique_id=688888175]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.961, 0.784, 0.259, 1)
+
+[node name="BarGreen" type="ColorRect" parent="CenterContainer/VBox/ColorBar" unique_id=1110651194]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.4, 0.733, 0.267, 1)
+
+[node name="BarBlue" type="ColorRect" parent="CenterContainer/VBox/ColorBar" unique_id=171317113]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.267, 0.533, 0.933, 1)
+
+[node name="BarPurple" type="ColorRect" parent="CenterContainer/VBox/ColorBar" unique_id=807018261]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.467, 0.333, 0.867, 1)
+
+[node name="Spacer" type="Control" parent="CenterContainer/VBox" unique_id=481940940]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="MasterLabel" type="Label" parent="CenterContainer/VBox" unique_id=1528256083]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.35)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 7
+text = "MASTER VOLUME"
+horizontal_alignment = 1
+
+[node name="MasterSlider" type="HSlider" parent="CenterContainer/VBox" unique_id=2006135609]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="SpacerA" type="Control" parent="CenterContainer/VBox" unique_id=555876638]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="SFXLabel" type="Label" parent="CenterContainer/VBox" unique_id=887078872]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.35)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 7
+text = "SFX VOLUME"
+horizontal_alignment = 1
+
+[node name="SFXSlider" type="HSlider" parent="CenterContainer/VBox" unique_id=1403716186]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="SpacerB" type="Control" parent="CenterContainer/VBox" unique_id=741996791]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="BtnReset" type="Button" parent="CenterContainer/VBox" unique_id=1102489129]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91, 0.267, 0.267, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 10
+text = "RESET PROGRESS"
+
+[node name="SpacerBottom" type="Control" parent="CenterContainer/VBox" unique_id=1117353002]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="BtnBack" type="Button" parent="CenterContainer/VBox" unique_id=1826439129]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.5)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 8
+text = "BACK"
+
+[node name="ConfirmDialog" type="ConfirmationDialog" parent="." unique_id=606423190]
+title = "RESET PROGRESS"
+size = Vector2i(300, 120)
+ok_button_text = "RESET"
+dialog_text = "Are you sure? This cannot be undone."
+cancel_button_text = "CANCEL"
+
+[node name="VersionLabel" type="Label" parent="." unique_id=1243433820]
+layout_mode = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = -24.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.2)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 7
+text = "v0.1"
+
+[connection signal="value_changed" from="CenterContainer/VBox/MasterSlider" to="." method="_on_master_volume_changed"]
+[connection signal="value_changed" from="CenterContainer/VBox/SFXSlider" to="." method="_on_sfx_volume_changed"]
+[connection signal="pressed" from="CenterContainer/VBox/BtnReset" to="." method="_on_reset_pressed"]
+[connection signal="pressed" from="CenterContainer/VBox/BtnBack" to="." method="_on_back_pressed"]
+[connection signal="confirmed" from="ConfirmDialog" to="." method="_on_reset_confirmed"]
