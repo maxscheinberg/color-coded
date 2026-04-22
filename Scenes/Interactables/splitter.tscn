@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://b04epxptmpw3f" path="res://Scripts/Interactables/splitter.gd" id="1_tm7da"]
 
-[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_wujru"]
-_data = PackedByteArray("AAADAAUAAAABAAAAQAAAAEAAAACEAAAAUklGRnwAAABXRUJQVlA4TG8AAAAvP8APAA8w//M///MfeHBba9vSsAkjMAIjUdLSUXIYgMMI1MTdZYS/TOkJzhN3KyP6PwG8XVXKzzDnfvNz9XkuhzB3tJGbwLystEUCuuHZJ0Fk+SKCIOmWRQrBelaWcwjMoCwAXDjDI6Y3zW/6CwIA")
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_tm7da"]
+_data = PackedByteArray("AAADAAUAAAABAAAAQAAAAEAAAABOAAAAUklGRkYAAABXRUJQVlA4TDkAAAAvP8APAA8w//M///MfeFASAGizYwlDA6oTgDA7luPAbTai/xMQ7z+RFTRDFCg3t6QSClqRyHHhewEA")
 size_override = Vector2(64, 64)
 
 [sub_resource type="Animation" id="Animation_tm7da"]
@@ -32,8 +32,9 @@ script = ExtResource("1_tm7da")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1795301653]
 texture_filter = 1
-texture = SubResource("PortableCompressedTexture2D_wujru")
+texture = SubResource("PortableCompressedTexture2D_tm7da")
 metadata/_aseprite_wizard_interface_config_ = {
+"output_section": false,
 "pending_changes": {}
 }
 metadata/_aseprite_wizard_config_ = {
@@ -54,7 +55,7 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://Assets/Interactables/splitter.aseprite",
 "source_uid": 7309244233281212283
 }
-metadata/_aseprite_wizard_source_file_hash_ = "b0632b36840a06a3409a5f577795846d"
+metadata/_aseprite_wizard_source_file_hash_ = "7e79fc940418eed3fe1c40a953bbfef6"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=635220424]
 libraries/ = SubResource("AnimationLibrary_uqwi1")
