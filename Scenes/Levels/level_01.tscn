@@ -1,16 +1,15 @@
-[gd_scene format=4 uid="uid://dcr8jxstagvu1"]
+[gd_scene format=4 uid="uid://d361hnb16pgcy"]
 
-[ext_resource type="PackedScene" uid="uid://b8oiih760r158" path="res://Scenes/Levels/levelbase.tscn" id="1_373i2"]
-[ext_resource type="Script" path="res://Scripts/Levels/tutorial_level_1.gd" id="2_2thcj"]
-[ext_resource type="Texture2D" uid="uid://b25hkahsq0bqu" path="res://Assets/spritesheet grey.png" id="2_tj0so"]
-[ext_resource type="PackedScene" uid="uid://bd8fbishdjwak" path="res://Scenes/Interactables/color_wall.tscn" id="3_2thcj"]
-[ext_resource type="PackedScene" uid="uid://hs443laxkp8b" path="res://Scenes/Interactables/color_adder.tscn" id="4_st3a2"]
-[ext_resource type="PackedScene" uid="uid://wc2dwbrkpa2p" path="res://Scenes/Interactables/color_subtractor.tscn" id="5_xuhn6"]
-[ext_resource type="PackedScene" uid="uid://d4c52oroxymk" path="res://Scenes/color_wheel.tscn" id="6_j5sts"]
-[ext_resource type="PackedScene" uid="uid://n5rh35de5qmn" path="res://Scenes/Player/player.tscn" id="7_uuws1"]
+[ext_resource type="PackedScene" uid="uid://b8oiih760r158" path="res://Scenes/Levels/levelbase.tscn" id="1_l0dwn"]
+[ext_resource type="PackedScene" uid="uid://bd8fbishdjwak" path="res://Scenes/Interactables/color_wall.tscn" id="2_66ail"]
+[ext_resource type="Texture2D" uid="uid://b25hkahsq0bqu" path="res://Assets/spritesheet grey.png" id="2_wf6s8"]
+[ext_resource type="PackedScene" uid="uid://n5rh35de5qmn" path="res://Scenes/Player/player.tscn" id="3_ni7lu"]
+[ext_resource type="PackedScene" uid="uid://hs443laxkp8b" path="res://Scenes/Interactables/color_adder.tscn" id="4_taws2"]
+[ext_resource type="PackedScene" uid="uid://wc2dwbrkpa2p" path="res://Scenes/Interactables/color_subtractor.tscn" id="5_mb1if"]
+[ext_resource type="PackedScene" uid="uid://d4c52oroxymk" path="res://Scenes/color_wheel.tscn" id="6_mb1if"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dbq10"]
-texture = ExtResource("2_tj0so")
+texture = ExtResource("2_wf6s8")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0
@@ -306,7 +305,7 @@ tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_dbq10")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mb1if"]
-texture = ExtResource("2_tj0so")
+texture = ExtResource("2_wf6s8")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0
@@ -604,18 +603,13 @@ texture_region_size = Vector2i(64, 64)
 17:15/0 = 0
 18:15/0 = 0
 19:15/0 = 0
-4:0/0 = 0
-4:1/0 = 0
-4:2/0 = 0
-4:3/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_bmcj7"]
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_mb1if")
 
-[node name="Tutorial Level 1" unique_id=2120704257 instance=ExtResource("1_373i2")]
-script = ExtResource("2_2thcj")
+[node name="Level 01" unique_id=2120704257 instance=ExtResource("1_l0dwn")]
 
 [node name="Background" parent="." index="0" unique_id=1233328414]
 tile_map_data = PackedByteArray("AAAAAAAAAAABAAIAAAAAAAEAAAABAAIAAAAAAAIAAAABAAIAAAAAAAMAAAABAAIAAAAAAAQAAAABAAIAAAAAAAUAAAABAAIAAAAAAAYAAAABAAIAAAABAAAAAAABAAIAAAACAAAAAAABAAIAAAADAAAAAAABAAIAAAAEAAAAAAABAAIAAAAFAAAAAAABAAIAAAAGAAAAAAABAAIAAAAHAAAAAAABAAIAAAAIAAAAAAABAAIAAAAJAAAAAAABAAIAAAAKAAAAAAABAAIAAAAKAAYAAAABAAIAAAAKAAUAAAABAAIAAAAKAAMAAAABAAIAAAAKAAIAAAABAAIAAAAKAAEAAAABAAIAAAAKAAcAAAABAAIAAAAAAAcAAAABAAIAAAAAAAgAAAABAAIAAAAKAAgAAAABAAIAAAAJAAgAAAABAAIAAAAIAAgAAAABAAIAAAAHAAgAAAABAAIAAAAGAAgAAAABAAIAAAAFAAgAAAABAAIAAAAEAAgAAAABAAIAAAADAAgAAAABAAIAAAACAAgAAAABAAIAAAABAAgAAAABAAIAAAABAAIAAAABAAIAAAACAAIAAAABAAIAAAADAAMAAAABAAIAAAAEAAQAAAABAAIAAAAFAAUAAAABAAIAAAAGAAUAAAABAAIAAAAGAAYAAAABAAIAAAABAAEAAAABAAIAAAABAAMAAAABAAIAAAABAAQAAAABAAIAAAABAAUAAAABAAIAAAABAAYAAAABAAIAAAABAAcAAAABAAIAAAACAAEAAAABAAIAAAACAAMAAAABAAIAAAACAAQAAAABAAIAAAACAAUAAAABAAIAAAACAAYAAAABAAIAAAACAAcAAAABAAIAAAADAAEAAAABAAIAAAADAAIAAAABAAIAAAADAAQAAAABAAIAAAADAAUAAAABAAIAAAADAAYAAAABAAIAAAADAAcAAAABAAIAAAAEAAEAAAABAAIAAAAEAAIAAAABAAIAAAAEAAMAAAABAAIAAAAEAAUAAAABAAIAAAAEAAYAAAABAAIAAAAEAAcAAAABAAIAAAAFAAEAAAABAAIAAAAFAAIAAAABAAIAAAAFAAMAAAABAAIAAAAFAAQAAAABAAIAAAAFAAYAAAABAAIAAAAFAAcAAAABAAIAAAAGAAEAAAABAAIAAAAGAAIAAAABAAIAAAAGAAMAAAABAAIAAAAGAAQAAAABAAIAAAAGAAcAAAABAAIAAAAHAAEAAAABAAIAAAAHAAIAAAABAAIAAAAHAAMAAAABAAIAAAAHAAQAAAABAAIAAAAHAAUAAAABAAIAAAAHAAYAAAABAAIAAAAHAAcAAAABAAIAAAAIAAEAAAABAAIAAAAIAAIAAAABAAIAAAAIAAMAAAABAAIAAAAIAAQAAAABAAIAAAAIAAUAAAABAAIAAAAIAAYAAAABAAIAAAAIAAcAAAABAAIAAAAJAAEAAAABAAIAAAAJAAIAAAABAAIAAAAJAAMAAAABAAIAAAAJAAQAAAABAAIAAAAJAAUAAAABAAIAAAAJAAYAAAABAAIAAAAJAAcAAAABAAIAAAA=")
@@ -628,40 +622,21 @@ tile_set = SubResource("TileSet_bmcj7")
 [node name="Objects" parent="." index="2" unique_id=1527763059]
 position = Vector2(0, 1)
 
-[node name="ColorWall" parent="Objects" index="0" unique_id=1696651386 instance=ExtResource("3_2thcj")]
+[node name="ColorWall" parent="Objects" index="0" unique_id=1696651386 instance=ExtResource("2_66ail")]
 position = Vector2(672, 287)
-col = Color(0.91, 0.102, 0.102, 1)
+col = Color(0, 0, 1, 1)
 
-[node name="AddRed" parent="Objects" index="1" unique_id=558619985 instance=ExtResource("4_st3a2")]
-position = Vector2(288, 160)
-col = Color(0.91, 0.102, 0.102, 1)
+[node name="ColorAdder" parent="Objects" index="1" unique_id=558619985 instance=ExtResource("4_taws2")]
+position = Vector2(288, 96)
 
-[node name="SubRed" parent="Objects" index="2" unique_id=1076673664 instance=ExtResource("5_xuhn6")]
-position = Vector2(160, 160)
-col = Color(0.91, 0.102, 0.102, 1)
+[node name="ColorSubtractor" parent="Objects" index="2" unique_id=1076673664 instance=ExtResource("5_mb1if")]
+position = Vector2(288, 480)
+col = Color(1, 0, 0, 1)
 
-[node name="Color Wheel" parent="Objects" index="3" unique_id=820220426 instance=ExtResource("6_j5sts")]
-offset_left = 1120.0
-offset_top = -113.0
-offset_right = 1378.0
-offset_bottom = 145.0
+[node name="Color Wheel" parent="Objects" index="3" unique_id=820220426 instance=ExtResource("6_mb1if")]
+position = Vector2(931, 22)
+rotation = 0.7853982
 scale = Vector2(0.5, 0.5)
-mouse_force_pass_scroll_events = false
-
-[node name="AddBlue" parent="Objects" index="4" unique_id=81472416 instance=ExtResource("4_st3a2")]
-position = Vector2(552, 155)
-
-[node name="SubBlue" parent="Objects" index="5" unique_id=232602453 instance=ExtResource("5_xuhn6")]
-position = Vector2(416, 160)
-col = Color(0.137, 0.42, 0.78, 1)
-
-[node name="AddYellow" parent="Objects" index="6" unique_id=593435105 instance=ExtResource("4_st3a2")]
-position = Vector2(416, 416)
-col = Color(1, 0.843, 0, 1)
-
-[node name="SubYellow" parent="Objects" index="7" unique_id=965104457 instance=ExtResource("5_xuhn6")]
-position = Vector2(288, 416)
-col = Color(1, 0.843, 0, 1)
 
 [node name="Label" type="Label" parent="." index="3" unique_id=1550899310]
 offset_left = 714.0
@@ -670,6 +645,6 @@ offset_right = 768.0
 offset_bottom = 298.0
 text = "Level 2"
 
-[node name="Player" parent="." index="4" unique_id=1803487026 instance=ExtResource("7_uuws1")]
-position = Vector2(352, 288)
-col = Color(0.137, 0.42, 0.78, 1)
+[node name="Player" parent="." index="4" unique_id=1803487026 instance=ExtResource("3_ni7lu")]
+position = Vector2(608, 288)
+col = Color(1, 0, 0, 1)

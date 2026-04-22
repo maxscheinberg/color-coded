@@ -74,76 +74,19 @@ func _move_player(dir: int) -> void:
 
 	var occupying_object = object_locations.get(target_cell)
 
-	# Rail direction check
-	if occupying_object != null and occupying_object.has_method("get_rail_axis"):
-		var rail_axis: String = occupying_object.get_rail_axis()
-		var moving_axis := "horizontal" if (dir == LEFT or dir == RIGHT) else "vertical"
-
-		if rail_axis != moving_axis:
-			return
-
-	# Collect all rails that are parallel to the player's movement
-	var moving_axis := "horizontal" if (dir == LEFT or dir == RIGHT) else "vertical"
-	var rails_to_move := {}
-
-	for gp in object_locations.keys():
-		var obj = object_locations[gp]
-
-		if not obj.has_method("get_rail_axis"):
-			continue
-		if obj.get_rail_axis() != moving_axis:
-			continue
-
-		if moving_axis == "horizontal" and gp.y == player_pos.y:
-			rails_to_move[gp] = obj
-		elif moving_axis == "vertical" and gp.x == player_pos.x:
-			rails_to_move[gp] = obj
-
-	# Chain through cores
-	var extra_rails := {}
-	for gp in rails_to_move.keys():
-		_collect_core_chains(gp, moving_axis, offset, rails_to_move, extra_rails)
-
-	for gp in extra_rails.keys():
-		rails_to_move[gp] = extra_rails[gp]
-
-	# Rail glow feedback
-	for gp in object_locations.keys():
-		var obj = object_locations[gp]
-		if obj.has_method("get_rail_axis"):
-			var body = obj.get_node("Body")
-			if rails_to_move.has(gp):
-				body.color = Color(0.0, 0.75, 1.0)  # will move
-			else:
-				body.color = Color(0.62, 0.18, 0.31)  # blocked
-
 	# Check blocking object
-	if occupying_object != null and not occupying_object.has_method("get_rail_axis"):
+	if occupying_object != null:
 		if not occupying_object.can_move_here(player):
-			return
-
-	# Check rail collisions
-	for gp in rails_to_move.keys():
-		var new_gp: Vector2i = gp + offset
-
-		if tilemap_walls.get_cell_source_id(new_gp) != -1:
-			return
-
-		if object_locations.has(new_gp) and not rails_to_move.has(new_gp):
 			return
 
 	# Snapshot for undo
 	var snapshot := {
 		"player_pos": player_pos,
 		"player_color": player.get_color(),
-		"interactions": [],
-		"rail_positions": {}
+		"interactions": []
 	}
 
-	for gp in rails_to_move.keys():
-		snapshot["rail_positions"][rails_to_move[gp]] = gp
-
-	# Handle interact for non-rail objects
+	# Handle interact for objects
 	if occupying_object != null and occupying_object.has_method("interact"):
 		if occupying_object.has_method("get_color"):
 			snapshot["interactions"].append({
@@ -170,10 +113,6 @@ func _move_player(dir: int) -> void:
 	# Count this as a valid move
 	use_move()
 
-	# Remove rails from old positions
-	for gp in rails_to_move.keys():
-		object_locations.erase(gp)
-
 	# Tween everything simultaneously
 	var tween := create_tween()
 	tween.set_parallel(true)
@@ -186,44 +125,8 @@ func _move_player(dir: int) -> void:
 
 	tween.tween_property(player, "position", background.map_to_local(target_cell), 0.15)
 
-	for gp in rails_to_move.keys():
-		var new_gp: Vector2i = gp + offset
-		object_locations[new_gp] = rails_to_move[gp]
-		tween.tween_property(rails_to_move[gp], "position", background.map_to_local(new_gp), 0.15)
-
 	tween.set_parallel(false)
 	tween.tween_callback(Callable(self, "_stop_move").bind(target_cell))
-
-
-func _collect_core_chains(rail_gp: Vector2i, moving_axis: String, offset: Vector2i, existing: Dictionary, extra: Dictionary) -> void:
-	var perp_offsets := [Vector2i(0, -1), Vector2i(0, 1)] if moving_axis == "horizontal" else [Vector2i(-1, 0), Vector2i(1, 0)]
-
-	for perp in perp_offsets:
-		var neighbor_pos = rail_gp + perp
-
-		if not object_locations.has(neighbor_pos):
-			continue
-
-		var neighbor = object_locations[neighbor_pos]
-
-		if not neighbor.has_method("get_core_axis"):
-			continue
-
-		var core_axis: String = neighbor.get_core_axis()
-		var scan_offsets := [Vector2i(-1, 0), Vector2i(1, 0)] if core_axis == "horizontal" else [Vector2i(0, -1), Vector2i(0, 1)]
-		var core_gp := background.local_to_map(neighbor.position)
-
-		for step in scan_offsets:
-			var pos = core_gp + step
-			while object_locations.has(pos):
-				var obj = object_locations[pos]
-				if obj.has_method("get_rail_axis") and obj.get_rail_axis() == core_axis:
-					if not existing.has(pos):
-						extra[pos] = obj
-					pos += step
-				else:
-					break
-
 
 func _stop_move(new_pos: Vector2i) -> void:
 	player_pos = new_pos
@@ -283,13 +186,6 @@ func _undo_move() -> void:
 	var tween := create_tween()
 	tween.set_parallel(true)
 	player.moving = true
-
-	for obj in snapshot["rail_positions"].keys():
-		var old_pos: Vector2i = snapshot["rail_positions"][obj]
-		var current_gp := background.local_to_map(obj.position)
-		object_locations.erase(current_gp)
-		object_locations[old_pos] = obj
-		tween.tween_property(obj, "position", background.map_to_local(old_pos), 0.1)
 
 	tween.tween_property(player, "position", background.map_to_local(snapshot["player_pos"]), 0.1)
 
@@ -374,6 +270,5 @@ func player_is_on_goal() -> bool:
 		return true
 	elif scene_name == "Level 4" and player_pos == Vector2i(7, 8):
 		return true
-		
 
 	return false

@@ -4,11 +4,10 @@ extends Node2D
 @onready var anim: AnimationPlayer = $Sprite2D/AnimationPlayer
 
 func _ready() -> void:
-	anim.get_animation("Blink").loop_mode = Animation.LOOP_NONE
+	pass
 
-func on_level_start(player):
-	self.visible = false
-	update_with_player(player)
-			
-func update_with_player(player):
-	sprite.self_modulate = player.get_color()
+func get_color() -> Color:
+	return sprite.get_self_modulate()
+
+func set_color(col: Color) -> void:
+	sprite.self_modulate = GameColors.canonical(col)
