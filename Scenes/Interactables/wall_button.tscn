@@ -1,0 +1,61 @@
+[gd_scene format=4 uid="uid://cfawafybmaiej"]
+
+[ext_resource type="Script" uid="uid://dnn0hy1ronvti" path="res://Scripts/Interactables/wall_button.gd" id="1_h6j61"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_esegd"]
+_data = PackedByteArray("AAADAAUAAAABAAAAQAAAAEAAAABEAQAAUklGRjwBAABXRUJQVlA4TDABAAAvP8APEC9AmG2cm9D+MziAI8w2zk1o/xkcwBFmG+cmtP8MDuDmPwDA/7ZRVQC7ttW6kdSBUIYCLFcQ4xSQZbkAVnz6L8YvsuYrfxH9n4D0YxUR+YoAyBeEQwkrnOYoP9OgwsUc41f0XxRA/IgcpKh/wcFBjzSgOIqCiIij+d57585eUb3nFzSmbDsFcXdFybd4g4Ny8BfxBEUdRZ1HyAbiHK4xHy6+Qoblylwj1Laz1Txg02k5m0df7314Wj/q9uB1b2Ew67tuVpnvTehk1nvvZqMz3krPjcFOK+sj3R4WtB01Z673im1I2zVhtRwwLSCttSYwjwFpsA1ERGC1mgLLtGwcrvOYI9JgS9/12WoKLZNZ772bjTkmDZMdjjUFl6HtWs1RqUhrrUlOXxQRST9m")
+size_override = Vector2(64, 64)
+
+[sub_resource type="Animation" id="Animation_esegd"]
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y35nu"]
+_data = {
+&"default": SubResource("Animation_esegd")
+}
+
+[node name="wall button" type="Node2D" unique_id=1298048502]
+script = ExtResource("1_h6j61")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1862954900]
+texture_filter = 1
+scale = Vector2(1.7, 1.7)
+texture = SubResource("PortableCompressedTexture2D_esegd")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "Sprite2D/AnimationPlayer",
+"scale": "1.0",
+"slice": "",
+"source": "res://Assets/Interactables/wall button.aseprite",
+"source_uid": 3285434647357544215
+}
+metadata/_aseprite_wizard_source_file_hash_ = "e21bda1552a82c4848de0467d9e42bae"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=883802870]
+libraries/ = SubResource("AnimationLibrary_y35nu")

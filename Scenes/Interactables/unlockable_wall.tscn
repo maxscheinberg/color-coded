@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://d272cucotbhnf"]
+
+[ext_resource type="Script" uid="uid://dgfstortd5wof" path="res://Scripts/Interactables/unlockable_wall.gd" id="1_qkgki"]
+
+[node name="Unlockable Wall" type="Node2D" unique_id=1662454923]
+script = ExtResource("1_qkgki")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1699264345]
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
