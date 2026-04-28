@@ -6,7 +6,7 @@ extends Node2D
 func can_move_here(player):
 	return true
 
-func teleport(player):
+dawfunc teleport(player):
 	var teleport_echo: Node2D = player_duplicate
 	var show_echo := teleport_echo != null and teleport_echo != player and not teleport_echo.visible
 

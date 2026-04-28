@@ -5,6 +5,7 @@ extends "res://Scripts/Levels/levelbase.gd"
 @onready var sub_yellow = $Objects/SubYellow
 @onready var add_red = $Objects/AddRed
 
+
 func _process(delta: float) -> void:
 	super._process(delta)
 	_apply_tutorial_rules()
@@ -17,6 +18,7 @@ func _apply_tutorial_rules() -> void:
 	sub_blue.set_grayed(true)
 	sub_yellow.set_grayed(true)
 	add_red.set_grayed(true)
+
 
 	# green → break into primaries
 	if GameColors.match(col, GameColors.GREEN):

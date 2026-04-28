@@ -73,7 +73,7 @@ func _process(_delta: float) -> void:
 func _move_player(dir: int) -> void:
 	if controlled_character == null or _any_character_moving():
 		return
-
+		
 	var offset := _dir_offset(dir)
 	var current_pos := _get_character_cell(controlled_character)
 	var target_cell := current_pos + offset
@@ -85,6 +85,30 @@ func _move_player(dir: int) -> void:
 		return
 
 	var occupying_object = object_locations.get(target_cell)
+	
+		# --- Brush mechanic -------------------------------------------------
+	# If the player holds a brush and the target is a paintable wall,
+	# let the brush paint it instead of blocking movement.
+	var held_brush := _find_brush_held_by(controlled_character)
+	if occupying_object != null \
+			and held_brush != null \
+			and occupying_object.has_method("is_paintable") \
+			and occupying_object.is_paintable():
+		# Record old wall color for undo before painting
+		var snapshot_early := _create_snapshot()
+		if occupying_object.has_method("get_color"):
+			snapshot_early["interactions"].append({
+				"object": occupying_object,
+				"old_color": occupying_object.get_color()
+			})
+		move_history.append(snapshot_early)
+		use_move()
+		held_brush.try_paint(controlled_character, occupying_object)
+		# Remove wall from object_locations so the player can now pass
+		# (the wall stays in the scene but is now passable via can_move_here)
+		_refresh_dynamic_objects()
+		return
+	# --- End brush mechanic ---------------------------------------------
 
 	if occupying_object != null and not occupying_object.can_move_here(controlled_character):
 		return
@@ -205,7 +229,18 @@ func _dir_offset(dir: int) -> Vector2i:
 
 	return Vector2i.ZERO
 
-
+func update_brush_ui(brush_color: Color = Color.TRANSPARENT) -> void:
+	if not has_node("CanvasLayer/BrushIndicator"):
+		return
+	var indicator: TextureRect = $CanvasLayer/BrushIndicator
+	if brush_color == Color.TRANSPARENT:
+		# no brush held — gray it out
+		indicator.self_modulate = Color(0.35, 0.35, 0.35, 1.0)
+	else:
+		# brush picked up — light it with the player's color
+		indicator.self_modulate = brush_color
+		
+		
 func update_moves_ui() -> void:
 	print("has node: ", has_node("CanvasLayer/MovesContainer/MovesLabel"))
 	print("move_limit: ", move_limit)
@@ -225,6 +260,8 @@ func reset_moves() -> void:
 	moves_used = 0
 	level_failed = false
 	update_moves_ui()
+	update_brush_ui()
+
 
 
 func use_move() -> void:
@@ -445,3 +482,9 @@ func _handle_scene_transition() -> bool:
 		return true
 
 	return false
+	
+func _find_brush_held_by(character: Node2D) -> Node2D:
+	for obj in objects.get_children():
+		if obj.has_method("try_paint") and obj.get("held_by") == character:
+			return obj
+	return null
