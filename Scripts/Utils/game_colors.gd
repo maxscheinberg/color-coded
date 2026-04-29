@@ -10,7 +10,7 @@ const GREEN: Color = Color(0.12, 0.65, 0.2, 1.0)
 const PURPLE: Color = Color(0.5, 0.2, 0.65, 1.0)
 
 const RED_ORANGE: Color = Color(1.0, 0.25, 0.0, 1.0)
-const YELLOW_ORANGE: Color = Color(1.0, 0.75, 0.0, 1.0)
+const YELLOW_ORANGE: Color = Color(0.98, 0.68, 0.1, 1.0)
 const YELLOW_GREEN: Color = Color(0.5, 1.0, 0.0, 1.0)
 const BLUE_GREEN: Color = Color(0.0, 0.5, 0.5, 1.0)
 const BLUE_VIOLET: Color = Color(0.0, 0.0, 0.5, 1.0)

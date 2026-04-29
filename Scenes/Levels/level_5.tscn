@@ -30,7 +30,7 @@ col = Color(0.95, 0.49, 0.1, 1)
 
 [node name="ColorWall2" parent="Objects" index="2" unique_id=2107916643 instance=ExtResource("3_keyqw")]
 position = Vector2(480, 223)
-col = Color(1, 0.75, 0, 1)
+col = Color(0.98, 0.68, 0.1, 1)
 
 [node name="ColorWall3" parent="Objects" index="3" unique_id=2141558759 instance=ExtResource("3_keyqw")]
 position = Vector2(608, 223)
