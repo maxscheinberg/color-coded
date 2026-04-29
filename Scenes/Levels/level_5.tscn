@@ -83,3 +83,12 @@ offset_top = -1.0
 offset_right = 134.0
 offset_bottom = 22.0
 theme_override_fonts/font = ExtResource("7_wakwf")
+
+[node name="Label" type="Label" parent="." index="6" unique_id=236681550]
+offset_left = 1024.0
+offset_top = 132.0
+offset_right = 1121.0
+offset_bottom = 181.0
+text = "Level 6"
+horizontal_alignment = 1
+vertical_alignment = 1
