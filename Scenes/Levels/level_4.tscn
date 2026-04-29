@@ -48,10 +48,6 @@ col = Color(0.12, 0.65, 0.2, 1)
 position = Vector2(352, 160)
 col = Color(1, 1, 1, 1)
 
-[node name="Camera2D" parent="." index="4" unique_id=973442512]
-position = Vector2(544, 288)
-zoom = Vector2(0.78, 0.78)
-
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="5" unique_id=1190821285]
 
 [node name="MovesContainer" type="Control" parent="CanvasLayer" index="0" unique_id=1621511300]

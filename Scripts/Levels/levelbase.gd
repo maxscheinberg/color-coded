@@ -1,5 +1,6 @@
 extends Node2D
 
+const PLAYER_DUPLICATE_SCENE := preload("res://Scenes/Player/player_duplicate.tscn")
 
 @export var background: TileMapLayer
 @export var tilemap_walls: TileMapLayer
@@ -7,10 +8,13 @@ extends Node2D
 
 @export var move_limit: int = -1   # -1 = unlimited, so tutorials stay unaffected
 
-@onready var object_locations: Dictionary[Vector2i, Node]
-@onready var wall_locations: Array = []
 @onready var player = $Player
 @onready var camera: Camera2D = $Camera2D
+
+var object_locations: Dictionary = {}
+var wall_locations: Array = []
+var player_duplicate: Node2D
+var controlled_character: Node2D
 
 var moves_used: int = 0
 var level_failed: bool = false
@@ -21,26 +25,35 @@ var move_history: Array = []
 
 
 func _ready() -> void:
+	player_duplicate = _ensure_player_duplicate()
+	controlled_character = player
 	reset_moves()
+	object_locations.clear()
 
 	for object in objects.get_children():
+		_assign_player_duplicate(object)
+
 		if object.has_method("is_floor_object") and object.is_floor_object():
 			if object.has_method("on_level_start"):
-				object.on_level_start(player)
+				object.on_level_start(controlled_character)
 			continue
 
 		var grid_pos = background.local_to_map(object.position)
 		object_locations[grid_pos] = object
 
 		if object.has_method("on_level_start"):
-			object.on_level_start(player)
+			object.on_level_start(controlled_character)
 
-	player_pos = background.local_to_map(player.position)
+	_refresh_active_character_state()
+	_refresh_dynamic_objects()
 
 
 func _process(_delta: float) -> void:
-	# stop all input if the level already failed
 	if level_failed:
+		return
+
+	if Input.is_action_just_pressed("change_character"):
+		_change_character()
 		return
 
 	if Input.is_action_just_pressed("ui_down"):
@@ -58,92 +71,50 @@ func _process(_delta: float) -> void:
 
 
 func _move_player(dir: int) -> void:
-	if player.moving:
+	if controlled_character == null or _any_character_moving():
 		return
-
+		
 	var offset := _dir_offset(dir)
-	var target_cell := player_pos + offset
-	
-	print("trying to move: ", dir, " target: ", target_cell)
-	print("wall at target: ", tilemap_walls.get_cell_source_id(target_cell))
-	print("object at target: ", object_locations.get(target_cell))
+	var current_pos := _get_character_cell(controlled_character)
+	var target_cell := current_pos + offset
 
-	# Wall check
 	if tilemap_walls.get_cell_source_id(target_cell) != -1:
 		return
 
+	if _cell_occupied_by_other_character(target_cell, controlled_character):
+		return
+
 	var occupying_object = object_locations.get(target_cell)
+	
+		# --- Brush mechanic -------------------------------------------------
+	# If the player holds a brush and the target is a paintable wall,
+	# let the brush paint it instead of blocking movement.
+	var held_brush := _find_brush_held_by(controlled_character)
+	if occupying_object != null \
+			and held_brush != null \
+			and occupying_object.has_method("is_paintable") \
+			and occupying_object.is_paintable():
+		# Record old wall color for undo before painting
+		var snapshot_early := _create_snapshot()
+		if occupying_object.has_method("get_color"):
+			snapshot_early["interactions"].append({
+				"object": occupying_object,
+				"old_color": occupying_object.get_color()
+			})
+		move_history.append(snapshot_early)
+		use_move()
+		held_brush.try_paint(controlled_character, occupying_object)
+		# Remove wall from object_locations so the player can now pass
+		# (the wall stays in the scene but is now passable via can_move_here)
+		_refresh_dynamic_objects()
+		return
+	# --- End brush mechanic ---------------------------------------------
 
-	# Rail direction check
-	if occupying_object != null and occupying_object.has_method("get_rail_axis"):
-		var rail_axis: String = occupying_object.get_rail_axis()
-		var moving_axis := "horizontal" if (dir == LEFT or dir == RIGHT) else "vertical"
+	if occupying_object != null and not occupying_object.can_move_here(controlled_character):
+		return
 
-		if rail_axis != moving_axis:
-			return
+	var snapshot := _create_snapshot()
 
-	# Collect all rails that are parallel to the player's movement
-	var moving_axis := "horizontal" if (dir == LEFT or dir == RIGHT) else "vertical"
-	var rails_to_move := {}
-
-	for gp in object_locations.keys():
-		var obj = object_locations[gp]
-
-		if not obj.has_method("get_rail_axis"):
-			continue
-		if obj.get_rail_axis() != moving_axis:
-			continue
-
-		if moving_axis == "horizontal" and gp.y == player_pos.y:
-			rails_to_move[gp] = obj
-		elif moving_axis == "vertical" and gp.x == player_pos.x:
-			rails_to_move[gp] = obj
-
-	# Chain through cores
-	var extra_rails := {}
-	for gp in rails_to_move.keys():
-		_collect_core_chains(gp, moving_axis, offset, rails_to_move, extra_rails)
-
-	for gp in extra_rails.keys():
-		rails_to_move[gp] = extra_rails[gp]
-
-	# Rail glow feedback
-	for gp in object_locations.keys():
-		var obj = object_locations[gp]
-		if obj.has_method("get_rail_axis"):
-			var body = obj.get_node("Body")
-			if rails_to_move.has(gp):
-				body.color = Color(0.0, 0.75, 1.0)  # will move
-			else:
-				body.color = Color(0.62, 0.18, 0.31)  # blocked
-
-	# Check blocking object
-	if occupying_object != null and not occupying_object.has_method("get_rail_axis"):
-		if not occupying_object.can_move_here(player):
-			return
-
-	# Check rail collisions
-	for gp in rails_to_move.keys():
-		var new_gp: Vector2i = gp + offset
-
-		if tilemap_walls.get_cell_source_id(new_gp) != -1:
-			return
-
-		if object_locations.has(new_gp) and not rails_to_move.has(new_gp):
-			return
-
-	# Snapshot for undo
-	var snapshot := {
-		"player_pos": player_pos,
-		"player_color": player.get_color(),
-		"interactions": [],
-		"rail_positions": {}
-	}
-
-	for gp in rails_to_move.keys():
-		snapshot["rail_positions"][rails_to_move[gp]] = gp
-
-	# Handle interact for non-rail objects
 	if occupying_object != null and occupying_object.has_method("interact"):
 		if occupying_object.has_method("get_color"):
 			snapshot["interactions"].append({
@@ -151,131 +122,62 @@ func _move_player(dir: int) -> void:
 				"old_color": occupying_object.get_color()
 			})
 
-		occupying_object.interact(player)
+		occupying_object.interact(controlled_character)
 
-	# Handle teleport
 	if occupying_object != null and occupying_object.has_method("teleport"):
-		player.moving = true
+		controlled_character.moving = true
 		move_history.append(snapshot)
-
-		# Count this as a valid move
 		use_move()
 
-		await occupying_object.teleport(player)
-		_stop_move(background.local_to_map(player.position))
+		await occupying_object.teleport(controlled_character)
+		_stop_move(controlled_character, _get_character_cell(controlled_character))
 		return
 
 	move_history.append(snapshot)
-
-	# Count this as a valid move
 	use_move()
 
-	# Remove rails from old positions
-	for gp in rails_to_move.keys():
-		object_locations.erase(gp)
-
-	# Tween everything simultaneously
 	var tween := create_tween()
 	tween.set_parallel(true)
-	player.moving = true
+	controlled_character.moving = true
 
 	if dir == LEFT:
-		player.anim.play("Look Left", -1, 2.0)
+		controlled_character.anim.play("Look Left", -1, 2.0)
 	elif dir == RIGHT:
-		player.anim.play("Look Right", -1, 2.0)
+		controlled_character.anim.play("Look Right", -1, 2.0)
 
-	tween.tween_property(player, "position", background.map_to_local(target_cell), 0.15)
-
-	for gp in rails_to_move.keys():
-		var new_gp: Vector2i = gp + offset
-		object_locations[new_gp] = rails_to_move[gp]
-		tween.tween_property(rails_to_move[gp], "position", background.map_to_local(new_gp), 0.15)
+	tween.tween_property(controlled_character, "position", background.map_to_local(target_cell), 0.15)
 
 	tween.set_parallel(false)
-	tween.tween_callback(Callable(self, "_stop_move").bind(target_cell))
+	tween.tween_callback(Callable(self, "_stop_move").bind(controlled_character, target_cell))
 
 
-func _collect_core_chains(rail_gp: Vector2i, moving_axis: String, offset: Vector2i, existing: Dictionary, extra: Dictionary) -> void:
-	var perp_offsets := [Vector2i(0, -1), Vector2i(0, 1)] if moving_axis == "horizontal" else [Vector2i(-1, 0), Vector2i(1, 0)]
+func _stop_move(character: Node2D, new_pos: Vector2i) -> void:
+	character.anim.play("Default")
+	character.moving = false
 
-	for perp in perp_offsets:
-		var neighbor_pos = rail_gp + perp
+	var resolved_pos := _process_floor_objects_for(character, new_pos)
 
-		if not object_locations.has(neighbor_pos):
-			continue
+	if character == controlled_character:
+		player_pos = resolved_pos
+	else:
+		player_pos = _get_character_cell(controlled_character)
 
-		var neighbor = object_locations[neighbor_pos]
+	_refresh_dynamic_objects()
 
-		if not neighbor.has_method("get_core_axis"):
-			continue
-
-		var core_axis: String = neighbor.get_core_axis()
-		var scan_offsets := [Vector2i(-1, 0), Vector2i(1, 0)] if core_axis == "horizontal" else [Vector2i(0, -1), Vector2i(0, 1)]
-		var core_gp := background.local_to_map(neighbor.position)
-
-		for step in scan_offsets:
-			var pos = core_gp + step
-			while object_locations.has(pos):
-				var obj = object_locations[pos]
-				if obj.has_method("get_rail_axis") and obj.get_rail_axis() == core_axis:
-					if not existing.has(pos):
-						extra[pos] = obj
-					pos += step
-				else:
-					break
-
-
-func _stop_move(new_pos: Vector2i) -> void:
-	player_pos = new_pos
-	player.anim.play("Default")
-	player.moving = false
-
-	for obj in objects.get_children():
-		if obj.has_method("is_floor_object") and obj.is_floor_object():
-			if background.local_to_map(obj.position) == player_pos:
-				if obj.has_method("interact"):
-					obj.interact(player)
-
-	var scene_name: String = get_tree().current_scene.name
-
-	if player_pos == Vector2i(11, 4) and scene_name == "Tutorial Level 1":
-		get_tree().change_scene_to_file("res://Scenes/Levels/tutorial_level_2.tscn")
+	if _handle_scene_transition():
 		return
-
-	elif player_pos == Vector2i(11, 4) and scene_name == "Tutorial Level 2":
-		get_tree().change_scene_to_file("res://Scenes/Levels/tutorial_level_3.tscn")
-		return
-
-	elif player_pos == Vector2i(11, 4) and scene_name == "Level 01":
-		get_tree().change_scene_to_file("res://Scenes/Levels/level_02.tscn")
-		return
-
-	elif player_pos == Vector2i(1, 9) and scene_name == "Level 02":
-		get_tree().change_scene_to_file("res://Scenes/Levels/level_03.tscn")
-		return
-
-	elif player_pos == Vector2i(1, 8) and scene_name == "Tutorial Level 3":
-		get_tree().change_scene_to_file("res://Scenes/Levels/level_4.tscn")
-		return
-	elif player_pos == Vector2i(7, 8) and scene_name == "Level 4":
-		get_tree().change_scene_to_file("res://Scenes/Levels/level_5.tscn")
-		return
-
 
 
 func _undo_move() -> void:
-	if player.moving or move_history.is_empty():
+	if _any_character_moving() or move_history.is_empty():
 		return
 
 	var snapshot = move_history.pop_back()
-
-	player.set_color(snapshot["player_color"])
 
 	for entry in snapshot["interactions"]:
 		if entry["object"] and entry["object"].has_method("set_color"):
 			entry["object"].set_color(entry["old_color"])
 
-	# undo move counter too
 	if move_limit != -1 and moves_used > 0:
 		moves_used -= 1
 		update_moves_ui()
@@ -283,21 +185,34 @@ func _undo_move() -> void:
 	var tween := create_tween()
 	tween.set_parallel(true)
 	player.moving = true
-
-	for obj in snapshot["rail_positions"].keys():
-		var old_pos: Vector2i = snapshot["rail_positions"][obj]
-		var current_gp := background.local_to_map(obj.position)
-		object_locations.erase(current_gp)
-		object_locations[old_pos] = obj
-		tween.tween_property(obj, "position", background.map_to_local(old_pos), 0.1)
+	player_duplicate.moving = true
 
 	tween.tween_property(player, "position", background.map_to_local(snapshot["player_pos"]), 0.1)
 
+	if player_duplicate.visible or snapshot["duplicate_visible"]:
+		player_duplicate.visible = true
+		tween.tween_property(player_duplicate, "position", background.map_to_local(snapshot["duplicate_pos"]), 0.1)
+
 	tween.set_parallel(false)
 	tween.tween_callback(func():
-		player_pos = snapshot["player_pos"]
+		player.position = background.map_to_local(snapshot["player_pos"])
+		player.set_color(snapshot["player_color"])
 		player.anim.play("Default")
 		player.moving = false
+
+		player_duplicate.position = background.map_to_local(snapshot["duplicate_pos"])
+		player_duplicate.set_color(snapshot["duplicate_color"])
+		player_duplicate.visible = snapshot["duplicate_visible"]
+		player_duplicate.anim.play("Default")
+		player_duplicate.moving = false
+
+		if snapshot["controlled_is_duplicate"] and snapshot["duplicate_visible"]:
+			controlled_character = player_duplicate
+		else:
+			controlled_character = player
+
+		_refresh_active_character_state()
+		_refresh_dynamic_objects()
 	)
 
 
@@ -314,11 +229,22 @@ func _dir_offset(dir: int) -> Vector2i:
 
 	return Vector2i.ZERO
 
-
+func update_brush_ui(brush_color: Color = Color.TRANSPARENT) -> void:
+	if not has_node("CanvasLayer/BrushIndicator"):
+		return
+	var indicator: TextureRect = $CanvasLayer/BrushIndicator
+	if brush_color == Color.TRANSPARENT:
+		# no brush held — gray it out
+		indicator.self_modulate = Color(0.35, 0.35, 0.35, 1.0)
+	else:
+		# brush picked up — light it with the player's color
+		indicator.self_modulate = brush_color
+		
+		
 func update_moves_ui() -> void:
 	print("has node: ", has_node("CanvasLayer/MovesContainer/MovesLabel"))
 	print("move_limit: ", move_limit)
-	
+
 	if not has_node("CanvasLayer/MovesContainer/MovesLabel"):
 		return
 
@@ -334,6 +260,8 @@ func reset_moves() -> void:
 	moves_used = 0
 	level_failed = false
 	update_moves_ui()
+	update_brush_ui()
+
 
 
 func use_move() -> void:
@@ -366,14 +294,197 @@ func on_out_of_moves() -> void:
 func player_is_on_goal() -> bool:
 	var scene_name: String = get_tree().current_scene.name
 
-	if scene_name == "Tutorial Level 1" and player_pos == Vector2i(11, 4):
-		return true
-	elif scene_name == "Tutorial Level 2" and player_pos == Vector2i(11, 4):
-		return true
-	elif scene_name == "Tutorial Level 3" and player_pos == Vector2i(1, 8):
-		return true
-	elif scene_name == "Level 4" and player_pos == Vector2i(7, 8):
-		return true
-		
+	match scene_name:
+		"Tutorial Level 1":
+			return _any_character_on_cell(Vector2i(11, 4))
+		"Tutorial Level 2":
+			return _any_character_on_cell(Vector2i(11, 4))
+		"Tutorial Level 3":
+			return _any_character_on_cell(Vector2i(1, 8))
+		"Level 4":
+			return _any_character_on_cell(Vector2i(7, 8))
 
 	return false
+
+
+func get_player_duplicate() -> Node2D:
+	return player_duplicate
+
+
+func on_player_split(split_player: Node2D, duplicate: Node2D) -> void:
+	player_duplicate = duplicate
+	player_duplicate.visible = true
+	player_duplicate.moving = false
+	split_player.moving = false
+	split_player.anim.play("Default")
+	player_duplicate.anim.play("Default")
+	_refresh_active_character_state()
+	_refresh_dynamic_objects()
+
+
+func _change_character() -> void:
+	if player_duplicate == null or not player_duplicate.visible or _any_character_moving():
+		return
+
+	if controlled_character == player:
+		controlled_character = player_duplicate
+	else:
+		controlled_character = player
+
+	_refresh_active_character_state()
+	_refresh_dynamic_objects()
+
+
+func _ensure_player_duplicate() -> Node2D:
+	var duplicate = get_node_or_null("PlayerDuplicate")
+	if duplicate == null:
+		duplicate = PLAYER_DUPLICATE_SCENE.instantiate()
+		add_child(duplicate)
+
+	duplicate.position = player.position
+	duplicate.visible = false
+	duplicate.set_color(player.get_color())
+	return duplicate
+
+
+func _assign_player_duplicate(object: Node) -> void:
+	for property in object.get_property_list():
+		if property.name == "player_duplicate":
+			object.set("player_duplicate", player_duplicate)
+			return
+
+
+func _refresh_active_character_state() -> void:
+	if controlled_character == null:
+		controlled_character = player
+
+	if controlled_character == player_duplicate and (player_duplicate == null or not player_duplicate.visible):
+		controlled_character = player
+
+	player_pos = _get_character_cell(controlled_character)
+	get_tree().call_group("uwpc", "update_with_player", controlled_character)
+
+
+func _refresh_dynamic_objects() -> void:
+	for obj in objects.get_children():
+		if obj.has_method("update_state"):
+			obj.update_state(self)
+
+
+func _create_snapshot() -> Dictionary:
+	return {
+		"player_pos": _get_character_cell(player),
+		"player_color": player.get_color(),
+		"duplicate_visible": player_duplicate.visible,
+		"duplicate_pos": _get_character_cell(player_duplicate),
+		"duplicate_color": player_duplicate.get_color(),
+		"controlled_is_duplicate": controlled_character == player_duplicate,
+		"interactions": []
+	}
+
+
+func _get_character_cell(character: Node2D) -> Vector2i:
+	return background.local_to_map(character.position)
+
+
+func _get_other_character(character: Node2D) -> Node2D:
+	if player_duplicate == null or not player_duplicate.visible:
+		return null
+
+	if character == player:
+		return player_duplicate
+
+	return player
+
+
+func _cell_occupied_by_other_character(cell: Vector2i, character: Node2D) -> bool:
+	var other = _get_other_character(character)
+	return other != null and _get_character_cell(other) == cell
+
+
+func _any_character_moving() -> bool:
+	return player.moving or player_duplicate.moving
+
+
+func _process_floor_objects_for(character: Node2D, start_pos: Vector2i) -> Vector2i:
+	var current_pos := start_pos
+	var iterations := 0
+
+	while iterations < max(objects.get_child_count(), 1):
+		iterations += 1
+		var moved_to_new_cell := false
+
+		for obj in objects.get_children():
+			if not obj.has_method("is_floor_object") or not obj.is_floor_object():
+				continue
+
+			if background.local_to_map(obj.position) != current_pos:
+				continue
+
+			if obj.has_method("interact"):
+				obj.interact(character)
+
+			var updated_pos := _get_character_cell(character)
+			if updated_pos != current_pos:
+				current_pos = updated_pos
+				moved_to_new_cell = true
+				break
+
+		if not moved_to_new_cell:
+			break
+
+	return current_pos
+
+
+func _any_character_on_cell(cell: Vector2i) -> bool:
+	if _get_character_cell(player) == cell:
+		return true
+
+	if player_duplicate != null and player_duplicate.visible and _get_character_cell(player_duplicate) == cell:
+		return true
+
+	return false
+
+
+func is_character_on_cell(cell: Vector2i) -> bool:
+	return _any_character_on_cell(cell)
+
+
+func _handle_scene_transition() -> bool:
+	var scene_name: String = get_tree().current_scene.name
+
+	if scene_name == "Tutorial Level 1" and _any_character_on_cell(Vector2i(11, 4)):
+		get_tree().change_scene_to_file("res://Scenes/Levels/tutorial_level_2.tscn")
+		return true
+
+	if scene_name == "Tutorial Level 2" and _any_character_on_cell(Vector2i(11, 4)):
+		get_tree().change_scene_to_file("res://Scenes/Levels/tutorial_level_3.tscn")
+		return true
+
+	if scene_name == "Level 01" and _any_character_on_cell(Vector2i(11, 4)):
+		get_tree().change_scene_to_file("res://Scenes/Levels/level_02.tscn")
+		return true
+
+	if scene_name == "Level 02" and _any_character_on_cell(Vector2i(1, 9)):
+		get_tree().change_scene_to_file("res://Scenes/Levels/level_03.tscn")
+		return true
+
+	if scene_name == "Tutorial Level 3" and _any_character_on_cell(Vector2i(1, 8)):
+		get_tree().change_scene_to_file("res://Scenes/Levels/level_4.tscn")
+		return true
+
+	if scene_name == "Level 4" and _any_character_on_cell(Vector2i(7, 8)):
+		get_tree().change_scene_to_file("res://Scenes/Levels/level_5.tscn")
+		return true
+		
+	if scene_name == "Level 5" and _any_character_on_cell(Vector2i(16, 2)):
+		get_tree().change_scene_to_file("res://Scenes/Levels/split_test_level.tscn")
+		return true
+
+	return false
+	
+func _find_brush_held_by(character: Node2D) -> Node2D:
+	for obj in objects.get_children():
+		if obj.has_method("try_paint") and obj.get("held_by") == character:
+			return obj
+	return null

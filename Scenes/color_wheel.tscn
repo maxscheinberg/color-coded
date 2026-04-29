@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dybnjqbl3u3f5" path="res://Scripts/color_wheel_ring.gd" id="1_ring"]
 
-[node name="ColorWheel" type="Control" unique_id=665712450]
+[node name="ColorWheel" type="Control" unique_id=665712450 groups=["uwpc"]]
 custom_minimum_size = Vector2(258, 258)
 layout_mode = 3
 anchors_preset = 0

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://biyg6nxxj6r7t"]
+
+[ext_resource type="Script" uid="uid://nl6xwfcafeni" path="res://Scripts/Interactables/brush_pickup.gd" id="1_brscr"]
+[ext_resource type="Texture2D" uid="uid://dc13hrfdsv5cd" path="res://Assets/brush.png" id="2_brtex"]
+
+[node name="BrushPickup" type="Node2D" unique_id=267070460]
+script = ExtResource("1_brscr")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1866397130]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_brtex")

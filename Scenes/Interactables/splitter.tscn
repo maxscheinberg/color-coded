@@ -1,0 +1,61 @@
+[gd_scene format=4 uid="uid://v8vpdndxi0qe"]
+
+[ext_resource type="Script" uid="uid://b04epxptmpw3f" path="res://Scripts/Interactables/splitter.gd" id="1_tm7da"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_tm7da"]
+_data = PackedByteArray("AAADAAUAAAABAAAAQAAAAEAAAABOAAAAUklGRkYAAABXRUJQVlA4TDkAAAAvP8APAA8w//M///MfeFASAGizYwlDA6oTgDA7luPAbTai/xMQ7z+RFTRDFCg3t6QSClqRyHHhewEA")
+size_override = Vector2(64, 64)
+
+[sub_resource type="Animation" id="Animation_tm7da"]
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uqwi1"]
+_data = {
+&"default": SubResource("Animation_tm7da")
+}
+
+[node name="Splitter" type="Node2D" unique_id=1461999553]
+script = ExtResource("1_tm7da")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1795301653]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_tm7da")
+metadata/_aseprite_wizard_interface_config_ = {
+"output_section": false,
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "Sprite2D/AnimationPlayer",
+"scale": "1.0",
+"slice": "",
+"source": "res://Assets/Interactables/splitter.aseprite",
+"source_uid": 7309244233281212283
+}
+metadata/_aseprite_wizard_source_file_hash_ = "7e79fc940418eed3fe1c40a953bbfef6"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=635220424]
+libraries/ = SubResource("AnimationLibrary_uqwi1")

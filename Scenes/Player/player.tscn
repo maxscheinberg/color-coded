@@ -79,7 +79,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uvnfx"]
-size = Vector2(64, 63)
+size = Vector2(64, 64)
 
 [node name="Player" type="CharacterBody2D" unique_id=1803487026]
 collision_mask = 255
@@ -123,5 +123,4 @@ metadata/_aseprite_wizard_source_file_hash_ = "283059591e144da5e27d492c08ada450"
 libraries/ = SubResource("AnimationLibrary_0u5uq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=332833546]
-position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_uvnfx")

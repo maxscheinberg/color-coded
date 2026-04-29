@@ -1,7 +1,7 @@
-[gd_scene format=4 uid="uid://bdt37datp8shu"]
+[gd_scene format=4 uid="uid://bdej117nfott0"]
 
 [ext_resource type="PackedScene" uid="uid://b8oiih760r158" path="res://Scenes/Levels/levelbase.tscn" id="1_sbiev"]
-[ext_resource type="Script" uid="uid://4cgsv1xeuien" path="res://Scripts/Levels/tutorial_level_2.gd" id="2_sbiev"]
+[ext_resource type="Script" path="res://Scripts/Levels/tutorial_level_2.gd" id="2_sbiev"]
 [ext_resource type="Texture2D" uid="uid://b25hkahsq0bqu" path="res://Assets/spritesheet grey.png" id="3_tlei1"]
 [ext_resource type="PackedScene" uid="uid://bd8fbishdjwak" path="res://Scenes/Interactables/color_wall.tscn" id="4_23l2s"]
 [ext_resource type="PackedScene" uid="uid://hs443laxkp8b" path="res://Scenes/Interactables/color_adder.tscn" id="5_5ek03"]
