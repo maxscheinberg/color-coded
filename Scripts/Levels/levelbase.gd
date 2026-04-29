@@ -456,34 +456,50 @@ func _handle_scene_transition() -> bool:
 	var scene_name: String = get_tree().current_scene.name
 
 	if scene_name == "Tutorial Level 1" and _any_character_on_cell(Vector2i(11, 4)):
-		get_tree().change_scene_to_file("res://Scenes/Levels/tutorial_level_2.tscn")
+		_play_level_complete("res://Scenes/Levels/tutorial_level_2.tscn")
 		return true
 
 	if scene_name == "Tutorial Level 2" and _any_character_on_cell(Vector2i(11, 4)):
-		get_tree().change_scene_to_file("res://Scenes/Levels/tutorial_level_3.tscn")
+		_play_level_complete("res://Scenes/Levels/tutorial_level_3.tscn")
 		return true
 
 	if scene_name == "Level 01" and _any_character_on_cell(Vector2i(11, 4)):
-		get_tree().change_scene_to_file("res://Scenes/Levels/level_02.tscn")
+		_play_level_complete("res://Scenes/Levels/level_02.tscn")
 		return true
 
 	if scene_name == "Level 02" and _any_character_on_cell(Vector2i(1, 9)):
-		get_tree().change_scene_to_file("res://Scenes/Levels/level_03.tscn")
+		_play_level_complete("res://Scenes/Levels/level_03.tscn")
 		return true
 
 	if scene_name == "Tutorial Level 3" and _any_character_on_cell(Vector2i(1, 8)):
-		get_tree().change_scene_to_file("res://Scenes/Levels/level_4.tscn")
+		_play_level_complete("res://Scenes/Levels/level_4.tscn")
 		return true
 
 	if scene_name == "Level 4" and _any_character_on_cell(Vector2i(7, 8)):
-		get_tree().change_scene_to_file("res://Scenes/Levels/level_5.tscn")
+		_play_level_complete("res://Scenes/Levels/level_5.tscn")
 		return true
-		
+
 	if scene_name == "Level 5" and _any_character_on_cell(Vector2i(16, 2)):
-		get_tree().change_scene_to_file("res://Scenes/Levels/split_test_level.tscn")
+		_play_level_complete("res://Scenes/Levels/split_test_level.tscn")
 		return true
 
 	return false
+
+func _play_level_complete(next_scene: String) -> void:
+	# Block any further input
+	level_failed = true
+
+	# Pop all characters
+	for character in get_tree().get_nodes_in_group("characters"):
+		var tween := create_tween()
+		tween.tween_property(character, "scale", Vector2(1.4, 1.4), 0.12)\
+			.set_ease(Tween.EASE_OUT)
+		tween.tween_property(character, "scale", Vector2(0.0, 0.0), 0.18)\
+			.set_ease(Tween.EASE_IN)
+
+	# Wait then transition
+	await get_tree().create_timer(0.35).timeout
+	get_tree().change_scene_to_file(next_scene)
 	
 func _find_brush_held_by(character: Node2D) -> Node2D:
 	for obj in objects.get_children():

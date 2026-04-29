@@ -22,9 +22,12 @@ func get_color() -> Color:
 func is_white() -> bool:
 	return GameColors.match(get_color(), GameColors.WHITE)
 
+
+#added tiny tween when trasitioning color
 func set_color(col: Color) -> void:
-	sprite.self_modulate = GameColors.canonical(col)
-	get_tree().call_group("uwpc", "update_with_player", self)
+	var new_color := GameColors.canonical(col)
+	var tween := create_tween()
+	tween.tween_property(sprite, "self_modulate", new_color, 0.08)
 
 func play_invalid_feedback(source_pos: Vector2) -> void:
 	if invalid_feedback_playing:
