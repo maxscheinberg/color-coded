@@ -11,11 +11,7 @@
 [ext_resource type="FontFile" uid="uid://7nx8w2d5mm0s" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="7_2khew"]
 [ext_resource type="Texture2D" uid="uid://dc13hrfdsv5cd" path="res://Assets/brush.png" id="10_cjb10"]
 
-<<<<<<< HEAD
 [node name="Level 6" unique_id=2120704257 instance=ExtResource("1_eygg8")]
-=======
-[node name="Level 4" unique_id=2120704257 instance=ExtResource("1_eygg8")]
->>>>>>> origin/main
 move_limit = 1000
 
 [node name="Background" parent="." index="0" unique_id=1233328414]
