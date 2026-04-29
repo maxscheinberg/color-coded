@@ -8,7 +8,8 @@ extends Node2D
 @onready var rect: ColorRect = $ColorRect
 
 # Neutral color shown before any paint is applied
-const NEUTRAL_COLOR := Color(0.85, 0.85, 0.85, 1.0)
+#changed to white for consistency mixing logic would work just fine here
+const NEUTRAL_COLOR := Color(1.0, 1.0, 1.0, 1.0)
 
 @export var painted_color: Color = Color.TRANSPARENT   # invalid = unpainted
 @export var is_painted: bool = false

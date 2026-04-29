@@ -23,6 +23,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -136,23 +138,35 @@ theme_override_font_sizes/font_size = 7
 text = "— LEVELS —"
 horizontal_alignment = 1
 
-[node name="BtnLevel3" type="Button" parent="CenterContainer/VBox" unique_id=199893566]
+[node name="BtnLevel4" type="Button" parent="CenterContainer/VBox" unique_id=199893566]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 10
 text = "LEVEL 4"
 
-[node name="BtnLevel4" type="Button" parent="CenterContainer/VBox" unique_id=63164349]
+[node name="BtnLevel5" type="Button" parent="CenterContainer/VBox" unique_id=63164349]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 10
 text = "LEVEL 5"
 
-[node name="BtnLevel5" type="Button" parent="CenterContainer/VBox" unique_id=453721182]
+[node name="BtnLevel6" type="Button" parent="CenterContainer/VBox" unique_id=453721182]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 10
 text = "LEVEL 6"
+
+[node name="BtnLevel7" type="Button" parent="CenterContainer/VBox" unique_id=304698829]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 10
+text = "LEVEL 7"
+
+[node name="BtnLevel8" type="Button" parent="CenterContainer/VBox" unique_id=2142588962]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 10
+text = "LEVEL 8"
 
 [node name="SpacerBottom" type="Control" parent="CenterContainer/VBox" unique_id=1662274556]
 custom_minimum_size = Vector2(0, 8)
@@ -179,7 +193,9 @@ text = "v0.1"
 [connection signal="pressed" from="CenterContainer/VBox/BtnTutorial1" to="." method="_on_tutorial_1_pressed"]
 [connection signal="pressed" from="CenterContainer/VBox/BtnTutorial2" to="." method="_on_tutorial_2_pressed"]
 [connection signal="pressed" from="CenterContainer/VBox/BtnTutorial3" to="." method="_on_tutorial_3_pressed"]
-[connection signal="pressed" from="CenterContainer/VBox/BtnLevel3" to="." method="_on_level_3_pressed"]
-[connection signal="pressed" from="CenterContainer/VBox/BtnLevel4" to="." method="_on_level_4_pressed"]
-[connection signal="pressed" from="CenterContainer/VBox/BtnLevel5" to="." method="_on_level_5_pressed"]
+[connection signal="pressed" from="CenterContainer/VBox/BtnLevel4" to="." method="_on_btn_level_4_pressed"]
+[connection signal="pressed" from="CenterContainer/VBox/BtnLevel5" to="." method="_on_btn_level_5_pressed"]
+[connection signal="pressed" from="CenterContainer/VBox/BtnLevel6" to="." method="_on_btn_level_6_pressed"]
+[connection signal="pressed" from="CenterContainer/VBox/BtnLevel7" to="." method="_on_btn_level_7_pressed"]
+[connection signal="pressed" from="CenterContainer/VBox/BtnLevel8" to="." method="_on_btn_level_8_pressed"]
 [connection signal="pressed" from="CenterContainer/VBox/BtnBack" to="." method="_on_back_pressed"]

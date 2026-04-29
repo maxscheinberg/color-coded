@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://0h1rc6gegqii"
-path="res://.godot/imported/blocked_movement_thud.mp3-063285b4f6873d1c04e44ca1a11d69e4.mp3str"
+path="res://.godot/imported/blocked_movement_thud.mp3-f32f0a150342016e9cbfe47cbb6f2501.mp3str"
 
 [deps]
 
-source_file="res://Assets/Audio/SFX/blocked_movement_thud.mp3"
-dest_files=["res://.godot/imported/blocked_movement_thud.mp3-063285b4f6873d1c04e44ca1a11d69e4.mp3str"]
+source_file="res://Assets/audio/SFX/blocked_movement_thud.mp3"
+dest_files=["res://.godot/imported/blocked_movement_thud.mp3-f32f0a150342016e9cbfe47cbb6f2501.mp3str"]
 
 [params]
 

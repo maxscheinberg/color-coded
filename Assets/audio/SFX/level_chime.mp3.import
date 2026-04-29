@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://daf0xy6dlbayu"
-path="res://.godot/imported/level_chime.mp3-8a3a674d7afbc6b3436567d889e739ba.mp3str"
+path="res://.godot/imported/level_chime.mp3-3cc316ea09bb79c7aeacd21c7969a9e8.mp3str"
 
 [deps]
 
-source_file="res://Assets/Audio/SFX/level_chime.mp3"
-dest_files=["res://.godot/imported/level_chime.mp3-8a3a674d7afbc6b3436567d889e739ba.mp3str"]
+source_file="res://Assets/audio/SFX/level_chime.mp3"
+dest_files=["res://.godot/imported/level_chime.mp3-3cc316ea09bb79c7aeacd21c7969a9e8.mp3str"]
 
 [params]
 

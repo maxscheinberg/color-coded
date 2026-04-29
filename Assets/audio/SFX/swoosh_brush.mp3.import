@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://dwmjrway7xo41"
-path="res://.godot/imported/swoosh_brush.mp3-eb61518f20e13bbbc25502772943bfb0.mp3str"
+path="res://.godot/imported/swoosh_brush.mp3-f138c529af7592b72dbd21ede1ae7b04.mp3str"
 
 [deps]
 
-source_file="res://Assets/Audio/SFX/swoosh_brush.mp3"
-dest_files=["res://.godot/imported/swoosh_brush.mp3-eb61518f20e13bbbc25502772943bfb0.mp3str"]
+source_file="res://Assets/audio/SFX/swoosh_brush.mp3"
+dest_files=["res://.godot/imported/swoosh_brush.mp3-f138c529af7592b72dbd21ede1ae7b04.mp3str"]
 
 [params]
 

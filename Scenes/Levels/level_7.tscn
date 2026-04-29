@@ -1,0 +1,107 @@
+[gd_scene format=4 uid="uid://ctbtct1khojti"]
+
+[ext_resource type="PackedScene" uid="uid://b8oiih760r158" path="res://Scenes/Levels/levelbase.tscn" id="1_0h4al"]
+[ext_resource type="PackedScene" uid="uid://biyg6nxxj6r7t" path="res://Scenes/Interactables/brush_pickup.tscn" id="2_ow8w2"]
+[ext_resource type="PackedScene" path="res://Scenes/Interactables/paintable_wall.tscn" id="3_gb6nk"]
+[ext_resource type="PackedScene" uid="uid://b46mq8hh6cw5k" path="res://Scenes/Player/player_duplicate.tscn" id="4_7se1c"]
+[ext_resource type="PackedScene" uid="uid://v8vpdndxi0qe" path="res://Scenes/Interactables/splitter.tscn" id="5_nlhb4"]
+[ext_resource type="PackedScene" uid="uid://bd8fbishdjwak" path="res://Scenes/Interactables/color_wall.tscn" id="6_sydce"]
+[ext_resource type="PackedScene" uid="uid://hs443laxkp8b" path="res://Scenes/Interactables/color_adder.tscn" id="7_uhw5r"]
+[ext_resource type="PackedScene" uid="uid://n5rh35de5qmn" path="res://Scenes/Player/player.tscn" id="8_aisj1"]
+[ext_resource type="PackedScene" uid="uid://d4c52oroxymk" path="res://Scenes/color_wheel.tscn" id="8_gb6nk"]
+[ext_resource type="FontFile" uid="uid://7nx8w2d5mm0s" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="10_7se1c"]
+[ext_resource type="Texture2D" uid="uid://vkl27g1igc74" path="res://Assets/brush.png" id="11_7se1c"]
+
+[node name="Level 7" unique_id=2120704257 instance=ExtResource("1_0h4al")]
+move_limit = -1
+
+[node name="Background" parent="." index="0" unique_id=1233328414]
+tile_map_data = PackedByteArray("AAABAAEAAAABAAIAAAABAAIAAAABAAIAAAABAAMAAAABAAIAAAABAAQAAAABAAIAAAABAAUAAAABAAIAAAABAAYAAAABAAIAAAABAAcAAAABAAIAAAABAAgAAAABAAIAAAABAAkAAAABAAIAAAACAAEAAAABAAIAAAACAAIAAAABAAIAAAACAAMAAAABAAIAAAACAAQAAAABAAIAAAACAAUAAAABAAIAAAACAAYAAAABAAIAAAACAAcAAAABAAIAAAACAAgAAAABAAIAAAACAAkAAAABAAIAAAADAAEAAAABAAIAAAADAAIAAAABAAIAAAADAAMAAAABAAIAAAADAAQAAAABAAIAAAADAAUAAAABAAIAAAADAAYAAAABAAIAAAADAAcAAAABAAIAAAADAAgAAAABAAIAAAADAAkAAAABAAIAAAAEAAEAAAABAAIAAAAEAAIAAAABAAIAAAAEAAMAAAABAAIAAAAEAAQAAAABAAIAAAAEAAUAAAABAAIAAAAEAAYAAAABAAIAAAAEAAcAAAABAAIAAAAEAAgAAAABAAIAAAAEAAkAAAABAAIAAAAFAAEAAAABAAIAAAAFAAIAAAABAAIAAAAFAAMAAAABAAIAAAAFAAQAAAABAAIAAAAFAAUAAAABAAIAAAAFAAYAAAABAAIAAAAFAAcAAAABAAIAAAAFAAgAAAABAAIAAAAFAAkAAAABAAIAAAAGAAEAAAABAAIAAAAGAAIAAAABAAIAAAAGAAMAAAABAAIAAAAGAAQAAAABAAIAAAAGAAUAAAABAAIAAAAGAAYAAAABAAIAAAAGAAcAAAABAAIAAAAGAAgAAAABAAIAAAAGAAkAAAABAAIAAAAHAAEAAAABAAIAAAAHAAIAAAABAAIAAAAHAAMAAAABAAIAAAAHAAQAAAABAAIAAAAHAAUAAAABAAIAAAAHAAYAAAABAAIAAAAHAAcAAAABAAIAAAAHAAgAAAABAAIAAAAHAAkAAAABAAIAAAAIAAEAAAABAAIAAAAIAAIAAAABAAIAAAAIAAMAAAABAAIAAAAIAAQAAAABAAIAAAAIAAUAAAABAAIAAAAIAAYAAAABAAIAAAAIAAcAAAABAAIAAAAIAAgAAAABAAIAAAAIAAkAAAABAAIAAAAJAAEAAAABAAIAAAAJAAIAAAABAAIAAAAJAAMAAAABAAIAAAAJAAQAAAABAAIAAAAJAAUAAAABAAIAAAAJAAYAAAABAAIAAAAJAAcAAAABAAIAAAAJAAgAAAABAAIAAAAJAAkAAAABAAIAAAAKAAEAAAABAAIAAAALAAEAAAABAAIAAAALAAIAAAABAAIAAAAKAAIAAAABAAIAAAAKAAMAAAABAAIAAAAKAAQAAAABAAIAAAALAAQAAAABAAIAAAALAAMAAAABAAIAAAAKAAUAAAABAAIAAAALAAUAAAABAAIAAAALAAYAAAABAAIAAAAKAAYAAAABAAIAAAAKAAcAAAABAAIAAAAKAAgAAAABAAIAAAALAAgAAAABAAIAAAALAAcAAAABAAIAAAA=")
+
+[node name="Walls" parent="." index="1" unique_id=1740214358]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAEAAAAAAAkAAAAAAAMAAAAAAAEAAAAAAAIAAAAAAAIAAAAAAAIAAAAAAAMAAAAAAAIAAAAAAAYAAAAAAAIAAAAAAAcAAAAAAAIAAAAAAAgAAAAAAAIAAAABAAAAAAABAAEAAAACAAAAAAABAAEAAAADAAAAAAABAAEAAAAEAAAAAAABAAEAAAAFAAAAAAABAAEAAAAGAAAAAAABAAEAAAAHAAAAAAABAAEAAAAIAAAAAAABAAEAAAAJAAAAAAABAAEAAAAJAAkAAAABAAMAAAAIAAkAAAABAAMAAAAHAAkAAAABAAMAAAAGAAkAAAABAAMAAAAFAAkAAAABAAMAAAAEAAkAAAABAAMAAAADAAkAAAABAAMAAAACAAkAAAABAAMAAAABAAkAAAABAAMAAAAAAAUAAAAAAAIAAAAAAAQAAAAAAAIAAAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAEAAMAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAUAAAAAAAAAAAAEAAYAAAAAAAAAAAAEAAcAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAUAAAAAAAAAAAAIAAYAAAAAAAAAAAAIAAcAAAAAAAAAAAAKAAkAAAABAAMAAAALAAkAAAABAAMAAAAMAAkAAAACAAMAAAAMAAAAAAACAAEAAAAKAAAAAAABAAEAAAALAAAAAAABAAEAAAAMAAEAAAACAAIAAAAMAAIAAAACAAIAAAAMAAMAAAACAAIAAAAMAAUAAAACAAIAAAAMAAYAAAACAAIAAAAMAAcAAAACAAIAAAAMAAgAAAACAAIAAAA=")
+
+[node name="BrushPickup" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="0" unique_id=267070460 instance=ExtResource("2_ow8w2")]
+position = Vector2(224, 224)
+scale = Vector2(0.75, 0.75)
+
+[node name="PaintableWall" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="1" unique_id=822436502 instance=ExtResource("3_gb6nk")]
+position = Vector2(288, 96)
+painted_color = Color(1, 1, 1, 1)
+
+[node name="PaintableWall2" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="2" unique_id=1441114596 instance=ExtResource("3_gb6nk")]
+position = Vector2(288, 544)
+painted_color = Color(0.137, 0.42, 0.78, 1)
+is_painted = true
+
+[node name="BrushPickup2" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="3" unique_id=810519795 instance=ExtResource("2_ow8w2")]
+position = Vector2(352, 352)
+scale = Vector2(0.75, 0.75)
+
+[node name="PlayerDuplicate" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="4" unique_id=80732309 instance=ExtResource("4_7se1c")]
+position = Vector2(-234, 1239)
+
+[node name="Splitter" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="5" unique_id=1461999553 node_paths=PackedStringArray("player_duplicate") instance=ExtResource("5_nlhb4")]
+position = Vector2(480, 224)
+new_pos1 = Vector2(480, 352)
+new_pos2 = Vector2(224, 352)
+player_duplicate = NodePath("../PlayerDuplicate")
+
+[node name="ColorWall" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="6" unique_id=1696651386 instance=ExtResource("6_sydce")]
+position = Vector2(800, 288)
+col = Color(0.5, 0.2, 0.65, 1)
+
+[node name="PaintableWall3" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="7" unique_id=76309777 instance=ExtResource("3_gb6nk")]
+position = Vector2(544, 544)
+painted_color = Color(0.5, 0.2, 0.65, 1)
+is_painted = true
+
+[node name="ColorAdder" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="8" unique_id=558619985 instance=ExtResource("7_uhw5r")]
+position = Vector2(96, 352)
+
+[node name="Color Wheel" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="9" unique_id=665712450 instance=ExtResource("8_gb6nk")]
+offset_left = 1120.0
+offset_top = -113.0
+offset_right = 1378.0
+offset_bottom = 145.0
+scale = Vector2(0.5, 0.5)
+show_secondary = true
+show_tertiary = true
+
+[node name="Player" parent="." index="4" unique_id=1803487026 instance=ExtResource("8_aisj1")]
+position = Vector2(96, 96)
+col = Color(0.91, 0.102, 0.102, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="5" unique_id=125720007]
+
+[node name="MovesContainer" type="Control" parent="CanvasLayer" index="0" unique_id=1843148623]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 56.0
+offset_bottom = 56.0
+metadata/_edit_use_anchors_ = true
+
+[node name="MovesLabel" type="Label" parent="CanvasLayer/MovesContainer" index="0" unique_id=1299489280]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("10_7se1c")
+text = "MOVES: "
+metadata/_edit_use_anchors_ = true
+
+[node name="MovesCount" type="Label" parent="CanvasLayer/MovesContainer" index="1" unique_id=922665858]
+layout_mode = 0
+offset_left = 94.0
+offset_top = -1.0
+offset_right = 134.0
+offset_bottom = 22.0
+theme_override_fonts/font = ExtResource("10_7se1c")
+
+[node name="BrushIndicator" type="TextureRect" parent="CanvasLayer" index="1" unique_id=1777178161]
+offset_top = 40.0
+offset_right = 64.0
+offset_bottom = 104.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("11_7se1c")
