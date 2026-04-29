@@ -388,10 +388,6 @@ func _handle_scene_transition() -> bool:
 		return true
 
 	if scene_name == "Level 4" and _any_character_on_cell(Vector2i(7, 8)):
-		_play_level_complete("res://Scenes/Levels/level_5.tscn")
-		return true
-
-	if scene_name == "Level 5" and _any_character_on_cell(Vector2i(15, 2)):
 		_play_level_complete("res://Scenes/Levels/level_6.tscn")
 		return true
 
@@ -403,8 +399,6 @@ func _handle_scene_transition() -> bool:
 		_play_level_complete("res://Scenes/Levels/level_8.tscn")
 		return true
 		
-		
-
 	return false
 
 
