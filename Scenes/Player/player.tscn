@@ -1,6 +1,8 @@
 [gd_scene format=4 uid="uid://n5rh35de5qmn"]
 
 [ext_resource type="Script" uid="uid://b5y32j32frnss" path="res://Scripts/player.gd" id="1_a3d8c"]
+[ext_resource type="AudioStream" uid="uid://cneboxq2njtc1" path="res://Assets/Audio/SFX/blocked_movement_thud.mp3" id="2_xpcdj"]
+[ext_resource type="AudioStream" uid="uid://c31s7r6w5k8b4" path="res://Assets/Audio/SFX/color_change_pop.mp3" id="3_mtuoh"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_uvnfx"]
 _data = PackedByteArray("AAADAAUAAAABAAAAwAAAAMAAAACEAAAAUklGRnwAAABXRUJQVlA4THAAAAAvv8AvEBcw//M///MfgAeGkSQlIsnT/LCPE+fdKqL/ity2beRTOu3kF8sdKigYWCkKtmCg7mN9rM/H+or1zf0nUmqrBiAHqrZmAbBUDCjYJTdQs3W8bGDuX2SZbt1xQA6sFAWbomCPl/EPrZOiPrkY")
@@ -124,3 +126,11 @@ libraries/ = SubResource("AnimationLibrary_0u5uq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=332833546]
 shape = SubResource("RectangleShape2D_uvnfx")
+
+[node name="BlockedSfx" type="AudioStreamPlayer" parent="." unique_id=325036695]
+stream = ExtResource("2_xpcdj")
+bus = &"SFX"
+
+[node name="ColorChangeSfx" type="AudioStreamPlayer" parent="." unique_id=1868776388]
+stream = ExtResource("3_mtuoh")
+bus = &"SFX"

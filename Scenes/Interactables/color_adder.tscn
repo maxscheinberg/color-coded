@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://coltlupsy22vw" path="res://Scripts/Interactables/color_adder.gd" id="1_qysv1"]
 [ext_resource type="AudioStream" uid="uid://dtyfh8ngi3cix" path="res://Assets/Interactables/soft_error.wav" id="2_jfgro"]
+[ext_resource type="AudioStream" uid="uid://c31s7r6w5k8b4" path="res://Assets/Audio/SFX/color_change_pop.mp3" id="3_xdscg"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_qysv1"]
 _data = PackedByteArray("AAADAAUAAAABAAAAQAAAAEAAAAB8AAAAUklGRnQAAABXRUJQVlA4TGcAAAAvP8APEBcw//M///MfgAfHbSM5Ur07v7XReVdp7nShZs+8I/o/AfiSJFmFxQpMbVMWLoqmSQkPZd/YNLtt0uITqNE0NsX9fyPHptn5dExafAI02HLPpIQHCkxTFi5ksKGECnigyicDAA==")
@@ -65,3 +66,5 @@ libraries/ = SubResource("AnimationLibrary_jfgro")
 stream = ExtResource("2_jfgro")
 
 [node name="ValidSfx" type="AudioStreamPlayer2D" parent="." unique_id=2114489345]
+stream = ExtResource("3_xdscg")
+bus = &"SFX"

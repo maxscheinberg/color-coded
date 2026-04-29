@@ -609,6 +609,7 @@ script = ExtResource("1_uvtox")
 background = NodePath("Background")
 tilemap_walls = NodePath("Walls")
 objects = NodePath("Objects")
+move_limit = null
 
 [node name="Background" type="TileMapLayer" parent="." unique_id=1233328414]
 tile_set = SubResource("TileSet_svt1p")

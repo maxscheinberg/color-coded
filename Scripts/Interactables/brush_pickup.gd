@@ -9,6 +9,8 @@ extends Node2D
 # recorded as interactions in the levelbase snapshot.
  
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var pickup_sfx: AudioStreamPlayer = $PickupSfx
+@onready var paint_sfx: AudioStreamPlayer = $PaintSfx
  
 # The level's background TileMapLayer — assigned automatically by levelbase
 # via the standard _assign_player_duplicate / property-injection pattern.
@@ -37,6 +39,8 @@ func interact(player) -> void:
 		return
 	held_by = player
 	visible = false
+	pickup_sfx.play()
+	
 	var level = _get_level()
 	if level:
 		level.update_brush_ui(player.get_color())
@@ -58,7 +62,9 @@ func try_paint(player, target_object) -> bool:
  
 	# Record old state for undo before applying
 	target_object.apply_paint(player.get_color())
+	paint_sfx.play()
 	_consume()
+	
 	return true
  
 func _consume() -> void:
@@ -67,6 +73,7 @@ func _consume() -> void:
 	var level = _get_level()
 	if level:
 		level.update_brush_ui(Color.TRANSPARENT)
+	await get_tree().create_timer(0.5).timeout
 	queue_free()
  
 # ── Undo support ───────────────────────────────────────────────────────

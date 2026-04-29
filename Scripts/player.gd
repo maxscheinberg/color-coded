@@ -3,10 +3,14 @@ extends CharacterBody2D
 @export var col: Color
 @onready var anim: AnimationPlayer = $Sprite2D/AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var blocked_sfx: AudioStreamPlayer = $BlockedSfx
+@onready var color_change_sfx: AudioStreamPlayer = $ColorChangeSfx
 
 var moving = false
 var input_dir : Vector2 = Vector2.ZERO
 var invalid_feedback_playing: bool = false
+var _current_color: Color = Color.TRANSPARENT
+var _initialized: bool = false
 
 enum { LEFT, RIGHT, UP, DOWN }
 
@@ -26,10 +30,16 @@ func is_white() -> bool:
 #added tiny tween when trasitioning color
 func set_color(col: Color) -> void:
 	var new_color := GameColors.canonical(col)
+	if _initialized:
+		color_change_sfx.play()
+	else:
+		_initialized = true
+	_current_color = new_color
 	var tween := create_tween()
 	tween.tween_property(sprite, "self_modulate", new_color, 0.08)
-
+	
 func play_invalid_feedback(source_pos: Vector2) -> void:
+	blocked_sfx.play()
 	if invalid_feedback_playing:
 		return
 

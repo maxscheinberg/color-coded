@@ -79,6 +79,9 @@ func _move_player(dir: int) -> void:
 	var target_cell := current_pos + offset
 
 	if tilemap_walls.get_cell_source_id(target_cell) != -1:
+		controlled_character.play_invalid_feedback(
+			tilemap_walls.map_to_local(target_cell)
+		)
 		return
 
 	if _cell_occupied_by_other_character(target_cell, controlled_character):
@@ -111,6 +114,7 @@ func _move_player(dir: int) -> void:
 	# --- End brush mechanic ---------------------------------------------
 
 	if occupying_object != null and not occupying_object.can_move_here(controlled_character):
+		controlled_character.play_invalid_feedback(occupying_object.global_position)
 		return
 
 	var snapshot := _create_snapshot()

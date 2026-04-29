@@ -7,6 +7,7 @@ signal next_pressed
 @onready var btn_next: Button = $Panel/VBox/BtnNext
 
 func _ready() -> void:
+	$ChimeSfx.play()
 	panel.scale = Vector2(0.6, 0.6)
 	panel.modulate.a = 0.0
 	# Animate in

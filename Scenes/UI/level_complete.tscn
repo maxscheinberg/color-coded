@@ -1,66 +1,73 @@
-[gd_scene format=3 uid="uid://level_complete_001"]
+[gd_scene format=3 uid="uid://dxuc7fr425v7l"]
 
-[ext_resource type="Script" path="res://Scripts/UI/level_complete.gd" id="1_lcscr"]
-[ext_resource type="FontFile" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_lcfnt"]
+[ext_resource type="Script" uid="uid://rjoemud445k2" path="res://Scripts/UI/level_complete.gd" id="1_lcscr"]
+[ext_resource type="FontFile" uid="uid://7nx8w2d5mm0s" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_lcfnt"]
+[ext_resource type="AudioStream" uid="uid://c4qsdooshflfn" path="res://Assets/Audio/SFX/level_chime.mp3" id="3_w40xb"]
 
-[node name="LevelComplete" type="CanvasLayer"]
+[node name="LevelComplete" type="CanvasLayer" unique_id=370545472]
 script = ExtResource("1_lcscr")
 
-[node name="Overlay" type="ColorRect" parent="."]
+[node name="Overlay" type="ColorRect" parent="." unique_id=79869325]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(0.051, 0.051, 0.078, 0.82)
 
-[node name="Panel" type="CenterContainer" parent="."]
+[node name="Panel" type="CenterContainer" parent="." unique_id=1555364412]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="VBox" type="VBoxContainer" parent="Panel"]
+[node name="VBox" type="VBoxContainer" parent="Panel" unique_id=1367968022]
 custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="ColorBar" type="HBoxContainer" parent="Panel/VBox"]
+[node name="ColorBar" type="HBoxContainer" parent="Panel/VBox" unique_id=1167598264]
 custom_minimum_size = Vector2(260, 5)
+layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="BarRed" type="ColorRect" parent="Panel/VBox/ColorBar"]
+[node name="BarRed" type="ColorRect" parent="Panel/VBox/ColorBar" unique_id=159537572]
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.91, 0.267, 0.267, 1)
 
-[node name="BarYellow" type="ColorRect" parent="Panel/VBox/ColorBar"]
+[node name="BarYellow" type="ColorRect" parent="Panel/VBox/ColorBar" unique_id=306911813]
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.961, 0.784, 0.259, 1)
 
-[node name="BarBlue" type="ColorRect" parent="Panel/VBox/ColorBar"]
+[node name="BarBlue" type="ColorRect" parent="Panel/VBox/ColorBar" unique_id=1396610117]
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.267, 0.533, 0.933, 1)
 
-[node name="Title" type="Label" parent="Panel/VBox"]
+[node name="Title" type="Label" parent="Panel/VBox" unique_id=44160207]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_lcfnt")
 theme_override_font_sizes/font_size = 14
-theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "COMPLETE!"
 horizontal_alignment = 1
 
-[node name="MovesLabel" type="Label" parent="Panel/VBox"]
+[node name="MovesLabel" type="Label" parent="Panel/VBox" unique_id=1654873307]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.6)
 theme_override_fonts/font = ExtResource("2_lcfnt")
 theme_override_font_sizes/font_size = 8
-theme_override_colors/font_color = Color(1, 1, 1, 0.6)
 text = "MOVES: 0"
 horizontal_alignment = 1
 
-[node name="BtnNext" type="Button" parent="Panel/VBox"]
+[node name="BtnNext" type="Button" parent="Panel/VBox" unique_id=308600664]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_lcfnt")
 theme_override_font_sizes/font_size = 10
 text = "NEXT LEVEL"
+
+[node name="ChimeSfx" type="AudioStreamPlayer" parent="." unique_id=197512412]
+stream = ExtResource("3_w40xb")
+bus = &"SFX"
 
 [connection signal="pressed" from="Panel/VBox/BtnNext" to="." method="_on_btn_next_pressed"]

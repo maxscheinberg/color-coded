@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cjpqb7f437wjf" path="res://Scripts/Interactables/color_subtractor.gd" id="1_loyyr"]
 [ext_resource type="AudioStream" uid="uid://dtyfh8ngi3cix" path="res://Assets/Interactables/soft_error.wav" id="2_rtk4q"]
+[ext_resource type="AudioStream" uid="uid://c31s7r6w5k8b4" path="res://Assets/Audio/SFX/color_change_pop.mp3" id="3_yxhgj"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_loyyr"]
 _data = PackedByteArray("AAADAAUAAAABAAAAQAAAAEAAAAByAAAAUklGRmoAAABXRUJQVlA4TF0AAAAvP8APEBcw//M///MfgAe3Adi2DWb+53pdb3jTEgzZTuaI/k8APpIkizBZgFnbkAsXRdOghIfyKwYt3sCbpr5Krv+b7Bi0eAM0vGJQwgMFpiEXLuRgQwoFcEGRNwMA")
@@ -64,3 +65,5 @@ libraries/ = SubResource("AnimationLibrary_rtk4q")
 stream = ExtResource("2_rtk4q")
 
 [node name="ValidSfx" type="AudioStreamPlayer2D" parent="." unique_id=629317480]
+stream = ExtResource("3_yxhgj")
+bus = &"SFX"

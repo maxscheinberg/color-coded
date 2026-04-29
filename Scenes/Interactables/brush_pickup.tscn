@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://biyg6nxxj6r7t"]
 
 [ext_resource type="Script" uid="uid://nl6xwfcafeni" path="res://Scripts/Interactables/brush_pickup.gd" id="1_brscr"]
-[ext_resource type="Texture2D" uid="uid://dc13hrfdsv5cd" path="res://Assets/brush.png" id="2_brtex"]
+[ext_resource type="Texture2D" uid="uid://vkl27g1igc74" path="res://Assets/brush.png" id="2_brtex"]
+[ext_resource type="AudioStream" uid="uid://p3jt72y75h75" path="res://Assets/Audio/SFX/swoosh_brush.mp3" id="3_b21gd"]
+[ext_resource type="AudioStream" uid="uid://bbtulc6y752xn" path="res://Assets/Audio/SFX/paint_sound.mp3" id="4_j5mum"]
 
 [node name="BrushPickup" type="Node2D" unique_id=267070460]
 script = ExtResource("1_brscr")
@@ -9,3 +11,11 @@ script = ExtResource("1_brscr")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1866397130]
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_brtex")
+
+[node name="PickupSfx" type="AudioStreamPlayer" parent="." unique_id=1885645834]
+stream = ExtResource("3_b21gd")
+bus = &"SFX"
+
+[node name="PaintSfx" type="AudioStreamPlayer" parent="." unique_id=2084242375]
+stream = ExtResource("4_j5mum")
+bus = &"SFX"
