@@ -64,11 +64,12 @@ func _process(_delta: float) -> void:
 		_move_player(RIGHT)
 	if Input.is_action_just_pressed("ui_left"):
 		_move_player(LEFT)
-	if Input.is_action_just_pressed("ui_undo"):
-		_undo_move()
 	if Input.is_action_just_pressed("ui_restart"):
 		get_tree().reload_current_scene()
-
+	if Input.is_action_just_pressed("level_swap_1"):
+		get_tree().change_scene_to_file("res://Scenes/Levels/brush_level.tscn")
+	if Input.is_action_just_pressed("level_swap_2"):
+		get_tree().change_scene_to_file("res://Scenes/Levels/brush_tutorial.tscn")
 
 func _move_player(dir: int) -> void:
 	if controlled_character == null or _any_character_moving():
@@ -96,15 +97,7 @@ func _move_player(dir: int) -> void:
 	if occupying_object != null \
 			and held_brush != null \
 			and occupying_object.has_method("is_paintable") \
-			and occupying_object.is_paintable():
-		# Record old wall color for undo before painting
-		var snapshot_early := _create_snapshot()
-		if occupying_object.has_method("get_color"):
-			snapshot_early["interactions"].append({
-				"object": occupying_object,
-				"old_color": occupying_object.get_color()
-			})
-		move_history.append(snapshot_early)
+			and occupying_object.is_paintable(controlled_character.get_color()):
 		use_move()
 		held_brush.try_paint(controlled_character, occupying_object)
 		# Remove wall from object_locations so the player can now pass
@@ -117,27 +110,16 @@ func _move_player(dir: int) -> void:
 		controlled_character.play_invalid_feedback(occupying_object.global_position)
 		return
 
-	var snapshot := _create_snapshot()
-
 	if occupying_object != null and occupying_object.has_method("interact"):
-		if occupying_object.has_method("get_color"):
-			snapshot["interactions"].append({
-				"object": occupying_object,
-				"old_color": occupying_object.get_color()
-			})
-
 		occupying_object.interact(controlled_character)
 
 	if occupying_object != null and occupying_object.has_method("teleport"):
 		controlled_character.moving = true
-		move_history.append(snapshot)
 		use_move()
-
 		await occupying_object.teleport(controlled_character)
 		_stop_move(controlled_character, _get_character_cell(controlled_character))
 		return
 
-	move_history.append(snapshot)
 	use_move()
 
 	var tween := create_tween()
@@ -170,55 +152,6 @@ func _stop_move(character: Node2D, new_pos: Vector2i) -> void:
 
 	if _handle_scene_transition():
 		return
-
-
-func _undo_move() -> void:
-	if _any_character_moving() or move_history.is_empty():
-		return
-
-	var snapshot = move_history.pop_back()
-
-	for entry in snapshot["interactions"]:
-		if entry["object"] and entry["object"].has_method("set_color"):
-			entry["object"].set_color(entry["old_color"])
-
-	if move_limit != -1 and moves_used > 0:
-		moves_used -= 1
-		update_moves_ui()
-
-	var tween := create_tween()
-	tween.set_parallel(true)
-	player.moving = true
-	player_duplicate.moving = true
-
-	tween.tween_property(player, "position", background.map_to_local(snapshot["player_pos"]), 0.1)
-
-	if player_duplicate.visible or snapshot["duplicate_visible"]:
-		player_duplicate.visible = true
-		tween.tween_property(player_duplicate, "position", background.map_to_local(snapshot["duplicate_pos"]), 0.1)
-
-	tween.set_parallel(false)
-	tween.tween_callback(func():
-		player.position = background.map_to_local(snapshot["player_pos"])
-		player.set_color(snapshot["player_color"])
-		player.anim.play("Default")
-		player.moving = false
-
-		player_duplicate.position = background.map_to_local(snapshot["duplicate_pos"])
-		player_duplicate.set_color(snapshot["duplicate_color"])
-		player_duplicate.visible = snapshot["duplicate_visible"]
-		player_duplicate.anim.play("Default")
-		player_duplicate.moving = false
-
-		if snapshot["controlled_is_duplicate"] and snapshot["duplicate_visible"]:
-			controlled_character = player_duplicate
-		else:
-			controlled_character = player
-
-		_refresh_active_character_state()
-		_refresh_dynamic_objects()
-	)
-
 
 func _dir_offset(dir: int) -> Vector2i:
 	match dir:
@@ -265,7 +198,7 @@ func reset_moves() -> void:
 	moves_used = 0
 	level_failed = false
 	update_moves_ui()
-
+	update_brush_ui()
 
 func use_move() -> void:
 	if level_failed:
@@ -280,7 +213,6 @@ func use_move() -> void:
 	if moves_used >= move_limit:
 		check_if_out_of_moves()
 
-
 func check_if_out_of_moves() -> void:
 	if player_is_on_goal():
 		return
@@ -288,11 +220,9 @@ func check_if_out_of_moves() -> void:
 	level_failed = true
 	on_out_of_moves()
 
-
 func on_out_of_moves() -> void:
 	print("Out of moves")
 	get_tree().reload_current_scene()
-
 
 func player_is_on_goal() -> bool:
 	var scene_name: String = get_tree().current_scene.name
@@ -309,10 +239,8 @@ func player_is_on_goal() -> bool:
 
 	return false
 
-
 func get_player_duplicate() -> Node2D:
 	return player_duplicate
-
 
 func on_player_split(split_player: Node2D, duplicate: Node2D) -> void:
 	player_duplicate = duplicate
@@ -323,7 +251,6 @@ func on_player_split(split_player: Node2D, duplicate: Node2D) -> void:
 	player_duplicate.anim.play("Default")
 	_refresh_active_character_state()
 	_refresh_dynamic_objects()
-
 
 func _change_character() -> void:
 	if player_duplicate == null or not player_duplicate.visible or _any_character_moving():
@@ -337,7 +264,6 @@ func _change_character() -> void:
 	_refresh_active_character_state()
 	_refresh_dynamic_objects()
 
-
 func _ensure_player_duplicate() -> Node2D:
 	var duplicate = get_node_or_null("PlayerDuplicate")
 	if duplicate == null:
@@ -349,13 +275,11 @@ func _ensure_player_duplicate() -> Node2D:
 	duplicate.set_color(player.get_color())
 	return duplicate
 
-
 func _assign_player_duplicate(object: Node) -> void:
 	for property in object.get_property_list():
 		if property.name == "player_duplicate":
 			object.set("player_duplicate", player_duplicate)
 			return
-
 
 func _refresh_active_character_state() -> void:
 	if controlled_character == null:
@@ -367,28 +291,13 @@ func _refresh_active_character_state() -> void:
 	player_pos = _get_character_cell(controlled_character)
 	get_tree().call_group("uwpc", "update_with_player", controlled_character)
 
-
 func _refresh_dynamic_objects() -> void:
 	for obj in objects.get_children():
 		if obj.has_method("update_state"):
 			obj.update_state(self)
 
-
-func _create_snapshot() -> Dictionary:
-	return {
-		"player_pos": _get_character_cell(player),
-		"player_color": player.get_color(),
-		"duplicate_visible": player_duplicate.visible,
-		"duplicate_pos": _get_character_cell(player_duplicate),
-		"duplicate_color": player_duplicate.get_color(),
-		"controlled_is_duplicate": controlled_character == player_duplicate,
-		"interactions": []
-	}
-
-
 func _get_character_cell(character: Node2D) -> Vector2i:
 	return background.local_to_map(character.position)
-
 
 func _get_other_character(character: Node2D) -> Node2D:
 	if player_duplicate == null or not player_duplicate.visible:
@@ -490,6 +399,10 @@ func _handle_scene_transition() -> bool:
 
 	if scene_name == "Level 5" and _any_character_on_cell(Vector2i(16, 2)):
 		_play_level_complete("res://Scenes/Levels/split_test_level.tscn")
+		return true
+
+	if scene_name == "Split Test Level" and _any_character_on_cell(Vector2i(13, 7)):
+		get_tree().change_scene_to_file("res://Scenes/Levels/brush_level.tscn")
 		return true
 
 	return false
