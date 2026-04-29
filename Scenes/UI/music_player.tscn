@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b8rvqasry4qdh"]
 
-[ext_resource type="AudioStream" uid="uid://f2ilqhsgtfg6" path="res://Assets/Audio/background.mp3" id="1_gqu7h"]
+[ext_resource type="AudioStream" uid="uid://f2ilqhsgtfg6" path="res://Assets/audio/background.mp3" id="1_gqu7h"]
 [ext_resource type="Script" uid="uid://qlmhminphcfh" path="res://Scripts/UI/music_player.gd" id="1_ws2a4"]
 
 [node name="MusicPlayer" type="Node2D" unique_id=2111758378]
@@ -10,3 +10,4 @@ script = ExtResource("1_ws2a4")
 stream = ExtResource("1_gqu7h")
 volume_db = -10.0
 autoplay = true
+parameters/looping = true
