@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b04epxptmpw3f" path="res://Scripts/Interactables/splitter.gd" id="1_tm7da"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_tm7da"]
-_data = PackedByteArray("AAADAAUAAAABAAAAQAAAAEAAAABOAAAAUklGRkYAAABXRUJQVlA4TDkAAAAvP8APAA8w//M///MfeFASAGizYwlDA6oTgDA7luPAbTai/xMQ7z+RFTRDFCg3t6QSClqRyHHhewEA")
+_data = PackedByteArray("AAADAAUAAAABAAAAQAAAAEAAAABqAAAAUklGRmIAAABXRUJQVlA4TFUAAAAvP8APAA8w//M///MfeGAT23aUzCAACZGCFKQgBSmREgmh2+G07HVE/yfAC9YhDP8OACCxQ2aFwggjBVYy8k5ayQfdSgsLPczEjWYCABDDQBWO73E6AA==")
 size_override = Vector2(64, 64)
 
 [sub_resource type="Animation" id="Animation_tm7da"]
@@ -55,7 +55,7 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://Assets/Interactables/splitter.aseprite",
 "source_uid": 7309244233281212283
 }
-metadata/_aseprite_wizard_source_file_hash_ = "7e79fc940418eed3fe1c40a953bbfef6"
+metadata/_aseprite_wizard_source_file_hash_ = "5066dd91f6413363ca4267a98601afc0"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=635220424]
 libraries/ = SubResource("AnimationLibrary_uqwi1")

@@ -55,3 +55,32 @@ static func canonical(color: Color) -> Color:
 	elif match(color, RED_VIOLET):
 		return RED_VIOLET
 	return color
+
+static func is_primary(color: Color) -> bool:
+	var c: Color = canonical(color)
+	return GameColors.match(c, RED) \
+		or GameColors.match(c, YELLOW) \
+		or GameColors.match(c, BLUE)
+
+static func can_mix_primaries(a: Color, b: Color) -> bool:
+	var ca: Color = canonical(a)
+	var cb: Color = canonical(b)
+	return is_primary(ca) and is_primary(cb) and not GameColors.match(ca, cb)
+
+static func mix_primaries(a: Color, b: Color) -> Color:
+	var ca: Color = canonical(a)
+	var cb: Color = canonical(b)
+
+	if (GameColors.match(ca, RED) and GameColors.match(cb, BLUE)) \
+			or (GameColors.match(ca, BLUE) and GameColors.match(cb, RED)):
+		return PURPLE
+
+	if (GameColors.match(ca, RED) and GameColors.match(cb, YELLOW)) \
+			or (GameColors.match(ca, YELLOW) and GameColors.match(cb, RED)):
+		return ORANGE
+
+	if (GameColors.match(ca, BLUE) and GameColors.match(cb, YELLOW)) \
+			or (GameColors.match(ca, YELLOW) and GameColors.match(cb, BLUE)):
+		return GREEN
+
+	return Color.TRANSPARENT

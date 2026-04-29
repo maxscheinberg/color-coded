@@ -53,11 +53,12 @@ func try_paint(player, target_object) -> bool:
 		return false
 	if not target_object.has_method("is_paintable"):
 		return false
-	if not target_object.is_paintable():
+	if not target_object.is_paintable(player.get_color()):
 		return false
  
 	# Record old state for undo before applying
-	target_object.apply_paint(player.get_color())
+	if not target_object.apply_paint(player.get_color()):
+		return false
 	_consume()
 	return true
  
