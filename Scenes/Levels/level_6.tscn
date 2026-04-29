@@ -38,7 +38,7 @@ position = Vector2(800, 480)
 
 [node name="ColorWall" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="4" unique_id=1696651386 instance=ExtResource("2_5l77v")]
 position = Vector2(544, 96)
-col = Color(0, 1, 0, 1)
+col = Color(0.12, 0.65, 0.2, 1)
 
 [node name="ColorAdder" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="5" unique_id=558619985 instance=ExtResource("3_6y1v7")]
 position = Vector2(160, 352)
