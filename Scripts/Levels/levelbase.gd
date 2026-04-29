@@ -73,21 +73,20 @@ func _process(_delta: float) -> void:
 func _move_player(dir: int) -> void:
 	if controlled_character == null or _any_character_moving():
 		return
-		
+
 	var offset := _dir_offset(dir)
 	var current_pos := _get_character_cell(controlled_character)
 	var target_cell := current_pos + offset
 
 	if tilemap_walls.get_cell_source_id(target_cell) != -1:
-		controlled_character.play_invalid_feedback(tilemap_walls.map_to_local(target_cell))
 		return
 
 	if _cell_occupied_by_other_character(target_cell, controlled_character):
 		return
 
 	var occupying_object = object_locations.get(target_cell)
-	
-		# --- Brush mechanic -------------------------------------------------
+
+	# --- Brush mechanic -------------------------------------------------
 	# If the player holds a brush and the target is a paintable wall,
 	# let the brush paint it instead of blocking movement.
 	var held_brush := _find_brush_held_by(controlled_character)
@@ -112,7 +111,6 @@ func _move_player(dir: int) -> void:
 	# --- End brush mechanic ---------------------------------------------
 
 	if occupying_object != null and not occupying_object.can_move_here(controlled_character):
-		controlled_character.play_invalid_feedback(occupying_object.global_position)
 		return
 
 	var snapshot := _create_snapshot()
@@ -231,6 +229,7 @@ func _dir_offset(dir: int) -> Vector2i:
 
 	return Vector2i.ZERO
 
+
 func update_brush_ui(brush_color: Color = Color.TRANSPARENT) -> void:
 	if not has_node("CanvasLayer/BrushIndicator"):
 		return
@@ -241,8 +240,8 @@ func update_brush_ui(brush_color: Color = Color.TRANSPARENT) -> void:
 	else:
 		# brush picked up — light it with the player's color
 		indicator.self_modulate = brush_color
-		
-		
+
+
 func update_moves_ui() -> void:
 	print("has node: ", has_node("CanvasLayer/MovesContainer/MovesLabel"))
 	print("move_limit: ", move_limit)
@@ -262,8 +261,6 @@ func reset_moves() -> void:
 	moves_used = 0
 	level_failed = false
 	update_moves_ui()
-	update_brush_ui()
-
 
 
 func use_move() -> void:
@@ -452,6 +449,14 @@ func is_character_on_cell(cell: Vector2i) -> bool:
 	return _any_character_on_cell(cell)
 
 
+## Returns the BrushPickup node currently held by `character`, or null.
+func _find_brush_held_by(character: Node2D) -> Node2D:
+	for obj in objects.get_children():
+		if obj.has_method("try_paint") and obj.get("held_by") == character:
+			return obj
+	return null
+
+
 func _handle_scene_transition() -> bool:
 	var scene_name: String = get_tree().current_scene.name
 
@@ -485,8 +490,8 @@ func _handle_scene_transition() -> bool:
 
 	return false
 
+
 func _play_level_complete(next_scene: String) -> void:
-	# Block any further input
 	level_failed = true
 
 	# Pop all characters
@@ -497,12 +502,12 @@ func _play_level_complete(next_scene: String) -> void:
 		tween.tween_property(character, "scale", Vector2(0.0, 0.0), 0.18)\
 			.set_ease(Tween.EASE_IN)
 
-	# Wait then transition
 	await get_tree().create_timer(0.35).timeout
-	get_tree().change_scene_to_file(next_scene)
-	
-func _find_brush_held_by(character: Node2D) -> Node2D:
-	for obj in objects.get_children():
-		if obj.has_method("try_paint") and obj.get("held_by") == character:
-			return obj
-	return null
+
+	# Show level complete screen
+	var screen = preload("res://Scenes/UI/level_complete.tscn").instantiate()
+	add_child(screen)
+	screen.setup(moves_used, move_limit)
+	screen.next_pressed.connect(func():
+		get_tree().change_scene_to_file(next_scene)
+	)
