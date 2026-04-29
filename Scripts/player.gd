@@ -33,22 +33,27 @@ func play_invalid_feedback(source_pos: Vector2) -> void:
 	invalid_feedback_playing = true
 
 	var original_pos: Vector2 = position
+	var original_scale: Vector2 = scale
 	var dir: Vector2 = (global_position - source_pos).normalized()
 
-	# fallback in case both positions are the same
 	if dir == Vector2.ZERO:
 		dir = Vector2(0, -1)
 
 	var recoil: Vector2 = dir * 6.0
 
 	var tween := create_tween()
+	tween.set_parallel(true)
 	tween.tween_property(self, "position", original_pos + recoil, 0.05)
-	tween.tween_property(self, "position", original_pos, 0.07)
+	tween.tween_property(self, "scale", Vector2(0.85, 0.85), 0.05)
+	tween.chain().tween_property(self, "position", original_pos, 0.07)
+	tween.chain().tween_property(self, "scale", original_scale, 0.07)
 
 	await tween.finished
 	position = original_pos
+	scale = original_scale
 	invalid_feedback_playing = false
-
+	
+	
 func play_valid_feedback() -> void:
 	var original_scale: Vector2 = scale
 	var tween := create_tween()
