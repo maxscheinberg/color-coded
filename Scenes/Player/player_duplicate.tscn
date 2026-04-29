@@ -1,6 +1,11 @@
 [gd_scene format=4 uid="uid://b46mq8hh6cw5k"]
 
 [ext_resource type="Script" uid="uid://dx278gjwh1cq2" path="res://Scripts/player_duplicate.gd" id="1_xwds1"]
+[ext_resource type="Shader" uid="uid://bg3a321kof6e7" path="res://Scenes/Player/player_duplicate.gdshader" id="2_1kwtw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_edgp2"]
+shader = ExtResource("2_1kwtw")
+shader_parameter/grayscale_enabled = false
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_xwds1"]
 _data = PackedByteArray("AAADAAUAAAABAAAAwAAAAMAAAACEAAAAUklGRnwAAABXRUJQVlA4THAAAAAvv8AvEBcw//M///MfgAeGkSQlIsnT/LCPE+fdKqL/ity2beRTOu3kF8sdKigYWCkKtmCg7mN9rM/H+or1zf0nUmqrBiAHqrZmAbBUDCjYJTdQs3W8bGDuX2SZbt1xQA6sFAWbomCPl/EPrZOiPrkY")
@@ -83,6 +88,7 @@ script = ExtResource("1_xwds1")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=976233540]
 texture_filter = 1
+material = SubResource("ShaderMaterial_edgp2")
 texture = SubResource("PortableCompressedTexture2D_xwds1")
 hframes = 3
 vframes = 3

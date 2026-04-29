@@ -5,10 +5,12 @@ extends CharacterBody2D
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var blocked_sfx: AudioStreamPlayer = $BlockedSfx
 @onready var color_change_sfx: AudioStreamPlayer = $ColorChangeSfx
+@onready var mat: ShaderMaterial = sprite.material
 
 var moving = false
 var input_dir : Vector2 = Vector2.ZERO
 var invalid_feedback_playing: bool = false
+var is_greyscale: bool = false
 var _current_color: Color = Color.TRANSPARENT
 var _initialized: bool = false
 
@@ -68,3 +70,7 @@ func play_valid_feedback() -> void:
 	var tween := create_tween()
 	tween.tween_property(self, "scale", Vector2(1.12, 1.12), 0.08)
 	tween.tween_property(self, "scale", original_scale, 0.10)
+	
+func toggle_greyscale() -> void:
+	is_greyscale = not is_greyscale
+	mat.set_shader_parameter("greyscale_enabled", is_greyscale)

@@ -3,9 +3,11 @@ extends Node2D
 @export var col: Color = Color.WHITE
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var anim: AnimationPlayer = $Sprite2D/AnimationPlayer
+@onready var mat: ShaderMaterial = sprite.material
 
 var moving: bool = false
 var invalid_feedback_playing: bool = false
+var is_greyscale: bool = true
 
 func _ready() -> void:
 	sprite.self_modulate = GameColors.canonical(col)
@@ -48,3 +50,7 @@ func play_valid_feedback() -> void:
 	var tween := create_tween()
 	tween.tween_property(self, "scale", Vector2(1.12, 1.12), 0.08)
 	tween.tween_property(self, "scale", original_scale, 0.10)
+	
+func toggle_greyscale() -> void:
+	is_greyscale = not is_greyscale
+	mat.set_shader_parameter("greyscale_enabled", is_greyscale)

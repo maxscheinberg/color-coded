@@ -21,8 +21,6 @@ var level_failed: bool = false
 
 enum { LEFT, RIGHT, UP, DOWN }
 var player_pos: Vector2i
-var move_history: Array = []
-
 
 func _ready() -> void:
 	player_duplicate = _ensure_player_duplicate()
@@ -255,6 +253,9 @@ func on_player_split(split_player: Node2D, duplicate: Node2D) -> void:
 func _change_character() -> void:
 	if player_duplicate == null or not player_duplicate.visible or _any_character_moving():
 		return
+		
+	#player.toggle_greyscale()
+	#player_duplicate.toggle_greyscale()
 
 	if controlled_character == player:
 		controlled_character = player_duplicate
