@@ -28,15 +28,11 @@ func is_white() -> bool:
 
 
 #added tiny tween when trasitioning color
-func set_color(col: Color) -> void:
-	var new_color := GameColors.canonical(col)
-	if _initialized:
-		color_change_sfx.play()
-	else:
-		_initialized = true
-	_current_color = new_color
+func set_color(new_col: Color) -> void:
+	col = GameColors.canonical(new_col)  # keep the exported var in sync
 	var tween := create_tween()
-	tween.tween_property(sprite, "self_modulate", new_color, 0.08)
+	tween.tween_property(sprite, "self_modulate", col, 0.08)
+	get_tree().call_group("uwpc", "update_with_player", self)
 	
 func play_invalid_feedback(source_pos: Vector2) -> void:
 	blocked_sfx.play()

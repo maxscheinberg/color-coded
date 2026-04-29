@@ -82,7 +82,7 @@ func _ready() -> void:
 
 ## Called by the player via call_group("uwpc", "update_with_player", self)
 func update_with_player(player) -> void:
-	_player_color = player.get_color()
+	_player_color = GameColors.canonical(player.col)
 	queue_redraw()
 
 func _draw() -> void:
