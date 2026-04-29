@@ -183,8 +183,8 @@ func play_invalid_feedback(player) -> void:
 		player.play_invalid_feedback(global_position)
 
 func play_valid_feedback() -> void:
-	#if valid_sfx:
-		#valid_sfx.play()
+	if valid_sfx:
+		valid_sfx.play()
 
 	var original_scale: Vector2 = sprite.scale
 	var original_modulate: Color = sprite.self_modulate

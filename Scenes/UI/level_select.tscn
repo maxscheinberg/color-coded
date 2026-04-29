@@ -140,19 +140,19 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 10
-text = "LEVEL 3"
+text = "LEVEL 4"
 
 [node name="BtnLevel4" type="Button" parent="CenterContainer/VBox" unique_id=63164349]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 10
-text = "LEVEL 4"
+text = "LEVEL 5"
 
 [node name="BtnLevel5" type="Button" parent="CenterContainer/VBox" unique_id=453721182]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 10
-text = "LEVEL 5"
+text = "LEVEL 6"
 
 [node name="SpacerBottom" type="Control" parent="CenterContainer/VBox" unique_id=1662274556]
 custom_minimum_size = Vector2(0, 8)
