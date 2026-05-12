@@ -46,6 +46,8 @@ col = Color(1, 1, 1, 0.24000001)
 position = Vector2(480, 224)
 new_pos1 = Vector2(480, 352)
 new_pos2 = Vector2(224, 352)
+player_color = Color(0.9098039, 0.101960786, 0.101960786, 1)
+duplicate_color = Color(0.9098039, 0.101960786, 0.101960786, 1)
 player_duplicate = NodePath("../PlayerDuplicate")
 
 [node name="ColorWall" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="6" unique_id=1696651386 instance=ExtResource("6_sydce")]

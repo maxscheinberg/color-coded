@@ -25,6 +25,8 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAIAAAAAAAI
 position = Vector2(96, 480)
 new_pos1 = Vector2(288, 96)
 new_pos2 = Vector2(288, 480)
+player_color = Color(0.12156863, 0.6509804, 0.2, 1)
+duplicate_color = Color(0.12156863, 0.6509804, 0.2, 1)
 
 [node name="PlayerDuplicate" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="1" unique_id=80732309 instance=ExtResource("3_cjb10")]
 position = Vector2(-315, 361)
@@ -54,7 +56,6 @@ offset_right = 1378.0
 offset_bottom = 145.0
 scale = Vector2(0.5, 0.5)
 show_secondary = true
-show_tertiary = true
 
 [node name="Player" parent="." index="4" unique_id=1803487026 instance=ExtResource("6_00o8d")]
 position = Vector2(96, 96)

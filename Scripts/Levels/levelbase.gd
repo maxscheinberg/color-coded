@@ -245,8 +245,6 @@ func on_player_split(split_player: Node2D, duplicate: Node2D) -> void:
 	player_duplicate.visible = true
 	player_duplicate.moving = false
 	split_player.moving = false
-	split_player.anim.play("Default")
-	player_duplicate.anim.play("Default")
 	_refresh_active_character_state()
 	_refresh_dynamic_objects()
 
@@ -258,8 +256,12 @@ func _change_character() -> void:
 	#player_duplicate.toggle_greyscale()
 
 	if controlled_character == player:
+		player.close_eyes()
+		player_duplicate.open_eyes()
 		controlled_character = player_duplicate
 	else:
+		player.open_eyes()
+		player_duplicate.close_eyes()
 		controlled_character = player
 
 	_refresh_active_character_state()
