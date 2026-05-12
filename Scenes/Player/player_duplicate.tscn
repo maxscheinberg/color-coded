@@ -7,9 +7,9 @@
 shader = ExtResource("2_1kwtw")
 shader_parameter/grayscale_enabled = false
 
-[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_xwds1"]
-_data = PackedByteArray("AAADAAUAAAABAAAAwAAAAMAAAACEAAAAUklGRnwAAABXRUJQVlA4THAAAAAvv8AvEBcw//M///MfgAeGkSQlIsnT/LCPE+fdKqL/ity2beRTOu3kF8sdKigYWCkKtmCg7mN9rM/H+or1zf0nUmqrBiAHqrZmAbBUDCjYJTdQs3W8bGDuX2SZbt1xQA6sFAWbomCPl/EPrZOiPrkY")
-size_override = Vector2(192, 192)
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_1kwtw"]
+_data = PackedByteArray("AAADAAUAAAABAAAAwAAAAIAAAAByAAAAUklGRmoAAABXRUJQVlA4TF0AAAAvv8AfAA8w//M///MfeHAVSZJiHQhYSWv9wNAK2Ig8psfwEdF/tW3bMPLm9Jzh/VSARMzokRDOUGdiQ0goFjtQ58fl+r/9ISohXElsUOeFLzbXsx5wnOvs6/72exYA")
+size_override = Vector2(192, 128)
 
 [sub_resource type="Animation" id="Animation_xwds1"]
 length = 0.5
@@ -24,7 +24,23 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 1, 0]
+"values": [0, 4, 5, 4, 0]
+}
+
+[sub_resource type="Animation" id="Animation_jkj31"]
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 4, 5]
 }
 
 [sub_resource type="Animation" id="Animation_1kwtw"]
@@ -56,7 +72,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [0, 5, 6]
+"values": [0, 0, 3]
 }
 
 [sub_resource type="Animation" id="Animation_ya183"]
@@ -72,15 +88,33 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [0, 3, 4]
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_y451p"]
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [5, 4, 0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jkj31"]
 _data = {
 &"Blink": SubResource("Animation_xwds1"),
+&"Close": SubResource("Animation_jkj31"),
 &"Default": SubResource("Animation_1kwtw"),
 &"Look Left": SubResource("Animation_edgp2"),
-&"Look Right": SubResource("Animation_ya183")
+&"Look Right": SubResource("Animation_ya183"),
+&"Open": SubResource("Animation_y451p")
 }
 
 [node name="PlayerDuplicate" type="Node2D" unique_id=80732309]
@@ -89,9 +123,9 @@ script = ExtResource("1_xwds1")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=976233540]
 texture_filter = 1
 material = SubResource("ShaderMaterial_edgp2")
-texture = SubResource("PortableCompressedTexture2D_xwds1")
+texture = SubResource("PortableCompressedTexture2D_1kwtw")
 hframes = 3
-vframes = 3
+vframes = 2
 metadata/_aseprite_wizard_interface_config_ = {
 "pending_changes": {}
 }
@@ -113,7 +147,7 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://Assets/Player/little dude.aseprite",
 "source_uid": 3856863049591205159
 }
-metadata/_aseprite_wizard_source_file_hash_ = "283059591e144da5e27d492c08ada450"
+metadata/_aseprite_wizard_source_file_hash_ = "bf0fc7ba1d1470b1d76e37368fe6fcb5"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=103246555]
 libraries/ = SubResource("AnimationLibrary_jkj31")

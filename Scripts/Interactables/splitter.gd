@@ -2,6 +2,8 @@ extends Node2D
 
 @export var new_pos1: Vector2
 @export var new_pos2: Vector2
+@export var player_color: Color
+@export var duplicate_color: Color
 @export var player_duplicate: Node2D
 
 func is_floor_object() -> bool:
@@ -13,14 +15,24 @@ func interact(player) -> void:
 
 	if player_duplicate == null or player_duplicate.visible:
 		return
+	
+	player_duplicate.scale = Vector2(0.05, 0.05)
+	var tween = create_tween()
+	tween.tween_property(player, "scale", Vector2(0.05, 0.05), 0.4)
+	await tween.finished
+	
+	player.set_color(player_color)
+	player_duplicate.set_color(duplicate_color)
 
 	player.position = new_pos1
 	player_duplicate.position = new_pos2
-
-	if player_duplicate.has_method("set_color") and player.has_method("get_color"):
-		player_duplicate.set_color(player.get_color())
-
+	
 	player_duplicate.visible = true
+	
+	var tween2 = create_tween().set_parallel(true)
+	tween2.tween_property(player, "scale", Vector2(1, 1), 0.4)
+	tween2.tween_property(player_duplicate, "scale", Vector2(1, 1), 0.4)
+	await tween2.finished
 
 	var level = get_tree().current_scene
 	if level != null and level.has_method("on_player_split"):

@@ -6,9 +6,9 @@ extends Node2D
 func can_move_here(player):
 	return true
 
-dawfunc teleport(player):
+func teleport(player):
 	var teleport_echo: Node2D = player_duplicate
-	var show_echo := teleport_echo != null and teleport_echo != player and not teleport_echo.visible
+	var show_echo = teleport_echo != null and teleport_echo != player and not teleport_echo.visible
 
 	if show_echo:
 		teleport_echo.global_position = player.global_position
