@@ -664,13 +664,6 @@ col = Color(1, 0.843, 0, 1)
 position = Vector2(288, 416)
 col = Color(1, 0.843, 0, 1)
 
-[node name="Label" type="Label" parent="." index="3" unique_id=1550899310]
-offset_left = 714.0
-offset_top = 275.0
-offset_right = 768.0
-offset_bottom = 298.0
-text = "Level 2"
-
-[node name="Player" parent="." index="4" unique_id=1803487026 instance=ExtResource("7_uuws1")]
+[node name="Player" parent="." index="3" unique_id=1803487026 instance=ExtResource("7_uuws1")]
 position = Vector2(352, 288)
 col = Color(0.137, 0.42, 0.78, 1)

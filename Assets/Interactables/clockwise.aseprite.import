@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cet3mxiooau8o"
+path="res://.godot/imported/clockwise.aseprite-5600c3c7e9233f1f3aabb7e298a7be25.res"
+
+[deps]
+
+source_file="res://Assets/Interactables/clockwise.aseprite"
+dest_files=["res://.godot/imported/clockwise.aseprite-5600c3c7e9233f1f3aabb7e298a7be25.res"]
+
+[params]
+
