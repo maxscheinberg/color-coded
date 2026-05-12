@@ -36,7 +36,8 @@ func apply_paint(color: Color) -> bool:
 
 	painted_color = _get_painted_color(color)
 	is_painted = true
-	rect.color = painted_color
+	var tween = create_tween()
+	tween.tween_property(rect, "color", painted_color, 0.2)
 	_play_paint_feedback()
 	return true
 

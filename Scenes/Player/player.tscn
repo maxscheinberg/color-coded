@@ -119,9 +119,6 @@ _data = {
 &"Open": SubResource("Animation_jlvik")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvnfx"]
-size = Vector2(64, 64)
-
 [node name="Player" type="CharacterBody2D" unique_id=1803487026]
 collision_mask = 255
 script = ExtResource("1_a3d8c")
@@ -163,9 +160,6 @@ metadata/_aseprite_wizard_source_file_hash_ = "bf0fc7ba1d1470b1d76e37368fe6fcb5"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=605109378]
 libraries/ = SubResource("AnimationLibrary_0u5uq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=332833546]
-shape = SubResource("RectangleShape2D_uvnfx")
 
 [node name="BlockedSfx" type="AudioStreamPlayer" parent="." unique_id=325036695]
 stream = ExtResource("2_xpcdj")

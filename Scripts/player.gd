@@ -35,7 +35,7 @@ func is_white() -> bool:
 func set_color(new_col: Color) -> void:
 	col = GameColors.canonical(new_col)  # keep the exported var in sync
 	var tween := create_tween()
-	tween.tween_property(sprite, "self_modulate", col, 0.08)
+	tween.tween_property(sprite, "self_modulate", col, 0.2)
 	get_tree().call_group("uwpc", "update_with_player", self)
 	
 func play_invalid_feedback(source_pos: Vector2) -> void:

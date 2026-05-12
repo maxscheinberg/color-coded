@@ -61,16 +61,7 @@ show_secondary = true
 position = Vector2(96, 96)
 col = Color(1, 1, 1, 1)
 
-[node name="Label" type="Label" parent="." index="5" unique_id=1476608354]
-offset_left = 841.0
-offset_top = 455.0
-offset_right = 938.0
-offset_bottom = 504.0
-text = "Level 7"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="6" unique_id=1207813394]
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="5" unique_id=1207813394]
 
 [node name="MovesContainer" type="Control" parent="CanvasLayer" index="0" unique_id=1074292972]
 layout_mode = 3

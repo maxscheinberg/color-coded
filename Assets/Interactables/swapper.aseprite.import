@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bcts14ub1nytv"
+path="res://.godot/imported/swapper.aseprite-9e582e920d31e76cafa796116a493f48.res"
+
+[deps]
+
+source_file="res://Assets/Interactables/swapper.aseprite"
+dest_files=["res://.godot/imported/swapper.aseprite-9e582e920d31e76cafa796116a493f48.res"]
+
+[params]
+

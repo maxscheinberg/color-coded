@@ -1,0 +1,108 @@
+[gd_scene format=4 uid="uid://b0jwf3rign36"]
+
+[ext_resource type="PackedScene" uid="uid://b8oiih760r158" path="res://Scenes/Levels/levelbase.tscn" id="1_p60k7"]
+[ext_resource type="PackedScene" uid="uid://v8vpdndxi0qe" path="res://Scenes/Interactables/splitter.tscn" id="2_bla2a"]
+[ext_resource type="PackedScene" uid="uid://x8xhe7n72882" path="res://Scenes/Interactables/swapper.tscn" id="3_du3l2"]
+[ext_resource type="PackedScene" uid="uid://b46mq8hh6cw5k" path="res://Scenes/Player/player_duplicate.tscn" id="4_mucg7"]
+[ext_resource type="PackedScene" uid="uid://nv43ygvaavqj" path="res://Scenes/Interactables/clockwise.tscn" id="5_tdopa"]
+[ext_resource type="PackedScene" uid="uid://bd8fbishdjwak" path="res://Scenes/Interactables/color_wall.tscn" id="6_lwuu2"]
+[ext_resource type="PackedScene" uid="uid://3ranwu71y8yd" path="res://Scenes/Interactables/counterclockwise.tscn" id="7_g0bjd"]
+[ext_resource type="PackedScene" path="res://Scenes/Interactables/paintable_wall.tscn" id="8_kcuqi"]
+[ext_resource type="PackedScene" uid="uid://biyg6nxxj6r7t" path="res://Scenes/Interactables/brush_pickup.tscn" id="9_7b6f5"]
+[ext_resource type="PackedScene" uid="uid://d272cucotbhnf" path="res://Scenes/Interactables/unlockable_wall.tscn" id="10_bla2a"]
+[ext_resource type="PackedScene" uid="uid://n5rh35de5qmn" path="res://Scenes/Player/player.tscn" id="10_cqglu"]
+[ext_resource type="PackedScene" uid="uid://cfawafybmaiej" path="res://Scenes/Interactables/wall_button.tscn" id="11_du3l2"]
+[ext_resource type="PackedScene" uid="uid://d4c52oroxymk" path="res://Scenes/color_wheel.tscn" id="12_mucg7"]
+[ext_resource type="PackedScene" uid="uid://wc2dwbrkpa2p" path="res://Scenes/Interactables/color_subtractor.tscn" id="13_tdopa"]
+[ext_resource type="PackedScene" uid="uid://hs443laxkp8b" path="res://Scenes/Interactables/color_adder.tscn" id="14_lwuu2"]
+
+[node name="Level 10" unique_id=2120704257 instance=ExtResource("1_p60k7")]
+
+[node name="Background" parent="." index="0" unique_id=1233328414]
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAIAAAAAAAEAAAABAAIAAAAAAAIAAAABAAIAAAAAAAMAAAABAAIAAAAAAAQAAAABAAIAAAAAAAUAAAABAAIAAAAAAAYAAAABAAIAAAAAAAcAAAABAAIAAAAAAAgAAAABAAIAAAAAAAkAAAABAAIAAAABAAAAAAABAAIAAAABAAEAAAABAAIAAAABAAIAAAABAAIAAAABAAMAAAABAAIAAAABAAQAAAABAAIAAAABAAUAAAABAAIAAAABAAYAAAABAAIAAAABAAcAAAABAAIAAAABAAgAAAABAAIAAAABAAkAAAABAAIAAAACAAAAAAABAAIAAAACAAEAAAABAAIAAAACAAIAAAABAAIAAAACAAMAAAABAAIAAAACAAQAAAABAAIAAAACAAUAAAABAAIAAAACAAYAAAABAAIAAAACAAcAAAABAAIAAAACAAgAAAABAAIAAAACAAkAAAABAAIAAAADAAAAAAABAAIAAAADAAEAAAABAAIAAAADAAIAAAABAAIAAAADAAMAAAABAAIAAAADAAQAAAABAAIAAAADAAUAAAABAAIAAAADAAYAAAABAAIAAAADAAcAAAABAAIAAAADAAgAAAABAAIAAAADAAkAAAABAAIAAAAEAAAAAAABAAIAAAAEAAEAAAABAAIAAAAEAAIAAAABAAIAAAAEAAMAAAABAAIAAAAEAAQAAAABAAIAAAAEAAUAAAABAAIAAAAEAAYAAAABAAIAAAAEAAcAAAABAAIAAAAEAAgAAAABAAIAAAAEAAkAAAABAAIAAAAFAAAAAAABAAIAAAAFAAEAAAABAAIAAAAFAAIAAAABAAIAAAAFAAMAAAABAAIAAAAFAAQAAAABAAIAAAAFAAUAAAABAAIAAAAFAAYAAAABAAIAAAAFAAcAAAABAAIAAAAFAAgAAAABAAIAAAAFAAkAAAABAAIAAAAGAAAAAAABAAIAAAAGAAEAAAABAAIAAAAGAAIAAAABAAIAAAAGAAMAAAABAAIAAAAGAAQAAAABAAIAAAAGAAUAAAABAAIAAAAGAAYAAAABAAIAAAAGAAcAAAABAAIAAAAGAAgAAAABAAIAAAAGAAkAAAABAAIAAAAHAAAAAAABAAIAAAAHAAEAAAABAAIAAAAHAAIAAAABAAIAAAAHAAMAAAABAAIAAAAHAAQAAAABAAIAAAAHAAUAAAABAAIAAAAHAAYAAAABAAIAAAAHAAcAAAABAAIAAAAHAAgAAAABAAIAAAAHAAkAAAABAAIAAAAIAAAAAAABAAIAAAAIAAEAAAABAAIAAAAIAAIAAAABAAIAAAAIAAMAAAABAAIAAAAIAAQAAAABAAIAAAAIAAUAAAABAAIAAAAIAAYAAAABAAIAAAAIAAcAAAABAAIAAAAIAAgAAAABAAIAAAAIAAkAAAABAAIAAAAJAAAAAAABAAIAAAAJAAEAAAABAAIAAAAJAAIAAAABAAIAAAAJAAMAAAABAAIAAAAJAAQAAAABAAIAAAAJAAUAAAABAAIAAAAJAAYAAAABAAIAAAAJAAcAAAABAAIAAAAJAAgAAAABAAIAAAAJAAkAAAABAAIAAAAKAAAAAAABAAIAAAAKAAEAAAABAAIAAAAKAAIAAAABAAIAAAAKAAMAAAABAAIAAAAKAAQAAAABAAIAAAAKAAUAAAABAAIAAAAKAAYAAAABAAIAAAAKAAcAAAABAAIAAAAKAAgAAAABAAIAAAAKAAkAAAABAAIAAAALAAAAAAABAAIAAAALAAEAAAABAAIAAAALAAIAAAABAAIAAAALAAMAAAABAAIAAAALAAQAAAABAAIAAAALAAUAAAABAAIAAAALAAYAAAABAAIAAAALAAcAAAABAAIAAAALAAgAAAABAAIAAAALAAkAAAABAAIAAAAMAAAAAAABAAIAAAAMAAEAAAABAAIAAAAMAAIAAAABAAIAAAAMAAMAAAABAAIAAAAMAAQAAAABAAIAAAAMAAUAAAABAAIAAAAMAAYAAAABAAIAAAAMAAcAAAABAAIAAAAMAAgAAAABAAIAAAANAAAAAAABAAIAAAANAAEAAAABAAIAAAANAAIAAAABAAIAAAANAAMAAAABAAIAAAANAAQAAAABAAIAAAANAAUAAAABAAIAAAANAAYAAAABAAIAAAANAAcAAAABAAIAAAANAAgAAAABAAIAAAANAAkAAAABAAIAAAAOAAAAAAABAAIAAAAOAAEAAAABAAIAAAAOAAIAAAABAAIAAAAOAAMAAAABAAIAAAAOAAQAAAABAAIAAAAOAAUAAAABAAIAAAAOAAYAAAABAAIAAAAOAAcAAAABAAIAAAAOAAgAAAABAAIAAAAOAAkAAAABAAIAAAAPAAAAAAABAAIAAAAPAAEAAAABAAIAAAAPAAIAAAABAAIAAAAPAAMAAAABAAIAAAAPAAQAAAABAAIAAAAPAAUAAAABAAIAAAAPAAYAAAABAAIAAAAPAAcAAAABAAIAAAAPAAgAAAABAAIAAAAPAAkAAAABAAIAAAAQAAAAAAABAAIAAAAQAAEAAAABAAIAAAAQAAIAAAABAAIAAAAQAAMAAAABAAIAAAAQAAQAAAABAAIAAAAQAAUAAAABAAIAAAAQAAYAAAABAAIAAAAQAAcAAAABAAIAAAAQAAgAAAABAAIAAAAQAAkAAAABAAIAAAARAAAAAAABAAIAAAARAAEAAAABAAIAAAARAAIAAAABAAIAAAARAAMAAAABAAIAAAARAAQAAAABAAIAAAARAAUAAAABAAIAAAARAAYAAAABAAIAAAARAAcAAAABAAIAAAARAAgAAAABAAIAAAARAAkAAAABAAIAAAASAAAAAAABAAIAAAASAAEAAAABAAIAAAASAAIAAAABAAIAAAASAAMAAAABAAIAAAASAAQAAAABAAIAAAASAAUAAAABAAIAAAASAAYAAAABAAIAAAASAAcAAAABAAIAAAASAAgAAAABAAIAAAASAAkAAAABAAIAAAA=")
+
+[node name="Walls" parent="." index="1" unique_id=1740214358]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAIAAAAAAAIAAAAAAAMAAAAAAAIAAAAAAAQAAAAAAAIAAAAAAAUAAAAAAAIAAAAAAAYAAAAAAAIAAAAAAAcAAAAAAAIAAAAAAAgAAAAAAAIAAAAAAAkAAAAAAAIAAAABAAAAAAABAAEAAAACAAAAAAABAAEAAAADAAAAAAABAAEAAAAEAAAAAAABAAEAAAAFAAAAAAABAAEAAAAGAAAAAAABAAEAAAAHAAAAAAABAAEAAAAIAAAAAAABAAEAAAAJAAAAAAABAAEAAAAKAAAAAAABAAEAAAALAAAAAAABAAEAAAAMAAAAAAABAAEAAAANAAAAAAABAAEAAAAOAAAAAAABAAEAAAAPAAAAAAABAAEAAAAQAAAAAAABAAEAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAACAAIAAAAAAAAAAAACAAEAAAAAAAAAAAAAAAoAAAAAAAMAAAABAAoAAAABAAMAAAACAAoAAAABAAMAAAADAAoAAAABAAMAAAAEAAoAAAABAAMAAAAFAAoAAAABAAMAAAAGAAoAAAABAAMAAAAHAAoAAAABAAMAAAAIAAoAAAABAAMAAAAJAAoAAAABAAMAAAAKAAoAAAABAAMAAAALAAoAAAABAAMAAAAMAAoAAAABAAMAAAANAAoAAAABAAMAAAAOAAoAAAABAAMAAAAPAAoAAAABAAMAAAAQAAoAAAABAAMAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAKAAUAAAAAAAAAAAALAAUAAAAAAAAAAAAMAAUAAAAAAAAAAAANAAUAAAAAAAAAAAAOAAUAAAAAAAAAAAAPAAUAAAAAAAAAAAAQAAUAAAAAAAAAAAAGAAQAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAYAAAAAAAAAAAAGAAcAAAAAAAAAAAAGAAgAAAAAAAAAAAAMAAYAAAAAAAAAAAAMAAcAAAAAAAAAAAAMAAgAAAAAAAAAAAAMAAMAAAAAAAAAAAAMAAIAAAAAAAAAAAASAAEAAAACAAIAAAASAAIAAAACAAIAAAASAAMAAAACAAIAAAASAAQAAAACAAIAAAASAAUAAAACAAIAAAASAAcAAAACAAIAAAASAAgAAAACAAIAAAASAAkAAAACAAIAAAASAAoAAAACAAMAAAASAAAAAAACAAEAAAARAAoAAAABAAMAAAARAAUAAAAAAAAAAAARAAAAAAABAAEAAAA=")
+
+[node name="Splitter" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="0" unique_id=1461999553 instance=ExtResource("2_bla2a")]
+position = Vector2(96, 160)
+new_pos1 = Vector2(96, 288)
+new_pos2 = Vector2(96, 416)
+player_color = Color(0.12, 0.65, 0.2, 1)
+duplicate_color = Color(0.9098039, 0.101960786, 0.101960786, 1)
+
+[node name="Swapper" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="1" unique_id=388587406 node_paths=PackedStringArray("player_real", "player_duplicate") instance=ExtResource("3_du3l2")]
+position = Vector2(352, 288)
+player_real = NodePath("../../Player")
+player_duplicate = NodePath("../PlayerDuplicate")
+
+[node name="PlayerDuplicate" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="2" unique_id=80732309 instance=ExtResource("4_mucg7")]
+position = Vector2(-294, 233)
+
+[node name="Clockwise" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="3" unique_id=936062176 instance=ExtResource("5_tdopa")]
+position = Vector2(96, 608)
+
+[node name="ColorWall" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="4" unique_id=1696651386 instance=ExtResource("6_lwuu2")]
+position = Vector2(800, 96)
+col = Color(0.5, 0.2, 0.65, 1)
+
+[node name="ColorWall2" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="5" unique_id=2111875033 instance=ExtResource("6_lwuu2")]
+position = Vector2(416, 608)
+col = Color(0.5, 0.2, 0.65, 1)
+
+[node name="Counterclockwise" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="6" unique_id=838467567 instance=ExtResource("7_g0bjd")]
+position = Vector2(608, 416)
+
+[node name="PaintableWall" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="7" unique_id=1127356614 instance=ExtResource("8_kcuqi")]
+position = Vector2(416, 96)
+painted_color = Color(0.137, 0.42, 0.78, 1)
+is_painted = true
+
+[node name="Swapper2" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="8" unique_id=1277026179 node_paths=PackedStringArray("player_real", "player_duplicate") instance=ExtResource("3_du3l2")]
+position = Vector2(608, 288)
+player_real = NodePath("../../Player")
+player_duplicate = NodePath("../PlayerDuplicate")
+
+[node name="BrushPickup" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="9" unique_id=267070460 instance=ExtResource("9_7b6f5")]
+position = Vector2(1120, 96)
+scale = Vector2(0.75, 0.75)
+
+[node name="ColorWall4" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="10" unique_id=837919264 instance=ExtResource("6_lwuu2")]
+position = Vector2(800, 608)
+col = Color(0.137, 0.42, 0.78, 1)
+
+[node name="Unlockable Wall" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="11" unique_id=1662454923 instance=ExtResource("10_bla2a")]
+position = Vector2(800, 288)
+
+[node name="wall button" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="12" unique_id=1298048502 node_paths=PackedStringArray("unlockable_wall") instance=ExtResource("11_du3l2")]
+position = Vector2(1120, 608)
+unlockable_wall = NodePath("../Unlockable Wall")
+
+[node name="ColorWall3" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="13" unique_id=2029405093 instance=ExtResource("6_lwuu2")]
+position = Vector2(1184, 416)
+col = Color(0.12, 0.65, 0.2, 1)
+
+[node name="ColorWheel" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="14" unique_id=665712450 instance=ExtResource("12_mucg7")]
+offset_left = 1336.0
+offset_top = 6.0
+offset_right = 1594.0
+offset_bottom = 264.0
+scale = Vector2(0.5, 0.5)
+show_secondary = true
+
+[node name="Counterclockwise2" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="15" unique_id=732979255 instance=ExtResource("7_g0bjd")]
+position = Vector2(224, 96)
+
+[node name="ColorSubtractor" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="16" unique_id=1076673664 instance=ExtResource("13_tdopa")]
+position = Vector2(1120, 288)
+col = Color(0.137, 0.42, 0.78, 1)
+
+[node name="ColorAdder" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="17" unique_id=558619985 instance=ExtResource("14_lwuu2")]
+position = Vector2(864, 416)
+
+[node name="Camera2D" parent="." index="3" unique_id=973442512]
+position = Vector2(736, 413)
+
+[node name="Player" parent="." index="4" unique_id=1803487026 instance=ExtResource("10_cqglu")]
+position = Vector2(96, 96)
+col = Color(0.9098039, 0.101960786, 0.101960786, 1)
