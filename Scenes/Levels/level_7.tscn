@@ -102,20 +102,28 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("10_7se1c")
+theme_override_font_sizes/font_size = 24
 text = "MOVES: "
 metadata/_edit_use_anchors_ = true
 
 [node name="MovesCount" type="Label" parent="CanvasLayer/MovesContainer" index="1" unique_id=444505400]
 layout_mode = 0
-offset_left = 94.0
+offset_left = 139.0
 offset_top = -1.0
-offset_right = 134.0
-offset_bottom = 22.0
+offset_right = 179.0
+offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("10_7se1c")
+theme_override_font_sizes/font_size = 24
 
 [node name="BrushIndicator" type="TextureRect" parent="CanvasLayer" index="1" unique_id=1007900383]
 offset_top = 40.0
 offset_right = 64.0
 offset_bottom = 104.0
-scale = Vector2(0.75, 0.75)
+scale = Vector2(1.25, 1.25)
 texture = ExtResource("11_7se1c")
+
+[node name="PauseMenu" parent="." index="6" unique_id=1823011710]
+visible = false
+
+[node name="ControlsHud" parent="." index="7" unique_id=1359209231]
+visible = false

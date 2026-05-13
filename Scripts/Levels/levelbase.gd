@@ -50,12 +50,9 @@ func _ready() -> void:
 	if controls and get_tree().current_scene.name != "Tutorial Level 1":
 		controls.queue_free()
 		
-	if get_tree().current_scene.name == "Level 6":
-		var msg = preload("res://Scenes/UI/split_message.tscn").instantiate()
-		add_child(msg)
 
-	# Show brush unlock screen on Level 7
-	if get_tree().current_scene.name == "Level 7":
+	# Show brush unlock screen on Level 6
+	if get_tree().current_scene.name == "Level 6":
 		var unlock = preload("res://Scenes/UI/brush_unlock.tscn").instantiate()
 		add_child(unlock)
 	
@@ -261,7 +258,7 @@ func on_player_split(split_player: Node2D, duplicate: Node2D) -> void:
 	_refresh_dynamic_objects()
 	
 	#Show SPACE hint only on level 6 (first time splitting)
-	if get_tree().current_scene.name == "Level 6":
+	if get_tree().current_scene.name == "Level 5":
 		var msg = preload("res://Scenes/UI/split_message.tscn").instantiate()
 		add_child(msg)
 

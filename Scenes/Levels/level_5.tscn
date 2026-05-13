@@ -42,12 +42,16 @@ position = Vector2(544, 96)
 col = Color(0.12, 0.65, 0.2, 1)
 
 [node name="Color Wheel" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="5" unique_id=665712450 instance=ExtResource("6_slbhm")]
-offset_left = 1120.0
-offset_top = -113.0
-offset_right = 1378.0
-offset_bottom = 145.0
+offset_left = 872.0
+offset_top = -56.0
+offset_right = 1130.0
+offset_bottom = 202.0
 scale = Vector2(0.5, 0.5)
 show_secondary = true
+
+[node name="Camera2D" parent="." index="3" unique_id=973442512]
+position = Vector2(416, 288)
+zoom = Vector2(0.9, 0.9)
 
 [node name="Player" parent="." index="4" unique_id=1803487026 instance=ExtResource("7_i5g5g")]
 position = Vector2(96, 96)
@@ -69,20 +73,28 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("7_wakwf")
+theme_override_font_sizes/font_size = 24
 text = "MOVES: "
 metadata/_edit_use_anchors_ = true
 
 [node name="MovesCount" type="Label" parent="CanvasLayer/MovesContainer" index="1" unique_id=2032374197]
 layout_mode = 0
-offset_left = 94.0
+offset_left = 139.0
 offset_top = -1.0
-offset_right = 134.0
-offset_bottom = 22.0
+offset_right = 179.0
+offset_bottom = 23.0
 theme_override_fonts/font = ExtResource("7_wakwf")
+theme_override_font_sizes/font_size = 24
 
 [node name="BrushIndicator" type="TextureRect" parent="CanvasLayer" index="1" unique_id=208465973]
 offset_top = 40.0
 offset_right = 64.0
 offset_bottom = 104.0
-scale = Vector2(0.75, 0.75)
+scale = Vector2(1.2, 1.2)
 texture = ExtResource("11_srugb")
+
+[node name="PauseMenu" parent="." index="6" unique_id=1823011710]
+visible = false
+
+[node name="ControlsHud" parent="." index="7" unique_id=1359209231]
+visible = false

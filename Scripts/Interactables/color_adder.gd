@@ -13,7 +13,7 @@ func _ready() -> void:
 
 func can_move_here(player) -> bool:
 	if disabled:
-		return false
+		return true 
 	return _is_valid_interaction(player)
 
 func interact(player):
