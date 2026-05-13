@@ -1,67 +1,73 @@
-[gd_scene format=3 uid="uid://out_of_moves_001"]
+[gd_scene format=3 uid="uid://b06mqsjprbors"]
 
-[ext_resource type="Script" path="res://Scripts/UI/out_of_moves.gd" id="1_oomscr"]
-[ext_resource type="FontFile" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_oomfnt"]
+[ext_resource type="Script" uid="uid://12higrpp4arn" path="res://Scripts/UI/out_of_moves.gd" id="1_oomscr"]
+[ext_resource type="FontFile" uid="uid://7nx8w2d5mm0s" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_oomfnt"]
+[ext_resource type="AudioStream" uid="uid://gc8fkmdsjn5r" path="res://Assets/audio/SFX/fails.mp3" id="3_ajtii"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oom01"]
-bg_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
 content_margin_left = 40.0
 content_margin_top = 30.0
 content_margin_right = 40.0
 content_margin_bottom = 30.0
+bg_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
 
-[node name="OutOfMoves" type="CanvasLayer"]
+[node name="OutOfMoves" type="CanvasLayer" unique_id=1364584683]
 script = ExtResource("1_oomscr")
 
-[node name="Overlay" type="ColorRect" parent="."]
+[node name="Overlay" type="ColorRect" parent="." unique_id=662971793]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(0.051, 0.051, 0.078, 0.75)
 
-[node name="Panel" type="CenterContainer" parent="."]
+[node name="Panel" type="CenterContainer" parent="." unique_id=56778499]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Window" type="PanelContainer" parent="Panel"]
+[node name="Window" type="PanelContainer" parent="Panel" unique_id=1707682117]
 custom_minimum_size = Vector2(420, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_oom01")
 
-[node name="VBox" type="VBoxContainer" parent="Panel/Window"]
+[node name="VBox" type="VBoxContainer" parent="Panel/Window" unique_id=699409812]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Title" type="Label" parent="Panel/Window/VBox"]
+[node name="Title" type="Label" parent="Panel/Window/VBox" unique_id=1160093079]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.91, 0.267, 0.267, 1)
 theme_override_fonts/font = ExtResource("2_oomfnt")
 theme_override_font_sizes/font_size = 18
-theme_override_colors/font_color = Color(0.91, 0.267, 0.267, 1)
 text = "OUT OF MOVES!"
 horizontal_alignment = 1
 
-[node name="Msg" type="Label" parent="Panel/Window/VBox"]
+[node name="Msg" type="Label" parent="Panel/Window/VBox" unique_id=421314570]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
 theme_override_fonts/font = ExtResource("2_oomfnt")
 theme_override_font_sizes/font_size = 10
-theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
 text = "TRY AGAIN?"
 horizontal_alignment = 1
 
-[node name="BtnRestart" type="Button" parent="Panel/Window/VBox"]
-layout_mode = 2
+[node name="BtnRestart" type="Button" parent="Panel/Window/VBox" unique_id=38556249]
 custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
 theme_override_fonts/font = ExtResource("2_oomfnt")
 theme_override_font_sizes/font_size = 11
 text = "RESTART"
 
-[node name="BtnMenu" type="Button" parent="Panel/Window/VBox"]
-layout_mode = 2
+[node name="BtnMenu" type="Button" parent="Panel/Window/VBox" unique_id=176113385]
 custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
 theme_override_fonts/font = ExtResource("2_oomfnt")
 theme_override_font_sizes/font_size = 11
 text = "MAIN MENU"
+
+[node name="failSfx" type="AudioStreamPlayer2D" parent="." unique_id=130996712]
+stream = ExtResource("3_ajtii")
+autoplay = true
+bus = &"SFX"
 
 [connection signal="pressed" from="Panel/Window/VBox/BtnRestart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Panel/Window/VBox/BtnMenu" to="." method="_on_menu_pressed"]
