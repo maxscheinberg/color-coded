@@ -468,13 +468,17 @@ func _handle_scene_transition() -> bool:
 
 func _play_level_complete(next_scene: String) -> void:
 	level_failed = true
-
-	# Pop all characters
 	for character in get_tree().get_nodes_in_group("characters"):
 		var tween := create_tween()
 		tween.tween_property(character, "scale", Vector2(1.4, 1.4), 0.12)\
 			.set_ease(Tween.EASE_OUT)
 		tween.tween_property(character, "scale", Vector2(0.0, 0.0), 0.18)\
 			.set_ease(Tween.EASE_IN)
-
 	await get_tree().create_timer(0.35).timeout
+	# ← this part was missing
+	var screen = preload("res://Scenes/UI/level_complete.tscn").instantiate()
+	add_child(screen)
+	screen.setup(moves_used, move_limit)
+	screen.next_pressed.connect(func():
+		get_tree().change_scene_to_file(next_scene)
+	)
