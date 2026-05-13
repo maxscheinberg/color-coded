@@ -10,6 +10,7 @@ func is_floor_object() -> bool:
 	return true
 
 func interact(player) -> void:
+	player.moving = true
 	if player_duplicate == null:
 		player_duplicate = _resolve_player_duplicate()
 
