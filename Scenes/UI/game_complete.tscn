@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://bew4ej2p2543c"]
+
+[ext_resource type="Script" uid="uid://ckahdj8dolp7" path="res://Scripts/UI/game_complete.gd" id="1_gcscr"]
+[ext_resource type="Script" uid="uid://bch0u12nj52yr" path="res://Scripts/UI/fireworks.gd" id="2_fwscr"]
+[ext_resource type="FontFile" uid="uid://7nx8w2d5mm0s" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="3_gcfnt"]
+[ext_resource type="AudioStream" uid="uid://dmhajywg34hig" path="res://Assets/audio/SFX/winning.mp3" id="4_gcsfx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gc01"]
+content_margin_left = 40.0
+content_margin_top = 40.0
+content_margin_right = 40.0
+content_margin_bottom = 40.0
+bg_color = Color(0.051, 0.051, 0.078, 0.88)
+
+[sub_resource type="Theme" id="Theme_tfua0"]
+
+[node name="GameComplete" type="CanvasLayer" unique_id=2114241475]
+script = ExtResource("1_gcscr")
+
+[node name="Overlay" type="ColorRect" parent="." unique_id=1756066502]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.051, 0.051, 0.078, 0.6)
+
+[node name="Panel" type="CenterContainer" parent="." unique_id=2185686]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Fireworks" type="Node2D" parent="Panel" unique_id=1992885244]
+script = ExtResource("2_fwscr")
+
+[node name="Window" type="PanelContainer" parent="Panel" unique_id=575250610]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gc01")
+
+[node name="VBox" type="VBoxContainer" parent="Panel/Window" unique_id=2000192488]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Title" type="Label" parent="Panel/Window/VBox" unique_id=1822257043]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.27, 1)
+theme_override_fonts/font = ExtResource("3_gcfnt")
+theme_override_font_sizes/font_size = 28
+text = "YOU WIN!"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="Panel/Window/VBox" unique_id=2028930737]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_gcfnt")
+theme_override_font_sizes/font_size = 12
+text = "CONGRATULATIONS!"
+horizontal_alignment = 1
+
+[node name="Desc" type="Label" parent="Panel/Window/VBox" unique_id=782264329]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
+theme_override_fonts/font = ExtResource("3_gcfnt")
+theme_override_font_sizes/font_size = 10
+text = "YOU SOLVED ALL THE PUZZLES
+AND MASTERED THE COLOR CODE."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ColorBar" type="HBoxContainer" parent="Panel/Window/VBox" unique_id=1338205978]
+custom_minimum_size = Vector2(400, 5)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="BarRed" type="ColorRect" parent="Panel/Window/VBox/ColorBar" unique_id=1269729886]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.91, 0.267, 0.267, 1)
+
+[node name="BarOrange" type="ColorRect" parent="Panel/Window/VBox/ColorBar" unique_id=183116095]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.91, 0.416, 0.267, 1)
+
+[node name="BarYellow" type="ColorRect" parent="Panel/Window/VBox/ColorBar" unique_id=1500756809]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.961, 0.784, 0.259, 1)
+
+[node name="BarGreen" type="ColorRect" parent="Panel/Window/VBox/ColorBar" unique_id=2007354444]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.4, 0.733, 0.267, 1)
+
+[node name="BarBlue" type="ColorRect" parent="Panel/Window/VBox/ColorBar" unique_id=1050795851]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.267, 0.533, 0.933, 1)
+
+[node name="BarPurple" type="ColorRect" parent="Panel/Window/VBox/ColorBar" unique_id=1091968483]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.467, 0.333, 0.867, 1)
+
+[node name="BtnMenu" type="Button" parent="Panel/Window/VBox" unique_id=1722735540]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+theme = SubResource("Theme_tfua0")
+theme_override_fonts/font = ExtResource("3_gcfnt")
+theme_override_font_sizes/font_size = 14
+text = "BACK TO MAIN MENU"
+
+[node name="WinningSfx" type="AudioStreamPlayer" parent="." unique_id=291698550]
+stream = ExtResource("4_gcsfx")
+autoplay = true
+bus = &"SFX"
+
+[connection signal="pressed" from="Panel/Window/VBox/BtnMenu" to="." method="_on_menu_pressed"]

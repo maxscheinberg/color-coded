@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://ddjwqdqipidhl"]
+
+[ext_resource type="Script" uid="uid://38kas5juicjx" path="res://Scripts/UI/rotation_unlock.gd" id="1_kuscr"]
+[ext_resource type="FontFile" uid="uid://7nx8w2d5mm0s" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_kufnt"]
+[ext_resource type="Texture2D" uid="uid://16k226j2usku" path="res://Assets/Interactables/wall button-frame.png" id="3_ux42c"]
+[ext_resource type="Texture2D" uid="uid://bd0dunkf7gjmg" path="res://Assets/Interactables/key wall icon-frame.png" id="4_2f4a2"]
+[ext_resource type="AudioStream" uid="uid://dbj37ue4vrk3n" path="res://Assets/audio/SFX/unlock.mp3" id="5_kusfx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ku01"]
+content_margin_left = 40.0
+content_margin_top = 30.0
+content_margin_right = 40.0
+content_margin_bottom = 30.0
+bg_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+
+[node name="KeyUnlock" type="CanvasLayer" unique_id=1499377389]
+process_mode = 3
+script = ExtResource("1_kuscr")
+
+[node name="Overlay" type="ColorRect" parent="." unique_id=402968497]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.051, 0.051, 0.078, 0.75)
+
+[node name="Panel" type="CenterContainer" parent="." unique_id=2106109942]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Window" type="PanelContainer" parent="Panel" unique_id=1432923662]
+custom_minimum_size = Vector2(460, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ku01")
+
+[node name="VBox" type="VBoxContainer" parent="Panel/Window" unique_id=1383059128]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="NewItem" type="Label" parent="Panel/Window/VBox" unique_id=606041155]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.27, 1)
+theme_override_fonts/font = ExtResource("2_kufnt")
+theme_override_font_sizes/font_size = 20
+text = "NEW MECHANIC!"
+horizontal_alignment = 1
+
+[node name="ImagesRow" type="HBoxContainer" parent="Panel/Window/VBox" unique_id=933235770]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="ButtonImage" type="TextureRect" parent="Panel/Window/VBox/ImagesRow" unique_id=2110069457]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("3_ux42c")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Arrow" type="Label" parent="Panel/Window/VBox/ImagesRow" unique_id=1268545590]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_kufnt")
+theme_override_font_sizes/font_size = 14
+text = "→"
+vertical_alignment = 1
+
+[node name="WallImage" type="TextureRect" parent="Panel/Window/VBox/ImagesRow" unique_id=2085499432]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("4_2f4a2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="Panel/Window/VBox" unique_id=1944753722]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_kufnt")
+theme_override_font_sizes/font_size = 16
+text = "KEY BUTTON & UNLOCKABLE WALL"
+horizontal_alignment = 1
+
+[node name="Desc" type="Label" parent="Panel/Window/VBox" unique_id=488675827]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
+theme_override_fonts/font = ExtResource("2_kufnt")
+theme_override_font_sizes/font_size = 11
+text = "STEP ON THE BUTTON TO
+UNLOCK THE MATCHING WALL.
+LEAVE IT TO LOCK AGAIN."
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="BtnClose" type="Button" parent="Panel/Window/VBox" unique_id=1977419106]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_kufnt")
+theme_override_font_sizes/font_size = 11
+text = "BACK TO GAME"
+
+[node name="UnlockSfx" type="AudioStreamPlayer" parent="." unique_id=1581614997]
+stream = ExtResource("5_kusfx")
+autoplay = true
+bus = &"SFX"
+
+[connection signal="pressed" from="Panel/Window/VBox/BtnClose" to="." method="_on_close_pressed"]

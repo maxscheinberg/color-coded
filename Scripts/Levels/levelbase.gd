@@ -62,6 +62,11 @@ func _ready() -> void:
 	if get_tree().current_scene.name == "Level 8":
 		var unlock = preload("res://Scenes/UI/rotation_unlock.tscn").instantiate()
 		add_child(unlock)
+		
+	# Show number of moves in level 4
+	if get_tree().current_scene.name == "Level 4":
+		var unlock = preload("res://Scenes/UI/moves_unlock.tscn").instantiate()
+		add_child(unlock)
 	
 
 
@@ -120,7 +125,7 @@ func _move_player(dir: int) -> void:
 		return
 	# --- End brush mechanic ---------------------------------------------
 
-	if occupying_object != null and not occupying_object.can_move_here(controlled_character):
+	if occupying_object != null and occupying_object.has_method("can_move_here") and not occupying_object.can_move_here(controlled_character):
 		controlled_character.play_invalid_feedback(occupying_object.global_position)
 		return
 
@@ -164,7 +169,7 @@ func _stop_move(character: Node2D, new_pos: Vector2i) -> void:
 
 	_refresh_dynamic_objects()
 
-	if _handle_scene_transition():
+	if await _handle_scene_transition():
 		return
 
 func _dir_offset(dir: int) -> Vector2i:
@@ -444,7 +449,21 @@ func _handle_scene_transition() -> bool:
 		_play_level_complete("res://Scenes/Levels/level_9.tscn")
 		return true
 		
+	if scene_name == "Level 9" and _any_character_on_cell(Vector2i(18, 6)):
+		level_failed = true
+		for character in get_tree().get_nodes_in_group("characters"):
+			var tween := create_tween()
+			tween.tween_property(character, "scale", Vector2(1.4, 1.4), 0.12)\
+				.set_ease(Tween.EASE_OUT)
+			tween.tween_property(character, "scale", Vector2(0.0, 0.0), 0.18)\
+				.set_ease(Tween.EASE_IN)
+		await get_tree().create_timer(0.35).timeout
+		var screen = preload("res://Scenes/UI/game_complete.tscn").instantiate()
+		add_child(screen)
+		return true
+
 	return false
+		
 
 
 func _play_level_complete(next_scene: String) -> void:
@@ -459,11 +478,3 @@ func _play_level_complete(next_scene: String) -> void:
 			.set_ease(Tween.EASE_IN)
 
 	await get_tree().create_timer(0.35).timeout
-
-	# Show level complete screen
-	var screen = preload("res://Scenes/UI/level_complete.tscn").instantiate()
-	add_child(screen)
-	screen.setup(moves_used, move_limit)
-	screen.next_pressed.connect(func():
-		get_tree().change_scene_to_file(next_scene)
-	)

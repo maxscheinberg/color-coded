@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://57nay7jj6lv8" path="res://Scripts/UI/swapper_unlock.gd" id="1_suscr"]
 [ext_resource type="FontFile" uid="uid://7nx8w2d5mm0s" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_sufnt"]
 [ext_resource type="Texture2D" uid="uid://d3r4m5jbwcgi4" path="res://Assets/Interactables/swapper-frame.png" id="3_lw3yx"]
+[ext_resource type="AudioStream" uid="uid://dbj37ue4vrk3n" path="res://Assets/audio/SFX/unlock.mp3" id="4_peysd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_su01"]
 content_margin_left = 40.0
@@ -74,9 +75,10 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_sufnt")
 theme_override_font_sizes/font_size = 11
-text = "GOT IT!"
+text = "BACK TO GAME"
 
 [node name="UnlockSfx" type="AudioStreamPlayer" parent="." unique_id=2139926444]
+stream = ExtResource("4_peysd")
 autoplay = true
 bus = &"SFX"
 

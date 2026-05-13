@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://3ranwu71y8yd"]
 
 [ext_resource type="Script" uid="uid://dcq05akshll8m" path="res://Scripts/Interactables/counterclockwise.gd" id="1_84icb"]
+[ext_resource type="AudioStream" uid="uid://cjdbprrjjc4s7" path="res://Assets/audio/SFX/rotateSfx.mp3" id="2_808wf"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_84icb"]
 _data = PackedByteArray("AAADAAUAAAABAAAAQAAAAEAAAADmAAAAUklGRt4AAABXRUJQVlA4TNIAAAAvP8APEBcw//M///MfgAfIsW23bf6a/V0FlIB+4HWUZNw28T+c9xH9n4D4I1W/xfQbtIO60QE2nj0tN4+ik1a2bFqQj+y5F3gkrZqJp+pmQj2+qC92gOW5AVMbMI9C7dUJbqonuBVzaZnsDDPXvjESv6pvkd2y0/8xMhK3xleR9OwZmEuDcUQ8n3ZuxU0dp6LB0AYwj4hogJ6SiIiesLq4tGXssPN8gp7cjqRBS2YSHXpipILLKJ4bNmAeRUcBi/BJT9yMSm24EarD+IRbscS3/GY=")
@@ -59,3 +60,7 @@ metadata/_aseprite_wizard_source_file_hash_ = "67d2ef1c08eb38a97f9aec38f6fb7484"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=448005513]
 libraries/ = SubResource("AnimationLibrary_5mhiv")
+
+[node name="rotateSfx" type="AudioStreamPlayer" parent="." unique_id=1452825346]
+stream = ExtResource("2_808wf")
+bus = &"SFX"

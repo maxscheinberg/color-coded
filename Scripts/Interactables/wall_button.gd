@@ -4,6 +4,7 @@ extends Node2D
 @onready var sprite: Sprite2D = $Sprite2D
 
 var is_pressed: bool = false
+var _shown_hint: bool = false
 
 func is_floor_object() -> bool:
 	return true
@@ -29,6 +30,22 @@ func _refresh_state() -> void:
 func _set_pressed(pressed: bool) -> void:
 	if is_pressed == pressed:
 		return
+ 
+	is_pressed = pressed
+ 
+	if unlockable_wall != null and unlockable_wall.has_method("set_unlocked"):
+		unlockable_wall.set_unlocked(is_pressed)
+ 
+	if sprite != null:
+		if is_pressed:
+			sprite.modulate = Color(0.75, 0.75, 0.75, 1.0)
+			# Show key mechanic popup on first press in Level 5
+			if not _shown_hint and get_tree().current_scene.name == "Level 5":
+				_shown_hint = true
+				var popup = preload("res://Scenes/UI/key_unlock.tscn").instantiate()
+				get_tree().current_scene.add_child(popup)
+		else:
+			sprite.modulate = Color(1, 1, 1, 1)
 
 	is_pressed = pressed
 

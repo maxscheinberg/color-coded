@@ -61,7 +61,7 @@ custom_minimum_size = Vector2(460, 50)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_smfnt")
 theme_override_font_sizes/font_size = 11
-text = "GOT IT!"
+text = "BACK TO GAME"
 
 [node name="UnlockSfx" type="AudioStreamPlayer" parent="." unique_id=199687047]
 stream = ExtResource("3_0if3w")
