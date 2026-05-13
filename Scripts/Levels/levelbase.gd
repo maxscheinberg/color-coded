@@ -70,20 +70,16 @@ func _process(_delta: float) -> void:
 		_change_character()
 		return
 
-	if Input.is_action_just_pressed("ui_down"):
+	if Input.is_action_pressed("ui_down"):
 		_move_player(DOWN)
-	if Input.is_action_just_pressed("ui_up"):
+	if Input.is_action_pressed("ui_up"):
 		_move_player(UP)
-	if Input.is_action_just_pressed("ui_right"):
+	if Input.is_action_pressed("ui_right"):
 		_move_player(RIGHT)
-	if Input.is_action_just_pressed("ui_left"):
+	if Input.is_action_pressed("ui_left"):
 		_move_player(LEFT)
-	if Input.is_action_just_pressed("ui_restart"):
+	if Input.is_action_pressed("ui_restart"):
 		get_tree().reload_current_scene()
-	if Input.is_action_just_pressed("level_swap_1"):
-		get_tree().change_scene_to_file("res://Scenes/Levels/brush_level.tscn")
-	if Input.is_action_just_pressed("level_swap_2"):
-		get_tree().change_scene_to_file("res://Scenes/Levels/brush_tutorial.tscn")
 
 func _move_player(dir: int) -> void:
 	if controlled_character == null or _any_character_moving():
@@ -125,7 +121,7 @@ func _move_player(dir: int) -> void:
 		return
 
 	if occupying_object != null and occupying_object.has_method("interact"):
-		occupying_object.interact(controlled_character)
+		await occupying_object.interact(controlled_character)
 
 	if occupying_object != null and occupying_object.has_method("teleport"):
 		controlled_character.moving = true
@@ -410,15 +406,23 @@ func _handle_scene_transition() -> bool:
 		return true
 
 	if scene_name == "Level 4" and _any_character_on_cell(Vector2i(7, 8)):
-		_play_level_complete("res://Scenes/Levels/level_6.tscn")
+		_play_level_complete("res://Scenes/Levels/level_5.tscn")
 		return true
 
-	if scene_name == "Level 6" and _any_character_on_cell(Vector2i(12, 7)):
+	if scene_name == "Level 5" and _any_character_on_cell(Vector2i(12, 7)):
+		_play_level_complete("res://Scenes/Levels/level_6.tscn")
+		return true
+		
+	if scene_name == "Level 6" and _any_character_on_cell(Vector2i(12, 4)):
 		_play_level_complete("res://Scenes/Levels/level_7.tscn")
 		return true
 		
-	if scene_name == "Level 7" and _any_character_on_cell(Vector2i(12, 4)):
+	if scene_name == "Level 7" and _any_character_on_cell(Vector2i(0, 4)):
 		_play_level_complete("res://Scenes/Levels/level_8.tscn")
+		return true
+		
+	if scene_name == "Level 8" and _any_character_on_cell(Vector2i(14, 9)):
+		_play_level_complete("res://Scenes/Levels/level_9.tscn")
 		return true
 		
 	return false
