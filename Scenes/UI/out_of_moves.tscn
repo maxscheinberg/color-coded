@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://out_of_moves_001"]
+
+[ext_resource type="Script" path="res://Scripts/UI/out_of_moves.gd" id="1_oomscr"]
+[ext_resource type="FontFile" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_oomfnt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oom01"]
+bg_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+content_margin_left = 40.0
+content_margin_top = 30.0
+content_margin_right = 40.0
+content_margin_bottom = 30.0
+
+[node name="OutOfMoves" type="CanvasLayer"]
+script = ExtResource("1_oomscr")
+
+[node name="Overlay" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.051, 0.051, 0.078, 0.75)
+
+[node name="Panel" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Window" type="PanelContainer" parent="Panel"]
+custom_minimum_size = Vector2(420, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oom01")
+
+[node name="VBox" type="VBoxContainer" parent="Panel/Window"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="Panel/Window/VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_oomfnt")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.91, 0.267, 0.267, 1)
+text = "OUT OF MOVES!"
+horizontal_alignment = 1
+
+[node name="Msg" type="Label" parent="Panel/Window/VBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_oomfnt")
+theme_override_font_sizes/font_size = 10
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+text = "TRY AGAIN?"
+horizontal_alignment = 1
+
+[node name="BtnRestart" type="Button" parent="Panel/Window/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 50)
+theme_override_fonts/font = ExtResource("2_oomfnt")
+theme_override_font_sizes/font_size = 11
+text = "RESTART"
+
+[node name="BtnMenu" type="Button" parent="Panel/Window/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 50)
+theme_override_fonts/font = ExtResource("2_oomfnt")
+theme_override_font_sizes/font_size = 11
+text = "MAIN MENU"
+
+[connection signal="pressed" from="Panel/Window/VBox/BtnRestart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Panel/Window/VBox/BtnMenu" to="." method="_on_menu_pressed"]

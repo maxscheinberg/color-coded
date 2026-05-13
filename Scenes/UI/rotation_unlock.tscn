@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://24vth5xywcic"]
+
+[ext_resource type="Script" uid="uid://38kas5juicjx" path="res://Scripts/UI/rotation_unlock.gd" id="1_ruscr"]
+[ext_resource type="FontFile" uid="uid://7nx8w2d5mm0s" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_rufnt"]
+[ext_resource type="Texture2D" uid="uid://y8sjpojpduvo" path="res://Assets/Interactables/clockwise-frame.png" id="3_s2bvd"]
+[ext_resource type="AudioStream" uid="uid://dbj37ue4vrk3n" path="res://Assets/audio/SFX/unlock.mp3" id="4_sfx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ru01"]
+content_margin_left = 40.0
+content_margin_top = 30.0
+content_margin_right = 40.0
+content_margin_bottom = 30.0
+bg_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+
+[node name="RotationUnlock" type="CanvasLayer" unique_id=1287333036]
+process_mode = 3
+script = ExtResource("1_ruscr")
+
+[node name="Overlay" type="ColorRect" parent="." unique_id=1468373456]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.051, 0.051, 0.078, 0.75)
+
+[node name="Panel" type="CenterContainer" parent="." unique_id=939688215]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Window" type="PanelContainer" parent="Panel" unique_id=383902442]
+custom_minimum_size = Vector2(460, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ru01")
+
+[node name="VBox" type="VBoxContainer" parent="Panel/Window" unique_id=1535249460]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="NewItem" type="Label" parent="Panel/Window/VBox" unique_id=25607715]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.27, 1)
+theme_override_fonts/font = ExtResource("2_rufnt")
+theme_override_font_sizes/font_size = 20
+text = "NEW ITEM UNLOCKED!"
+horizontal_alignment = 1
+
+[node name="ImagesRow" type="HBoxContainer" parent="Panel/Window/VBox" unique_id=151756714]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="CWImage" type="TextureRect" parent="Panel/Window/VBox/ImagesRow" unique_id=1383678039]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("3_s2bvd")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CCWImage" type="TextureRect" parent="Panel/Window/VBox/ImagesRow" unique_id=559721446]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("3_s2bvd")
+expand_mode = 1
+stretch_mode = 5
+flip_h = true
+
+[node name="Title" type="Label" parent="Panel/Window/VBox" unique_id=1686888086]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_rufnt")
+theme_override_font_sizes/font_size = 16
+text = "ROTATION ELEMENT"
+horizontal_alignment = 1
+
+[node name="Desc" type="Label" parent="Panel/Window/VBox" unique_id=1970272600]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
+theme_override_fonts/font = ExtResource("2_rufnt")
+theme_override_font_sizes/font_size = 11
+text = "ROTATES YOUR COLOR THROUGH
+COMPATIBLE COLORS EITHER CLOCKWISE
+OR COUNTERCLOCKWISE
+"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="BtnClose" type="Button" parent="Panel/Window/VBox" unique_id=172423493]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_rufnt")
+theme_override_font_sizes/font_size = 11
+text = "GOT IT!"
+
+[node name="UnlockSfx" type="AudioStreamPlayer" parent="." unique_id=1037009119]
+stream = ExtResource("4_sfx")
+autoplay = true
+bus = &"SFX"
+
+[connection signal="pressed" from="Panel/Window/VBox/BtnClose" to="." method="_on_close_pressed"]

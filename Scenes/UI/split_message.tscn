@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://di7rqwou117r7" path="res://Scripts/UI/split_message.gd" id="1_smscr"]
 [ext_resource type="FontFile" uid="uid://7nx8w2d5mm0s" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_smfnt"]
+[ext_resource type="AudioStream" uid="uid://dbj37ue4vrk3n" path="res://Assets/audio/SFX/unlock.mp3" id="3_0if3w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nq4v7"]
 bg_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
@@ -61,5 +62,10 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_smfnt")
 theme_override_font_sizes/font_size = 11
 text = "GOT IT!"
+
+[node name="UnlockSfx" type="AudioStreamPlayer" parent="." unique_id=199687047]
+stream = ExtResource("3_0if3w")
+autoplay = true
+bus = &"SFX"
 
 [connection signal="pressed" from="Panel/Window/VBox/BtnClose" to="." method="_on_close_pressed"]

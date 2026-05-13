@@ -18,6 +18,8 @@ var controlled_character: Node2D
 
 var moves_used: int = 0
 var level_failed: bool = false
+var _reached_goal: bool = false
+
 
 enum { LEFT, RIGHT, UP, DOWN }
 var player_pos: Vector2i
@@ -54,6 +56,11 @@ func _ready() -> void:
 	# Show brush unlock screen on Level 6
 	if get_tree().current_scene.name == "Level 6":
 		var unlock = preload("res://Scenes/UI/brush_unlock.tscn").instantiate()
+		add_child(unlock)
+	
+	# Show rotation unlock screen on Level 8
+	if get_tree().current_scene.name == "Level 8":
+		var unlock = preload("res://Scenes/UI/rotation_unlock.tscn").instantiate()
 		add_child(unlock)
 	
 
@@ -204,6 +211,7 @@ func update_moves_ui() -> void:
 func reset_moves() -> void:
 	moves_used = 0
 	level_failed = false
+	_reached_goal = false
 	update_moves_ui()
 	update_brush_ui()
 
@@ -220,16 +228,18 @@ func use_move() -> void:
 	if moves_used >= move_limit:
 		check_if_out_of_moves()
 
-func check_if_out_of_moves() -> void:
-	if player_is_on_goal():
-		return
 
+func check_if_out_of_moves() -> void:
+	if _reached_goal:
+		return
 	level_failed = true
 	on_out_of_moves()
 
+
 func on_out_of_moves() -> void:
-	print("Out of moves")
-	get_tree().reload_current_scene()
+	level_failed = true
+	var screen = preload("res://Scenes/UI/out_of_moves.tscn").instantiate()
+	add_child(screen)
 
 func player_is_on_goal() -> bool:
 	var scene_name: String = get_tree().current_scene.name
@@ -261,6 +271,10 @@ func on_player_split(split_player: Node2D, duplicate: Node2D) -> void:
 	if get_tree().current_scene.name == "Level 5":
 		var msg = preload("res://Scenes/UI/split_message.tscn").instantiate()
 		add_child(msg)
+	# Show swapper hint on Level 8 after splitting
+	if get_tree().current_scene.name == "Level 8":
+		var swap_unlock = preload("res://Scenes/UI/swapper_unlock.tscn").instantiate()
+		add_child(swap_unlock)
 
 func _change_character() -> void:
 	if player_duplicate == null or not player_duplicate.visible or _any_character_moving():
@@ -390,35 +404,43 @@ func _handle_scene_transition() -> bool:
 	var scene_name: String = get_tree().current_scene.name
 
 	if scene_name == "Tutorial Level 1" and _any_character_on_cell(Vector2i(10, 4)):
+		_reached_goal = true
 		_play_level_complete("res://Scenes/Levels/tutorial_level_2.tscn")
 		return true
 
 	if scene_name == "Tutorial Level 2" and _any_character_on_cell(Vector2i(10, 4)):
+		_reached_goal = true
 		_play_level_complete("res://Scenes/Levels/tutorial_level_3.tscn")
 		return true
 
 
 	if scene_name == "Tutorial Level 3" and _any_character_on_cell(Vector2i(1, 8)):
+		_reached_goal = true
 		_play_level_complete("res://Scenes/Levels/level_4.tscn")
 		return true
 
 	if scene_name == "Level 4" and _any_character_on_cell(Vector2i(7, 8)):
+		_reached_goal = true
 		_play_level_complete("res://Scenes/Levels/level_5.tscn")
 		return true
 
 	if scene_name == "Level 5" and _any_character_on_cell(Vector2i(12, 7)):
+		_reached_goal = true
 		_play_level_complete("res://Scenes/Levels/level_6.tscn")
 		return true
 		
 	if scene_name == "Level 6" and _any_character_on_cell(Vector2i(12, 4)):
+		_reached_goal = true
 		_play_level_complete("res://Scenes/Levels/level_7.tscn")
 		return true
 		
 	if scene_name == "Level 7" and _any_character_on_cell(Vector2i(0, 4)):
+		_reached_goal = true
 		_play_level_complete("res://Scenes/Levels/level_8.tscn")
 		return true
 		
 	if scene_name == "Level 8" and _any_character_on_cell(Vector2i(14, 9)):
+		_reached_goal = true
 		_play_level_complete("res://Scenes/Levels/level_9.tscn")
 		return true
 		

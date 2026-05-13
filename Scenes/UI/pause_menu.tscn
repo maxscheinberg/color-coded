@@ -60,6 +60,14 @@ theme_override_fonts/font = ExtResource("2_pmfnt")
 theme_override_font_sizes/font_size = 24
 text = "MAIN MENU"
 
+[node name="Settings" type="Button" parent="Panel/VBox" unique_id=1085997414]
+custom_minimum_size = Vector2(400, 55)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_pmfnt")
+theme_override_font_sizes/font_size = 24
+text = "SETTINGS"
+
 [connection signal="pressed" from="Panel/VBox/BtnResume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Panel/VBox/BtnRestart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Panel/VBox/BtnMainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Panel/VBox/Settings" to="." method="_on_settings_pressed"]

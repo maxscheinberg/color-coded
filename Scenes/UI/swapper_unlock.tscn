@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://tfjgl8xvfquq"]
+
+[ext_resource type="Script" uid="uid://57nay7jj6lv8" path="res://Scripts/UI/swapper_unlock.gd" id="1_suscr"]
+[ext_resource type="FontFile" uid="uid://7nx8w2d5mm0s" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_sufnt"]
+[ext_resource type="Texture2D" uid="uid://d3r4m5jbwcgi4" path="res://Assets/Interactables/swapper-frame.png" id="3_lw3yx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_su01"]
+content_margin_left = 40.0
+content_margin_top = 30.0
+content_margin_right = 40.0
+content_margin_bottom = 30.0
+bg_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+
+[node name="SwapperUnlock" type="CanvasLayer" unique_id=298414617]
+process_mode = 3
+script = ExtResource("1_suscr")
+
+[node name="Overlay" type="ColorRect" parent="." unique_id=200810039]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.051, 0.051, 0.078, 0.75)
+
+[node name="Panel" type="CenterContainer" parent="." unique_id=1929654168]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Window" type="PanelContainer" parent="Panel" unique_id=843593530]
+custom_minimum_size = Vector2(460, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_su01")
+
+[node name="VBox" type="VBoxContainer" parent="Panel/Window" unique_id=1014719853]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="NewItem" type="Label" parent="Panel/Window/VBox" unique_id=1981594537]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.27, 1)
+theme_override_fonts/font = ExtResource("2_sufnt")
+theme_override_font_sizes/font_size = 20
+text = "NEW ITEM UNLOCKED!"
+horizontal_alignment = 1
+
+[node name="SwapperImage" type="TextureRect" parent="Panel/Window/VBox" unique_id=273846857]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_lw3yx")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="Panel/Window/VBox" unique_id=776489837]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_sufnt")
+theme_override_font_sizes/font_size = 16
+text = "COLOR SWAP"
+horizontal_alignment = 1
+
+[node name="Desc" type="Label" parent="Panel/Window/VBox" unique_id=1604083493]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
+theme_override_fonts/font = ExtResource("2_sufnt")
+theme_override_font_sizes/font_size = 11
+text = "SWAP COLORS BETWEEN
+SPLIT CHARACTERS "
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="BtnClose" type="Button" parent="Panel/Window/VBox" unique_id=502283135]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_sufnt")
+theme_override_font_sizes/font_size = 11
+text = "GOT IT!"
+
+[node name="UnlockSfx" type="AudioStreamPlayer" parent="." unique_id=2139926444]
+autoplay = true
+bus = &"SFX"
+
+[connection signal="pressed" from="Panel/Window/VBox/BtnClose" to="." method="_on_close_pressed"]

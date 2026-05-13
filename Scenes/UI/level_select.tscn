@@ -168,6 +168,13 @@ theme_override_fonts/font = ExtResource("2_font")
 theme_override_font_sizes/font_size = 10
 text = "LEVEL 8"
 
+[node name="BtnLevel9" type="Button" parent="CenterContainer/VBox" unique_id=2097952390]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 10
+text = "LEVEL 9
+"
+
 [node name="SpacerBottom" type="Control" parent="CenterContainer/VBox" unique_id=1662274556]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
@@ -176,7 +183,7 @@ layout_mode = 2
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.5)
 theme_override_fonts/font = ExtResource("2_font")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 14
 text = "BACK"
 
 [node name="VersionLabel" type="Label" parent="." unique_id=948907383]
@@ -198,4 +205,5 @@ text = "v0.1"
 [connection signal="pressed" from="CenterContainer/VBox/BtnLevel6" to="." method="_on_btn_level_6_pressed"]
 [connection signal="pressed" from="CenterContainer/VBox/BtnLevel7" to="." method="_on_btn_level_7_pressed"]
 [connection signal="pressed" from="CenterContainer/VBox/BtnLevel8" to="." method="_on_btn_level_8_pressed"]
+[connection signal="pressed" from="CenterContainer/VBox/BtnLevel9" to="." method="_on_btn_level_9_pressed"]
 [connection signal="pressed" from="CenterContainer/VBox/BtnBack" to="." method="_on_back_pressed"]

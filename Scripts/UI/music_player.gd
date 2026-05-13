@@ -1,5 +1,7 @@
 extends Node
 
+var previous_scene: String = ""
+
 func stop() -> void:
 	$AudioStreamPlayer.stop()
 

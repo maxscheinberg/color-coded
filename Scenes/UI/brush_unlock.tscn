@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://kd6hxpd4snpw" path="res://Scripts/UI/brush_unlock.gd" id="1_buscr"]
 [ext_resource type="FontFile" uid="uid://7nx8w2d5mm0s" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_bufnt"]
 [ext_resource type="Texture2D" uid="uid://vkl27g1igc74" path="res://Assets/brush.png" id="3_butex"]
+[ext_resource type="AudioStream" uid="uid://dbj37ue4vrk3n" path="res://Assets/audio/SFX/unlock.mp3" id="4_elle2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bu001"]
 content_margin_left = 40.0
@@ -78,5 +79,10 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("2_bufnt")
 theme_override_font_sizes/font_size = 11
 text = "BACK TO GAME"
+
+[node name="UnlockSfx" type="AudioStreamPlayer" parent="." unique_id=944738106]
+stream = ExtResource("4_elle2")
+autoplay = true
+bus = &"SFX"
 
 [connection signal="pressed" from="Panel/Window/VBox/BtnClose" to="." method="_on_close_pressed"]
