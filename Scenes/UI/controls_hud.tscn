@@ -1,0 +1,171 @@
+[gd_scene format=3 uid="uid://dpqdv704ht1ll"]
+
+[ext_resource type="Script" uid="uid://yy3mpg6x2x5o" path="res://Scripts/UI/controls_hud.gd" id="1_chscr"]
+[ext_resource type="FontFile" uid="uid://7nx8w2d5mm0s" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_chfnt"]
+
+[node name="ControlsHud" type="CanvasLayer" unique_id=1491770388]
+script = ExtResource("1_chscr")
+
+[node name="Panel" type="VBoxContainer" parent="." unique_id=254659180]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = -200.0
+offset_right = 320.0
+offset_bottom = -12.0
+theme_override_constants/separation = 4
+
+[node name="Row1" type="HBoxContainer" parent="Panel" unique_id=673419655]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Key1" type="Label" parent="Panel/Row1" unique_id=1314587232]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.27, 1)
+theme_override_fonts/font = ExtResource("2_chfnt")
+theme_override_font_sizes/font_size = 7
+text = "ARROWS"
+
+[node name="Sep1" type="Label" parent="Panel/Row1" unique_id=1435989255]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_fonts/font = ExtResource("2_chfnt")
+theme_override_font_sizes/font_size = 7
+text = "—"
+
+[node name="Desc1" type="Label" parent="Panel/Row1" unique_id=1139668626]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_fonts/font = ExtResource("2_chfnt")
+theme_override_font_sizes/font_size = 7
+text = "MOVE"
+
+[node name="Row2" type="HBoxContainer" parent="Panel" unique_id=1648065766]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Key2" type="Label" parent="Panel/Row2" unique_id=1651263750]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.27, 1)
+theme_override_fonts/font = ExtResource("2_chfnt")
+theme_override_font_sizes/font_size = 7
+text = "R"
+
+[node name="Sep2" type="Label" parent="Panel/Row2" unique_id=983551528]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_fonts/font = ExtResource("2_chfnt")
+theme_override_font_sizes/font_size = 7
+text = "—"
+
+[node name="Desc2" type="Label" parent="Panel/Row2" unique_id=130863853]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_fonts/font = ExtResource("2_chfnt")
+theme_override_font_sizes/font_size = 7
+text = "RESTART"
+
+[node name="Row3" type="HBoxContainer" parent="Panel" unique_id=304432037]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Key3" type="Label" parent="Panel/Row3" unique_id=1162422171]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.27, 1)
+theme_override_fonts/font = ExtResource("2_chfnt")
+theme_override_font_sizes/font_size = 7
+text = "ESC"
+
+[node name="Sep3" type="Label" parent="Panel/Row3" unique_id=2001211533]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_fonts/font = ExtResource("2_chfnt")
+theme_override_font_sizes/font_size = 7
+text = "—"
+
+[node name="Desc3" type="Label" parent="Panel/Row3" unique_id=1133503392]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_fonts/font = ExtResource("2_chfnt")
+theme_override_font_sizes/font_size = 7
+text = "PAUSE"
+
+[node name="RowSpace" type="HBoxContainer" parent="Panel" unique_id=657517192]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="KeySpace" type="Label" parent="Panel/RowSpace" unique_id=186562459]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.27, 1)
+theme_override_fonts/font = ExtResource("2_chfnt")
+theme_override_font_sizes/font_size = 7
+text = "SPACE"
+
+[node name="SepSpace" type="Label" parent="Panel/RowSpace" unique_id=1810645829]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_fonts/font = ExtResource("2_chfnt")
+theme_override_font_sizes/font_size = 7
+text = "—"
+
+[node name="DescSpace" type="Label" parent="Panel/RowSpace" unique_id=1544693079]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_fonts/font = ExtResource("2_chfnt")
+theme_override_font_sizes/font_size = 7
+text = "SWITCH PLAYER"
+
+[node name="RowBrush" type="HBoxContainer" parent="Panel" unique_id=175737766]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="KeyBrush" type="Label" parent="Panel/RowBrush" unique_id=1500116552]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.27, 1)
+theme_override_fonts/font = ExtResource("2_chfnt")
+theme_override_font_sizes/font_size = 7
+text = "BRUSH"
+
+[node name="SepBrush" type="Label" parent="Panel/RowBrush" unique_id=265024822]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_fonts/font = ExtResource("2_chfnt")
+theme_override_font_sizes/font_size = 7
+text = "—"
+
+[node name="DescBrush" type="Label" parent="Panel/RowBrush" unique_id=467026391]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_fonts/font = ExtResource("2_chfnt")
+theme_override_font_sizes/font_size = 7
+text = "WALK OVER TO PICK UP"
+
+[node name="RowPaint" type="HBoxContainer" parent="Panel" unique_id=1861335713]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="KeyPaint" type="Label" parent="Panel/RowPaint" unique_id=1873873221]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.27, 1)
+theme_override_fonts/font = ExtResource("2_chfnt")
+theme_override_font_sizes/font_size = 7
+text = "GRAY WALL"
+
+[node name="SepPaint" type="Label" parent="Panel/RowPaint" unique_id=984760873]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_fonts/font = ExtResource("2_chfnt")
+theme_override_font_sizes/font_size = 7
+text = "—"
+
+[node name="DescPaint" type="Label" parent="Panel/RowPaint" unique_id=1778478562]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_fonts/font = ExtResource("2_chfnt")
+theme_override_font_sizes/font_size = 7
+text = "WALK INTO TO PAINT"

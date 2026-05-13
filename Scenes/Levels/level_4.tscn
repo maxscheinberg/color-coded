@@ -33,10 +33,10 @@ position = Vector2(608, 423)
 col = Color(0.137, 0.42, 0.78, 1)
 
 [node name="Color Wheel" parent="Objects" index="3" unique_id=820220426 instance=ExtResource("6_slbhm")]
-offset_left = 1120.0
-offset_top = -113.0
-offset_right = 1378.0
-offset_bottom = 145.0
+offset_left = 1048.0
+offset_top = -97.0
+offset_right = 1306.0
+offset_bottom = 161.0
 scale = Vector2(0.5, 0.5)
 show_secondary = true
 
@@ -47,6 +47,9 @@ col = Color(0.12, 0.65, 0.2, 1)
 [node name="Player" parent="." index="3" unique_id=1803487026 instance=ExtResource("7_i5g5g")]
 position = Vector2(352, 160)
 col = Color(1, 1, 1, 1)
+
+[node name="Camera2D" parent="." index="4" unique_id=973442512]
+position = Vector2(504, 288)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="5" unique_id=1190821285]
 

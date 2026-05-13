@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://dcr8jxstagvu1"]
 
 [ext_resource type="PackedScene" uid="uid://b8oiih760r158" path="res://Scenes/Levels/levelbase.tscn" id="1_373i2"]
-[ext_resource type="Script" path="res://Scripts/Levels/tutorial_level_1.gd" id="2_2thcj"]
+[ext_resource type="Script" uid="uid://ceg7ifppl1tlv" path="res://Scripts/Levels/tutorial_level_1.gd" id="2_2thcj"]
 [ext_resource type="Texture2D" uid="uid://b25hkahsq0bqu" path="res://Assets/spritesheet grey.png" id="2_tj0so"]
 [ext_resource type="PackedScene" uid="uid://bd8fbishdjwak" path="res://Scenes/Interactables/color_wall.tscn" id="3_2thcj"]
 [ext_resource type="PackedScene" uid="uid://hs443laxkp8b" path="res://Scenes/Interactables/color_adder.tscn" id="4_st3a2"]
@@ -641,13 +641,14 @@ position = Vector2(160, 160)
 col = Color(0.91, 0.102, 0.102, 1)
 
 [node name="Color Wheel" parent="Objects" index="3" unique_id=820220426 instance=ExtResource("6_j5sts")]
-offset_left = 1120.0
-offset_top = -113.0
-offset_right = 1378.0
-offset_bottom = 145.0
+offset_left = 792.0
+offset_top = -33.0
+offset_right = 1050.0
+offset_bottom = 225.0
 scale = Vector2(0.5, 0.5)
 mouse_force_pass_scroll_events = false
 gap_degrees = 1.0
+metadata/_edit_use_anchors_ = true
 
 [node name="AddBlue" parent="Objects" index="4" unique_id=81472416 instance=ExtResource("4_st3a2")]
 position = Vector2(544, 160)
@@ -667,3 +668,7 @@ col = Color(1, 0.843, 0, 1)
 [node name="Player" parent="." index="3" unique_id=1803487026 instance=ExtResource("7_uuws1")]
 position = Vector2(352, 288)
 col = Color(0.137, 0.42, 0.78, 1)
+
+[node name="Camera2D" parent="." index="4" unique_id=973442512]
+position = Vector2(352, 288)
+zoom = Vector2(0.92, 0.92)

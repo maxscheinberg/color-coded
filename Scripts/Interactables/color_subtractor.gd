@@ -12,7 +12,9 @@ func _ready() -> void:
 	sprite.self_modulate = col
 
 func can_move_here(player) -> bool:
-	return true
+	if disabled:
+		return false
+	return _is_valid_interaction(player)
 
 func interact(player):
 	if disabled:
@@ -198,3 +200,29 @@ func play_valid_feedback() -> void:
 	# return
 	tween.tween_property(sprite, "scale", original_scale, 0.10)
 	tween.parallel().tween_property(sprite, "self_modulate", original_modulate, 0.10)
+
+func _is_valid_interaction(player) -> bool:
+	var p: Color = GameColors.canonical(player.get_color())
+	var b: Color = GameColors.canonical(col)
+	if GameColors.match(p, GameColors.RED) and GameColors.match(b, GameColors.RED): return true
+	if GameColors.match(p, GameColors.YELLOW) and GameColors.match(b, GameColors.YELLOW): return true
+	if GameColors.match(p, GameColors.BLUE) and GameColors.match(b, GameColors.BLUE): return true
+	if GameColors.match(p, GameColors.ORANGE) and GameColors.match(b, GameColors.RED): return true
+	if GameColors.match(p, GameColors.ORANGE) and GameColors.match(b, GameColors.YELLOW): return true
+	if GameColors.match(p, GameColors.GREEN) and GameColors.match(b, GameColors.BLUE): return true
+	if GameColors.match(p, GameColors.GREEN) and GameColors.match(b, GameColors.YELLOW): return true
+	if GameColors.match(p, GameColors.PURPLE) and GameColors.match(b, GameColors.RED): return true
+	if GameColors.match(p, GameColors.PURPLE) and GameColors.match(b, GameColors.BLUE): return true
+	if GameColors.match(p, GameColors.RED_ORANGE) and GameColors.match(b, GameColors.RED): return true
+	if GameColors.match(p, GameColors.RED_ORANGE) and GameColors.match(b, GameColors.ORANGE): return true
+	if GameColors.match(p, GameColors.YELLOW_ORANGE) and GameColors.match(b, GameColors.YELLOW): return true
+	if GameColors.match(p, GameColors.YELLOW_ORANGE) and GameColors.match(b, GameColors.ORANGE): return true
+	if GameColors.match(p, GameColors.YELLOW_GREEN) and GameColors.match(b, GameColors.YELLOW): return true
+	if GameColors.match(p, GameColors.YELLOW_GREEN) and GameColors.match(b, GameColors.GREEN): return true
+	if GameColors.match(p, GameColors.BLUE_GREEN) and GameColors.match(b, GameColors.BLUE): return true
+	if GameColors.match(p, GameColors.BLUE_GREEN) and GameColors.match(b, GameColors.GREEN): return true
+	if GameColors.match(p, GameColors.BLUE_VIOLET) and GameColors.match(b, GameColors.BLUE): return true
+	if GameColors.match(p, GameColors.BLUE_VIOLET) and GameColors.match(b, GameColors.PURPLE): return true
+	if GameColors.match(p, GameColors.RED_VIOLET) and GameColors.match(b, GameColors.RED): return true
+	if GameColors.match(p, GameColors.RED_VIOLET) and GameColors.match(b, GameColors.PURPLE): return true
+	return false

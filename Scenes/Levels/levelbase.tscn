@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://da3ph8hnuykcw" path="res://Scripts/Levels/levelbase.gd" id="1_uvtox"]
 [ext_resource type="Texture2D" uid="uid://b25hkahsq0bqu" path="res://Assets/spritesheet grey.png" id="2_fwfso"]
+[ext_resource type="PackedScene" uid="uid://cd4wb1n5ny66i" path="res://Scenes/UI/pause_menu.tscn" id="3_n8d4i"]
+[ext_resource type="PackedScene" uid="uid://dpqdv704ht1ll" path="res://Scenes/UI/controls_hud.tscn" id="4_svt1p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n8d4i"]
 texture = ExtResource("2_fwfso")
@@ -609,6 +611,7 @@ script = ExtResource("1_uvtox")
 background = NodePath("Background")
 tilemap_walls = NodePath("Walls")
 objects = NodePath("Objects")
+move_limit = null
 
 [node name="Background" type="TileMapLayer" parent="." unique_id=1233328414]
 tile_set = SubResource("TileSet_svt1p")
@@ -621,3 +624,7 @@ tile_set = SubResource("TileSet_fwfso")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=973442512]
 position = Vector2(544, 288)
 zoom = Vector2(0.78, 0.78)
+
+[node name="PauseMenu" parent="." unique_id=1823011710 instance=ExtResource("3_n8d4i")]
+
+[node name="ControlsHud" parent="." unique_id=1359209231 instance=ExtResource("4_svt1p")]

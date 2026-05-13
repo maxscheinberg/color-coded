@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://so7vipw8hccc"]
+
+[ext_resource type="Script" uid="uid://kd6hxpd4snpw" path="res://Scripts/UI/brush_unlock.gd" id="1_buscr"]
+[ext_resource type="FontFile" uid="uid://7nx8w2d5mm0s" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_bufnt"]
+[ext_resource type="Texture2D" uid="uid://vkl27g1igc74" path="res://Assets/brush.png" id="3_butex"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bu001"]
+content_margin_left = 40.0
+content_margin_top = 30.0
+content_margin_right = 40.0
+content_margin_bottom = 30.0
+bg_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+
+[node name="BrushUnlock" type="CanvasLayer" unique_id=468820468]
+process_mode = 3
+script = ExtResource("1_buscr")
+
+[node name="Overlay" type="ColorRect" parent="." unique_id=1343863537]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.051, 0.051, 0.078, 0.75)
+
+[node name="Panel" type="CenterContainer" parent="." unique_id=96279202]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Window" type="PanelContainer" parent="Panel" unique_id=1467907694]
+custom_minimum_size = Vector2(420, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bu001")
+
+[node name="VBox" type="VBoxContainer" parent="Panel/Window" unique_id=32460054]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="NewItem" type="Label" parent="Panel/Window/VBox" unique_id=225977821]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.27, 1)
+theme_override_fonts/font = ExtResource("2_bufnt")
+theme_override_font_sizes/font_size = 20
+text = "NEW ITEM UNLOCKED!"
+horizontal_alignment = 1
+
+[node name="BrushImage" type="TextureRect" parent="Panel/Window/VBox" unique_id=1870109708]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_butex")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BrushName" type="Label" parent="Panel/Window/VBox" unique_id=266726622]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_bufnt")
+theme_override_font_sizes/font_size = 16
+text = "PAINT BRUSH"
+horizontal_alignment = 1
+
+[node name="Desc" type="Label" parent="Panel/Window/VBox" unique_id=1828529446]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
+theme_override_fonts/font = ExtResource("2_bufnt")
+theme_override_font_sizes/font_size = 11
+text = "WALK OVER TO PICK UP.
+WALK INTO A WHITE WALL
+TO PAINT IT YOUR COLOR!"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="BtnClose" type="Button" parent="Panel/Window/VBox" unique_id=1776728894]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_bufnt")
+theme_override_font_sizes/font_size = 11
+text = "BACK TO GAME"
+
+[connection signal="pressed" from="Panel/Window/VBox/BtnClose" to="." method="_on_close_pressed"]

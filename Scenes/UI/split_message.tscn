@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://dqninf0hbpxrw"]
+
+[ext_resource type="Script" uid="uid://di7rqwou117r7" path="res://Scripts/UI/split_message.gd" id="1_smscr"]
+[ext_resource type="FontFile" uid="uid://7nx8w2d5mm0s" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_smfnt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nq4v7"]
+bg_color = Color(0.23137255, 0.23137255, 0.23137255, 1)
+expand_margin_left = 40.0
+expand_margin_top = 30.0
+expand_margin_right = 40.0
+expand_margin_bottom = 30.0
+
+[node name="SplitMessage" type="CanvasLayer" unique_id=572528011]
+process_mode = 3
+script = ExtResource("1_smscr")
+
+[node name="Overlay" type="ColorRect" parent="." unique_id=216162909]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.051, 0.051, 0.078, 0.75)
+
+[node name="Panel" type="CenterContainer" parent="." unique_id=998327285]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 2.0
+
+[node name="Window" type="PanelContainer" parent="Panel" unique_id=991115772]
+custom_minimum_size = Vector2(380, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nq4v7")
+
+[node name="VBox" type="VBoxContainer" parent="Panel/Window" unique_id=578307377]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="Panel/Window/VBox" unique_id=154297631]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(1, 0.82, 0.27, 1)
+theme_override_fonts/font = ExtResource("2_smfnt")
+theme_override_font_sizes/font_size = 18
+text = "YOU SPLIT!"
+horizontal_alignment = 1
+
+[node name="Msg" type="Label" parent="Panel/Window/VBox" unique_id=792910707]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_fonts/font = ExtResource("2_smfnt")
+theme_override_font_sizes/font_size = 12
+text = "PRESS SPACE TO SWITCH
+BETWEEN PLAYERS"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="BtnClose" type="Button" parent="Panel/Window/VBox" unique_id=773163681]
+custom_minimum_size = Vector2(460, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_smfnt")
+theme_override_font_sizes/font_size = 11
+text = "GOT IT!"
+
+[connection signal="pressed" from="Panel/Window/VBox/BtnClose" to="." method="_on_close_pressed"]

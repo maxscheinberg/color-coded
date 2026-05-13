@@ -44,6 +44,22 @@ func _ready() -> void:
 
 	_refresh_active_character_state()
 	_refresh_dynamic_objects()
+	
+	# Show controls HUD only on Tutorial Level 1
+	var controls = get_node_or_null("ControlsHud")
+	if controls and get_tree().current_scene.name != "Tutorial Level 1":
+		controls.queue_free()
+		
+	if get_tree().current_scene.name == "Level 6":
+		var msg = preload("res://Scenes/UI/split_message.tscn").instantiate()
+		add_child(msg)
+
+	# Show brush unlock screen on Level 7
+	if get_tree().current_scene.name == "Level 7":
+		var unlock = preload("res://Scenes/UI/brush_unlock.tscn").instantiate()
+		add_child(unlock)
+	
+
 
 
 func _process(_delta: float) -> void:
@@ -247,6 +263,11 @@ func on_player_split(split_player: Node2D, duplicate: Node2D) -> void:
 	split_player.moving = false
 	_refresh_active_character_state()
 	_refresh_dynamic_objects()
+	
+	#Show SPACE hint only on level 6 (first time splitting)
+	if get_tree().current_scene.name == "Level 6":
+		var msg = preload("res://Scenes/UI/split_message.tscn").instantiate()
+		add_child(msg)
 
 func _change_character() -> void:
 	if player_duplicate == null or not player_duplicate.visible or _any_character_moving():
@@ -347,7 +368,6 @@ func _process_floor_objects_for(character: Node2D, start_pos: Vector2i) -> Vecto
 
 		if not moved_to_new_cell:
 			break
-
 	return current_pos
 
 

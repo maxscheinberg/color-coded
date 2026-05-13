@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://rjoemud445k2" path="res://Scripts/UI/level_complete.gd" id="1_lcscr"]
 [ext_resource type="FontFile" uid="uid://7nx8w2d5mm0s" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_lcfnt"]
-[ext_resource type="AudioStream" uid="uid://c4qsdooshflfn" path="res://Assets/Audio/SFX/level_chime.mp3" id="3_w40xb"]
+[ext_resource type="AudioStream" uid="uid://daf0xy6dlbayu" path="res://Assets/Audio/SFX/level_chime.mp3" id="3_w40xb"]
 
 [node name="LevelComplete" type="CanvasLayer" unique_id=370545472]
 script = ExtResource("1_lcscr")
@@ -19,7 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VBox" type="VBoxContainer" parent="Panel" unique_id=1367968022]
-custom_minimum_size = Vector2(260, 0)
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
@@ -48,7 +48,7 @@ color = Color(0.267, 0.533, 0.933, 1)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_lcfnt")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 38
 text = "COMPLETE!"
 horizontal_alignment = 1
 
@@ -56,14 +56,15 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.6)
 theme_override_fonts/font = ExtResource("2_lcfnt")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 22
 text = "MOVES: 0"
 horizontal_alignment = 1
 
 [node name="BtnNext" type="Button" parent="Panel/VBox" unique_id=308600664]
+custom_minimum_size = Vector2(400, 55)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_lcfnt")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 24
 text = "NEXT LEVEL"
 
 [node name="ChimeSfx" type="AudioStreamPlayer" parent="." unique_id=197512412]

@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://cd4wb1n5ny66i"]
+
+[ext_resource type="Script" uid="uid://cbe4qoein4dco" path="res://Scripts/UI/pause_menu.gd" id="1_pmscr"]
+[ext_resource type="FontFile" uid="uid://7nx8w2d5mm0s" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="2_pmfnt"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=1249470971]
+process_mode = 3
+script = ExtResource("1_pmscr")
+
+[node name="Overlay" type="ColorRect" parent="." unique_id=362378485]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.051, 0.051, 0.078, 0.85)
+
+[node name="Panel" type="CenterContainer" parent="." unique_id=1626951474]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+scale = Vector2(0.8, 0.8)
+
+[node name="VBox" type="VBoxContainer" parent="Panel" unique_id=269313245]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Title" type="Label" parent="Panel/VBox" unique_id=31429638]
+custom_minimum_size = Vector2(320, 45)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_pmfnt")
+theme_override_font_sizes/font_size = 38
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="Panel/VBox" unique_id=1121548474]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="BtnResume" type="Button" parent="Panel/VBox" unique_id=1806825196]
+custom_minimum_size = Vector2(400, 55)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_pmfnt")
+theme_override_font_sizes/font_size = 24
+text = "RESUME"
+
+[node name="BtnRestart" type="Button" parent="Panel/VBox" unique_id=482352645]
+custom_minimum_size = Vector2(400, 55)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_pmfnt")
+theme_override_font_sizes/font_size = 24
+text = "RESTART"
+
+[node name="BtnMainMenu" type="Button" parent="Panel/VBox" unique_id=167953956]
+custom_minimum_size = Vector2(400, 55)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_pmfnt")
+theme_override_font_sizes/font_size = 24
+text = "MAIN MENU"
+
+[connection signal="pressed" from="Panel/VBox/BtnResume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Panel/VBox/BtnRestart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Panel/VBox/BtnMainMenu" to="." method="_on_main_menu_pressed"]
