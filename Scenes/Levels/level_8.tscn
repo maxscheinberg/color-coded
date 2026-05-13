@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bd8fbishdjwak" path="res://Scenes/Interactables/color_wall.tscn" id="9_p8v2l"]
 [ext_resource type="PackedScene" uid="uid://x8xhe7n72882" path="res://Scenes/Interactables/swapper.tscn" id="10_wr3ve"]
 [ext_resource type="PackedScene" uid="uid://d4c52oroxymk" path="res://Scenes/color_wheel.tscn" id="11_kuytm"]
+[ext_resource type="PackedScene" uid="uid://0blvaf5v3wlu" path="res://Scenes/Interactables/splitter_exit.tscn" id="12_wr3ve"]
 [ext_resource type="FontFile" uid="uid://7nx8w2d5mm0s" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="13_kuytm"]
 [ext_resource type="Texture2D" uid="uid://vkl27g1igc74" path="res://Assets/brush.png" id="14_u4lgf"]
 
@@ -57,12 +58,15 @@ offset_bottom = 210.0
 scale = Vector2(0.5, 0.5)
 show_secondary = true
 
-[node name="Splitter" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="8" unique_id=1461999553 instance=ExtResource("4_16f3u")]
+[node name="Splitter" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="8" unique_id=1461999553 node_paths=PackedStringArray("player_duplicate", "exit1", "exit2") instance=ExtResource("4_16f3u")]
 position = Vector2(96, 96)
 new_pos1 = Vector2(96, 416)
 new_pos2 = Vector2(544, 416)
 player_color = Color(0.5, 0.2, 0.65, 1)
 duplicate_color = Color(0.5, 0.2, 0.65, 1)
+player_duplicate = NodePath("../PlayerDuplicate")
+exit1 = NodePath("../Splitter Exit")
+exit2 = NodePath("../Splitter Exit2")
 
 [node name="ColorSubtractor" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="9" unique_id=1076673664 instance=ExtResource("8_23h2k")]
 position = Vector2(676, 416)
@@ -83,6 +87,12 @@ col = Color(0.12, 0.65, 0.2, 1)
 
 [node name="PlayerDuplicate" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="13" unique_id=80732309 instance=ExtResource("5_ggny7")]
 position = Vector2(-422, 433)
+
+[node name="Splitter Exit" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="14" unique_id=441379447 instance=ExtResource("12_wr3ve")]
+position = Vector2(96, 416)
+
+[node name="Splitter Exit2" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="15" unique_id=1597201264 instance=ExtResource("12_wr3ve")]
+position = Vector2(544, 416)
 
 [node name="Camera2D" parent="." index="3" unique_id=973442512]
 position = Vector2(488, 352)

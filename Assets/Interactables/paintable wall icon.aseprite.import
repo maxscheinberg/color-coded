@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://hbr2sepqv3mm"
+path="res://.godot/imported/paintable wall icon.aseprite-92d7dfd48849be2b0f81e8ec971f295c.res"
+
+[deps]
+
+source_file="res://Assets/Interactables/paintable wall icon.aseprite"
+dest_files=["res://.godot/imported/paintable wall icon.aseprite-92d7dfd48849be2b0f81e8ec971f295c.res"]
+
+[params]
+

@@ -77,9 +77,8 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
 theme_override_fonts/font = ExtResource("2_rufnt")
 theme_override_font_sizes/font_size = 11
-text = "ROTATES YOUR COLOR THROUGH
-COMPATIBLE COLORS EITHER CLOCKWISE
-OR COUNTERCLOCKWISE
+text = "ROTATES YOUR COLOR ON THE COLOR WHEEL IN THE SHOWN DIRECTION! 
+ONE TIME USE, SO MAKE IT COUNT!
 "
 horizontal_alignment = 1
 autowrap_mode = 3

@@ -68,8 +68,9 @@ theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
 theme_override_fonts/font = ExtResource("2_bufnt")
 theme_override_font_sizes/font_size = 11
 text = "WALK OVER TO PICK UP.
-WALK INTO A WHITE WALL
-TO PAINT IT YOUR COLOR!"
+WALK INTO WALLS MARKED WITH
+A BRUSH ICON TO PAINT THEM
+WITH YOUR CURRENT COLOR!"
 horizontal_alignment = 1
 autowrap_mode = 3
 

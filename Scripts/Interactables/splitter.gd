@@ -5,6 +5,9 @@ extends Node2D
 @export var player_color: Color
 @export var duplicate_color: Color
 @export var player_duplicate: Node2D
+@export var exit1: Node2D
+@export var exit2: Node2D
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func is_floor_object() -> bool:
 	return true
@@ -33,11 +36,16 @@ func interact(player) -> void:
 	var tween2 = create_tween().set_parallel(true)
 	tween2.tween_property(player, "scale", Vector2(1, 1), 0.4)
 	tween2.tween_property(player_duplicate, "scale", Vector2(1, 1), 0.4)
+	tween2.tween_property(sprite, "modulate", Color(1, 1, 1, 0), 0.4)
 	await tween2.finished
 
 	var level = get_tree().current_scene
 	if level != null and level.has_method("on_player_split"):
 		level.on_player_split(player, player_duplicate)
+	
+	exit1.queue_free()
+	exit2.queue_free()
+	queue_free()
 
 func _resolve_player_duplicate() -> Node2D:
 	var level = get_tree().current_scene

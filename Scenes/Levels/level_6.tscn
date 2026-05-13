@@ -4,12 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://bd8fbishdjwak" path="res://Scenes/Interactables/color_wall.tscn" id="2_5l77v"]
 [ext_resource type="PackedScene" uid="uid://v8vpdndxi0qe" path="res://Scenes/Interactables/splitter.tscn" id="2_6y1v7"]
 [ext_resource type="PackedScene" uid="uid://biyg6nxxj6r7t" path="res://Scenes/Interactables/brush_pickup.tscn" id="2_bt86y"]
-[ext_resource type="PackedScene" path="res://Scenes/Interactables/paintable_wall.tscn" id="3_00o8d"]
+[ext_resource type="PackedScene" uid="uid://cgui0tsmmw6h7" path="res://Scenes/Interactables/paintable_wall.tscn" id="3_00o8d"]
 [ext_resource type="PackedScene" uid="uid://hs443laxkp8b" path="res://Scenes/Interactables/color_adder.tscn" id="3_6y1v7"]
 [ext_resource type="PackedScene" uid="uid://b46mq8hh6cw5k" path="res://Scenes/Player/player_duplicate.tscn" id="3_cjb10"]
 [ext_resource type="PackedScene" uid="uid://n5rh35de5qmn" path="res://Scenes/Player/player.tscn" id="6_00o8d"]
 [ext_resource type="FontFile" uid="uid://7nx8w2d5mm0s" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="7_2khew"]
 [ext_resource type="PackedScene" uid="uid://d4c52oroxymk" path="res://Scenes/color_wheel.tscn" id="8_cjb10"]
+[ext_resource type="PackedScene" uid="uid://0blvaf5v3wlu" path="res://Scenes/Interactables/splitter_exit.tscn" id="9_00o8d"]
 [ext_resource type="Texture2D" uid="uid://vkl27g1igc74" path="res://Assets/brush.png" id="11_bt86y"]
 
 [node name="Level 6" unique_id=2120704257 instance=ExtResource("1_eygg8")]
@@ -42,13 +43,15 @@ scale = Vector2(0.75, 0.75)
 position = Vector2(-234, 1239)
 col = Color(1, 1, 1, 0.24000001)
 
-[node name="Splitter" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="5" unique_id=1461999553 node_paths=PackedStringArray("player_duplicate") instance=ExtResource("2_6y1v7")]
+[node name="Splitter" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="5" unique_id=1461999553 node_paths=PackedStringArray("player_duplicate", "exit1", "exit2") instance=ExtResource("2_6y1v7")]
 position = Vector2(480, 224)
 new_pos1 = Vector2(480, 352)
 new_pos2 = Vector2(224, 352)
 player_color = Color(0.9098039, 0.101960786, 0.101960786, 1)
 duplicate_color = Color(0.9098039, 0.101960786, 0.101960786, 1)
 player_duplicate = NodePath("../PlayerDuplicate")
+exit1 = NodePath("../Splitter Exit")
+exit2 = NodePath("../Splitter Exit2")
 
 [node name="ColorWall" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="6" unique_id=1696651386 instance=ExtResource("2_5l77v")]
 position = Vector2(800, 288)
@@ -70,6 +73,12 @@ offset_bottom = 226.0
 scale = Vector2(0.5, 0.5)
 show_secondary = true
 metadata/_edit_use_anchors_ = true
+
+[node name="Splitter Exit" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="10" unique_id=441379447 instance=ExtResource("9_00o8d")]
+position = Vector2(224, 352)
+
+[node name="Splitter Exit2" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="11" unique_id=537119909 instance=ExtResource("9_00o8d")]
+position = Vector2(480, 352)
 
 [node name="Camera2D" parent="." index="3" unique_id=973442512]
 position = Vector2(424, 320)

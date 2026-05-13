@@ -10,6 +10,11 @@ func can_move_here(player) -> bool:
 	return true
 	
 func interact(player) -> void:
-	var col = player_real.get_color()
-	player_real.set_color(player_duplicate.get_color())
-	player_duplicate.set_color(col)
+	if player == player_real:
+		var col = player_duplicate.get_color()
+		player_duplicate.set_color(player_real.get_color())
+		player_real.set_color(col)
+	else: 
+		var col = player_real.get_color()
+		player_real.set_color(player_duplicate.get_color())
+		player_duplicate.set_color(col)

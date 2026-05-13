@@ -1,12 +1,44 @@
-[gd_scene format=3 uid="uid://paintable_wall_001"]
+[gd_scene format=4 uid="uid://cgui0tsmmw6h7"]
 
-[ext_resource type="Script" path="res://Scripts/Interactables/paintable_wall.gd" id="1_pwscr"]
+[ext_resource type="Script" uid="uid://5l7xf7qfwes3" path="res://Scripts/Interactables/paintable_wall.gd" id="1_pwscr"]
 
-[node name="PaintableWall" type="Node2D"]
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_5515h"]
+_data = PackedByteArray("AAADAAUAAAABAAAAQAAAAEAAAADUAAAAUklGRswAAABXRUJQVlA4TMAAAAAvP8APEEegJgAShv61SMFLAhyXFlHUNpKz/BEtmoXQ+91HTQACjArqyybFOB3zHwAAIFmEZLLNuX/x+g64qW3bid53QKb+TwMGWPyAABDApD6Pgag7z2mpIvrPwJGkRFjhcPIKmaNiYmiwGVVBSFLzVEHDagZVVQNVzZCFPiOxXT1Bus0bBhgubwDd40VG7DtLipXrG1eSidPTwZPPklwaN7oabCRt5/whGvJDucGfCxHC+CaBKrJ9yaCKGJndowA=")
+size_override = Vector2(64, 64)
+
+[node name="PaintableWall" type="Node2D" unique_id=125238707]
 script = ExtResource("1_pwscr")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1168320405]
 offset_left = -32.0
 offset_top = -32.0
 offset_right = 32.0
 offset_bottom = 32.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1181583657]
+texture_filter = 1
+position = Vector2(3.9999998, 5)
+scale = Vector2(1.88, 1.88)
+texture = SubResource("PortableCompressedTexture2D_5515h")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://Assets/Interactables/paintable wall icon.aseprite",
+"source_uid": 494467640836039708
+}
+metadata/_aseprite_wizard_source_file_hash_ = "c6abb0291fe352e1795c4b778f87fdfd"

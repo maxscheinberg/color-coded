@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://d4c52oroxymk" path="res://Scenes/color_wheel.tscn" id="6_slbhm"]
 [ext_resource type="PackedScene" uid="uid://n5rh35de5qmn" path="res://Scenes/Player/player.tscn" id="7_i5g5g"]
 [ext_resource type="FontFile" uid="uid://7nx8w2d5mm0s" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="7_wakwf"]
+[ext_resource type="PackedScene" uid="uid://0blvaf5v3wlu" path="res://Scenes/Interactables/splitter_exit.tscn" id="8_evokg"]
 [ext_resource type="Texture2D" uid="uid://vkl27g1igc74" path="res://Assets/brush.png" id="11_srugb"]
 
 [node name="Level 5" unique_id=2120704257 instance=ExtResource("1_i4hbv")]
@@ -20,12 +21,15 @@ tile_map_data = PackedByteArray("AAABAAEAAAABAAIAAAABAAIAAAABAAIAAAABAAMAAAABAAI
 [node name="Walls" parent="." index="1" unique_id=1740214358]
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAIAAAAAAAIAAAAAAAMAAAAAAAIAAAAAAAQAAAAAAAIAAAAAAAUAAAAAAAIAAAAAAAYAAAAAAAIAAAAMAAYAAAACAAIAAAAMAAUAAAACAAIAAAAMAAQAAAACAAIAAAAMAAMAAAACAAIAAAAMAAIAAAACAAIAAAAMAAEAAAACAAIAAAAMAAAAAAACAAEAAAALAAAAAAABAAEAAAAKAAAAAAABAAEAAAAJAAAAAAABAAEAAAAIAAAAAAABAAEAAAAHAAAAAAABAAEAAAAGAAAAAAABAAEAAAAFAAAAAAABAAEAAAAEAAAAAAABAAEAAAADAAAAAAABAAEAAAACAAAAAAABAAEAAAABAAAAAAABAAEAAAADAAIAAAAAAAAAAAADAAEAAAAAAAAAAAADAAMAAAAAAAAAAAADAAQAAAAAAAAAAAADAAUAAAAAAAAAAAADAAYAAAAAAAAAAAAAAAcAAAAAAAIAAAADAAcAAAAAAAAAAAAAAAgAAAAAAAMAAAABAAgAAAABAAMAAAACAAgAAAABAAMAAAAMAAgAAAACAAMAAAALAAgAAAABAAMAAAAKAAgAAAABAAMAAAAJAAgAAAABAAMAAAAIAAgAAAABAAMAAAAHAAgAAAABAAMAAAAGAAgAAAABAAMAAAAFAAgAAAABAAMAAAAEAAgAAAABAAMAAAADAAgAAAABAAMAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAJAAQAAAAAAAAAAAAKAAQAAAAAAAAAAAALAAQAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAIAAAAAAAAAAAA=")
 
-[node name="Splitter" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="0" unique_id=1461999553 instance=ExtResource("2_evokg")]
+[node name="Splitter" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="0" unique_id=1461999553 node_paths=PackedStringArray("player_duplicate", "exit1", "exit2") instance=ExtResource("2_evokg")]
 position = Vector2(96, 480)
 new_pos1 = Vector2(288, 96)
 new_pos2 = Vector2(288, 480)
 player_color = Color(0.12156863, 0.6509804, 0.2, 1)
 duplicate_color = Color(0.12156863, 0.6509804, 0.2, 1)
+player_duplicate = NodePath("../PlayerDuplicate")
+exit1 = NodePath("../Splitter Exit")
+exit2 = NodePath("../Splitter Exit2")
 
 [node name="PlayerDuplicate" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="1" unique_id=80732309 instance=ExtResource("3_3koi7")]
 position = Vector2(-315, 361)
@@ -48,6 +52,12 @@ offset_right = 1130.0
 offset_bottom = 202.0
 scale = Vector2(0.5, 0.5)
 show_secondary = true
+
+[node name="Splitter Exit" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="6" unique_id=441379447 instance=ExtResource("8_evokg")]
+position = Vector2(288, 96)
+
+[node name="Splitter Exit2" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="7" unique_id=1931116861 instance=ExtResource("8_evokg")]
+position = Vector2(288, 480)
 
 [node name="Camera2D" parent="." index="3" unique_id=973442512]
 position = Vector2(416, 288)

@@ -1,6 +1,10 @@
-[gd_scene format=3 uid="uid://d272cucotbhnf"]
+[gd_scene format=4 uid="uid://d272cucotbhnf"]
 
 [ext_resource type="Script" uid="uid://dgfstortd5wof" path="res://Scripts/Interactables/unlockable_wall.gd" id="1_qkgki"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_qkgki"]
+_data = PackedByteArray("AAADAAUAAAABAAAAQAAAAEAAAACKAAAAUklGRoIAAABXRUJQVlA4THUAAAAvP8APEC9AmG00f7SJ7H8CpyEQSPJ3nGUibZvhiZp/eEef/wDAf5ZoBoxi22rzvoNHE0Ac0BSECGj+zdTPmk1E/ycAUy1lVLQyhrn4MbGnZu56ji33WhfRSo7b1dZ0qu0lFWMcqxpbcaBjV8MeBBAYqFMw4QIA")
+size_override = Vector2(64, 64)
 
 [node name="Unlockable Wall" type="Node2D" unique_id=1662454923]
 script = ExtResource("1_qkgki")
@@ -10,3 +14,30 @@ offset_left = -32.0
 offset_top = -32.0
 offset_right = 32.0
 offset_bottom = 32.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=654212778]
+texture_filter = 1
+scale = Vector2(2.255, 2.255)
+texture = SubResource("PortableCompressedTexture2D_qkgki")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://Assets/Interactables/key wall icon.aseprite",
+"source_uid": 8931896371749295737
+}
+metadata/_aseprite_wizard_source_file_hash_ = "3757a6c8f925d2219568809cef0c139b"

@@ -8,13 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://nv43ygvaavqj" path="res://Scenes/Interactables/clockwise.tscn" id="5_p3g8w"]
 [ext_resource type="PackedScene" uid="uid://bd8fbishdjwak" path="res://Scenes/Interactables/color_wall.tscn" id="6_wyulo"]
 [ext_resource type="PackedScene" uid="uid://3ranwu71y8yd" path="res://Scenes/Interactables/counterclockwise.tscn" id="7_vqdwi"]
-[ext_resource type="PackedScene" path="res://Scenes/Interactables/paintable_wall.tscn" id="8_2ergn"]
+[ext_resource type="PackedScene" uid="uid://cgui0tsmmw6h7" path="res://Scenes/Interactables/paintable_wall.tscn" id="8_2ergn"]
 [ext_resource type="PackedScene" uid="uid://d4c52oroxymk" path="res://Scenes/color_wheel.tscn" id="8_q6nfd"]
 [ext_resource type="PackedScene" uid="uid://biyg6nxxj6r7t" path="res://Scenes/Interactables/brush_pickup.tscn" id="9_2ergn"]
 [ext_resource type="PackedScene" uid="uid://hs443laxkp8b" path="res://Scenes/Interactables/color_adder.tscn" id="9_msvyy"]
 [ext_resource type="PackedScene" uid="uid://d272cucotbhnf" path="res://Scenes/Interactables/unlockable_wall.tscn" id="10_1xidw"]
 [ext_resource type="PackedScene" uid="uid://wc2dwbrkpa2p" path="res://Scenes/Interactables/color_subtractor.tscn" id="10_msvyy"]
 [ext_resource type="PackedScene" uid="uid://cfawafybmaiej" path="res://Scenes/Interactables/wall_button.tscn" id="11_470gl"]
+[ext_resource type="PackedScene" uid="uid://0blvaf5v3wlu" path="res://Scenes/Interactables/splitter_exit.tscn" id="15_kry1f"]
 [ext_resource type="FontFile" uid="uid://7nx8w2d5mm0s" path="res://Assets/Fonts/PressStart2P-Regular.ttf" id="16_c368q"]
 [ext_resource type="Texture2D" uid="uid://vkl27g1igc74" path="res://Assets/brush.png" id="17_kry1f"]
 
@@ -27,12 +28,15 @@ tile_map_data = PackedByteArray("AAAAAAAAAAABAAIAAAAAAAEAAAABAAIAAAAAAAIAAAABAAI
 [node name="Walls" parent="." index="1" unique_id=1740214358]
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAIAAAAAAAIAAAAAAAMAAAAAAAIAAAAAAAQAAAAAAAIAAAAAAAUAAAAAAAIAAAAAAAYAAAAAAAIAAAAAAAcAAAAAAAIAAAAAAAgAAAAAAAIAAAAAAAkAAAAAAAIAAAABAAAAAAABAAEAAAACAAAAAAABAAEAAAADAAAAAAABAAEAAAAEAAAAAAABAAEAAAAFAAAAAAABAAEAAAAGAAAAAAABAAEAAAAHAAAAAAABAAEAAAAIAAAAAAABAAEAAAAJAAAAAAABAAEAAAAKAAAAAAABAAEAAAALAAAAAAABAAEAAAAMAAAAAAABAAEAAAANAAAAAAABAAEAAAAOAAAAAAABAAEAAAAPAAAAAAABAAEAAAAQAAAAAAABAAEAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAACAAIAAAAAAAAAAAACAAEAAAAAAAAAAAAAAAoAAAAAAAMAAAABAAoAAAABAAMAAAACAAoAAAABAAMAAAADAAoAAAABAAMAAAAEAAoAAAABAAMAAAAFAAoAAAABAAMAAAAGAAoAAAABAAMAAAAHAAoAAAABAAMAAAAIAAoAAAABAAMAAAAJAAoAAAABAAMAAAAKAAoAAAABAAMAAAALAAoAAAABAAMAAAAMAAoAAAABAAMAAAANAAoAAAABAAMAAAAOAAoAAAABAAMAAAAPAAoAAAABAAMAAAAQAAoAAAABAAMAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAKAAUAAAAAAAAAAAALAAUAAAAAAAAAAAAMAAUAAAAAAAAAAAANAAUAAAAAAAAAAAAOAAUAAAAAAAAAAAAPAAUAAAAAAAAAAAAQAAUAAAAAAAAAAAAGAAQAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAYAAAAAAAAAAAAGAAcAAAAAAAAAAAAGAAgAAAAAAAAAAAAMAAYAAAAAAAAAAAAMAAcAAAAAAAAAAAAMAAgAAAAAAAAAAAAMAAMAAAAAAAAAAAAMAAIAAAAAAAAAAAASAAEAAAACAAIAAAASAAIAAAACAAIAAAASAAMAAAACAAIAAAASAAQAAAACAAIAAAASAAUAAAACAAIAAAASAAcAAAACAAIAAAASAAgAAAACAAIAAAASAAkAAAACAAIAAAASAAoAAAACAAMAAAASAAAAAAACAAEAAAARAAoAAAABAAMAAAARAAUAAAAAAAAAAAARAAAAAAABAAEAAAA=")
 
-[node name="Splitter" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="0" unique_id=1461999553 instance=ExtResource("2_08747")]
+[node name="Splitter" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="0" unique_id=1461999553 node_paths=PackedStringArray("player_duplicate", "exit1", "exit2") instance=ExtResource("2_08747")]
 position = Vector2(96, 160)
 new_pos1 = Vector2(96, 288)
 new_pos2 = Vector2(96, 416)
 player_color = Color(0.12, 0.65, 0.2, 1)
 duplicate_color = Color(0.9098039, 0.101960786, 0.101960786, 1)
+player_duplicate = NodePath("../PlayerDuplicate")
+exit1 = NodePath("../Splitter Exit")
+exit2 = NodePath("../Splitter Exit2")
 
 [node name="Swapper" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="1" unique_id=388587406 node_paths=PackedStringArray("player_real", "player_duplicate") instance=ExtResource("3_pyg1t")]
 position = Vector2(352, 288)
@@ -102,6 +106,12 @@ col = Color(0.137, 0.42, 0.78, 1)
 
 [node name="ColorAdder" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="17" unique_id=558619985 instance=ExtResource("9_msvyy")]
 position = Vector2(864, 416)
+
+[node name="Splitter Exit" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="18" unique_id=441379447 instance=ExtResource("15_kry1f")]
+position = Vector2(96, 288)
+
+[node name="Splitter Exit2" parent="Objects" parent_id_path=PackedInt32Array(1527763059) index="19" unique_id=1280621365 instance=ExtResource("15_kry1f")]
+position = Vector2(96, 416)
 
 [node name="Camera2D" parent="." index="3" unique_id=973442512]
 position = Vector2(616, 352)
