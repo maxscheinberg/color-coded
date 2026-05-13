@@ -13,9 +13,6 @@ func _on_tutorial_3_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Levels/tutorial_level_3.tscn")
 
 
-	
-
-
 func _on_back_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/UI/main_menu.tscn")
 
@@ -27,8 +24,6 @@ func _on_btn_level_4_pressed() -> void:
 func _on_btn_level_5_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Levels/level_5.tscn")
 	
-
-
 
 func _on_btn_level_6_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Levels/level_6.tscn")
